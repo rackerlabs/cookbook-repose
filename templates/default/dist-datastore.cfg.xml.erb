@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- http://wiki.openrepose.org/display/REPOSE/Distributed+Datastore -->
+<distributed-datastore xmlns='http://openrepose.org/repose/distributed-datastore/v1.0'>
+    <allowed-hosts allow-all="<%= @allow_all %>">
+        <% @allowed_hosts.each do |host| %>
+        <allow host="<%= host %>" />
+        <% end %>
+    </allowed-hosts>
+</distributed-datastore>

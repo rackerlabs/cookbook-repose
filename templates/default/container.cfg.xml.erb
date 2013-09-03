@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- To configure Repose see: http://wiki.openrepose.org/display/REPOSE/Configuration -->
+<repose-container xmlns='http://docs.rackspacecloud.com/repose/container/v2.0'>
+    <deployment-config http-port="<%= @port %>" https-port="<%= @ssl_port %>" connection-timeout="<%= @connection_timeout %>" read-timeout="<%= @read_timeout %>">
+        <deployment-directory auto-clean="<%= @deploy_auto_clean %>">/var/repose</deployment-directory>
+        <artifact-directory check-interval="<%= @filter_check_interval %>">/usr/share/repose/filters</artifact-directory>
+        <logging-configuration href="log4j.properties" />
+    </deployment-config>
+</repose-container>

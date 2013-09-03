@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- http://wiki.openrepose.org/display/REPOSE/IP+Identity -->
+<ip-identity
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns='http://docs.api.rackspacecloud.com/repose/ip-identity/v1.0'
+    xsi:schemaLocation='http://docs.api.rackspacecloud.com/repose/ip-identity/v1.0'
+>
+
+    <quality><%= @quality %></quality>
+
+    <white-list quality="<%= @white_list_quality %>">
+        <% @white_list_ip_addresses.each do |ip_address| %>
+        <ip-address><%= ip_address %></ip-address>
+        <% end %>
+    </white-list>
+
+</ip-identity>
+
