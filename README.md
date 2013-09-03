@@ -115,5 +115,5 @@ This cookbook includes minitests in `files/default/test/`. To run them:
 
 # Author
 
-Author:: Brendan ODonnell (<brendan.odonnell@rackspace.com>)
-Author:: Rackspace (<identity@rackspace.com>)
+* Author:: Brendan ODonnell (<brendan.odonnell@rackspace.com>)
+* Author:: Rackspace (<identity@rackspace.com>)
