@@ -1,3 +1,5 @@
 Berksfile.lock
 .vagrant
 metadata.json
+.kitchen/
+.kitchen.local.yml
