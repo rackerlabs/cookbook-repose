@@ -7,16 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-yum_key 'RPM_GPG_KEY-openrepose' do
-  url 'http://repo.openrepose.org/rhel/RPM_GPG_KEY-openrepose'
-end
-
-yum_repository 'openrepose' do
-  description 'Repose Public repository for RHEL'
-  url 'http://repo.openrepose.org/rhel'
-  # the openrepose repo provides a GPG key but doesn't sign packages, what?
-  # key 'RPM_GPG_KEY-openrepose'
-end
-
-package 'repose-valve'
-package 'repose-filters'
+include_recipe value_for_platform_family(
+  'rhel'   => 'repose::install_rhel',
+  'debian' => 'repose::install_debian'
+)

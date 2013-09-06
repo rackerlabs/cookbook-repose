@@ -1,3 +1,13 @@
+if platform_family? 'rhel'
+  default['repose']['owner'] = 'repose'
+  default['repose']['group'] = 'repose'
+end
+
+if platform_family? 'debian'
+  default['repose']['owner'] = 'root'
+  default['repose']['group'] = 'root'
+end
+
 default['repose']['loglevel'] = 'DEBUG'
 
 default['repose']['cluster_id'] = 'repose'

@@ -15,8 +15,8 @@ unless node['repose']['filters'].include? 'http-logging'
 end
 
 template '/etc/repose/http-logging.cfg.xml' do
-  owner 'repose'
-  group 'repose'
+  owner node['repose']['owner']
+  group node['repose']['group']
   mode '0644'
   variables(
     :id => node['repose']['http_logging']['id'],

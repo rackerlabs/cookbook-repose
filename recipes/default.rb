@@ -17,8 +17,8 @@ end
 include_recipe 'repose::load_peers' if node['repose']['peer_search_enabled']
 
 template '/etc/repose/container.cfg.xml' do
-  owner 'repose'
-  group 'repose'
+  owner node['repose']['owner']
+  group node['repose']['group']
   mode '0644'
   variables(
     :port => node['repose']['port'],
@@ -32,8 +32,8 @@ template '/etc/repose/container.cfg.xml' do
 end
 
 template '/etc/repose/system-model.cfg.xml' do
-  owner 'repose'
-  group 'repose'
+  owner node['repose']['owner']
+  group node['repose']['group']
   mode '0644'
   variables(
     :cluster_id => node['repose']['cluster_id'],
@@ -45,8 +45,8 @@ template '/etc/repose/system-model.cfg.xml' do
 end
 
 template '/etc/repose/log4j.properties' do
-  owner 'repose'
-  group 'repose'
+  owner node['repose']['owner']
+  group node['repose']['group']
   mode '0644'
   variables(
     :loglevel => node['repose']['loglevel']

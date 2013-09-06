@@ -9,17 +9,23 @@ describe_recipe 'repose::default' do
 
   it 'sets up container.cfg.xml' do
     file('/etc/repose/container.cfg.xml').must_exist.with(
-      :owner, 'repose').and(:group, 'repose').and(:mode, '0644')
+      :owner, node['repose']['owner']).and(
+      :group, node['repose']['group']).and(
+      :mode, '0644')
   end
 
   it 'sets up system-model.cfg.xml' do
     file('/etc/repose/system-model.cfg.xml').must_exist.with(
-      :owner, 'repose').and(:group, 'repose').and(:mode, '0644')
+      :owner, node['repose']['owner']).and(
+      :group, node['repose']['group']).and(
+      :mode, '0644')
   end
 
   it 'sets up log4j.properties' do
     file('/etc/repose/log4j.properties').must_exist.with(
-      :owner, 'repose').and(:group, 'repose').and(:mode, '0644')
+      :owner, node['repose']['owner']).and(
+      :group, node['repose']['group']).and(
+      :mode, '0644')
   end
 
 end

@@ -15,8 +15,8 @@ unless node['repose']['filters'].include? 'ip-identity'
 end
 
 template '/etc/repose/ip-identity.cfg.xml' do
-  owner 'repose'
-  group 'repose'
+  owner node['repose']['owner']
+  group node['repose']['group']
   mode '0644'
   variables(
     :quality => node['repose']['ip_identity']['quality'],
