@@ -6,7 +6,7 @@ This cookbook manages Repose.
 
 # Requirements
 
-Tested on CentOS 6.4.
+Supports CentOS 6.4, Ubuntu 10.04, and Ubuntu 12.04.
 
 # Usage
 
@@ -18,6 +18,8 @@ There are 2 ways to setup filters. The first is to include any of the `repose::f
 
 ## General attributes
 
+* `node['repose']['owner']` - The Repose user. `root` on Ubuntu and `repose` on CentOS.
+* `node['repose']['group']` - The Repose primary group. `root` on Ubuntu and `repose` on CentOS.
 * `node['repose']['loglevel']` - The log level for the main Repose log file.
 * `node['repose']['cluster_id']` - The cluster ID.
 * `node['repose']['node_id']` - The node ID.
@@ -86,11 +88,19 @@ Installs and configures Repose. May include all other recipes.
 
 ## install
 
-Install Repose only. This recipe is not meant to be used directly.
+Install Repose only. Loads the appropriate install recipe based on platform family. This recipe is not meant to be used directly.
+
+## install_debian
+
+Install Repose on the Debian family of systems. This recipe is not meant to be used directly.
+
+## install_rhel
+
+Install Repose on the RHEL family of systems. This recipe is not meant to be used directly.
 
 ## load_peers
 
-Uses chef-search to load the `node['repose']['peers']` array. Not meant to be called directly unless a different piece of software wants to find Repose nodes. Eg maybe Nginx uses Repose nodes as a backend and wants to consume `node['repose']['peers']`.
+Uses chef-search to find nodes with a matching Chef environment, search role, and cluster ID, maps them to hashes representing Repose peers, and loads them into the `node['repose']['peers']` array. Not meant to be called directly unless a different cookbook wants to find Repose nodes. E.g. maybe Nginx uses Repose nodes as a backend and wants to consume `node['repose']['peers']`.
 
 ## filter-dist-datastore
 
@@ -104,14 +114,24 @@ Setup the http-logging filter. *Must* be called before `repose::default`.
 
 Setup the ip-identity filter. *Must* be called before `repose::default`.
 
-# Tests
+# Vagrant
 
-This cookbook includes minitests in `files/default/test/`. To run them:
+This cookbook includes support for Vagrant. Start the VM by following these steps
 
 1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 2. Install [Vagrant](http://downloads.vagrantup.com/)
 3. Run `bundle install`
-4. Run `vagrant up`
+4. Run `vagrant plugin install vagrant-berkshelf`
+5. Run `vagrant plugin install vagrant-omnibus`
+6. Run `vagrant up`
+
+# Tests
+
+This cookbook includes support for test-kitchen and minitest. Run the test suite with
+
+```
+kitchen test
+```
 
 # Author
 
