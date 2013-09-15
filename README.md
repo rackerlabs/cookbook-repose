@@ -135,5 +135,5 @@ kitchen test
 
 # Author
 
-* Author:: Brendan ODonnell (<brendan.odonnell@rackspace.com>)
-* Author:: Rackspace (<identity@rackspace.com>)
+* Author: Brendan ODonnell (<brendan.odonnell@rackspace.com>)
+* Author: Rackspace (<identity@rackspace.com>)
