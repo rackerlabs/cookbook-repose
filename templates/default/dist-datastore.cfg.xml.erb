@@ -2,9 +2,14 @@
 
 <!-- http://wiki.openrepose.org/display/REPOSE/Distributed+Datastore -->
 <distributed-datastore xmlns='http://openrepose.org/repose/distributed-datastore/v1.0'>
-    <allowed-hosts allow-all="<%= @allow_all %>">
+    <% if @allow_all %>
+    <allowed-hosts allow-all="true">
+    </allowed-hosts>
+    <% else %>
+    <allowed-hosts allow-all="false">
         <% @allowed_hosts.each do |host| %>
         <allow host="<%= host %>" />
         <% end %>
     </allowed-hosts>
+    <% end %>
 </distributed-datastore>
