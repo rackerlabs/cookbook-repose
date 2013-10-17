@@ -20,9 +20,9 @@ platforms:
 suites:
 - name: default
   run_list: [
-    "recipe[repose::filter-dist-datastore]",
     "recipe[repose::filter-http-logging]",
     "recipe[repose::filter-ip-identity]",
+    "recipe[repose::service-dist-datastore]",
     "recipe[repose::default]",
     "recipe[minitest-handler]"
   ]

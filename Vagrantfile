@@ -84,9 +84,9 @@ Vagrant.configure("2") do |config|
 
     chef.run_list = [
       "recipe[yum::epel]",
-      "recipe[repose::filter-dist-datastore]",
       "recipe[repose::filter-http-logging]",
       "recipe[repose::filter-ip-identity]",
+      "recipe[repose::service-dist-datastore]",
       "recipe[repose]",
       "recipe[minitest-handler]"
     ]
