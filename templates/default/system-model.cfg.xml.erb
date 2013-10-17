@@ -12,6 +12,11 @@
             <filter name="<%= filter %>" />
             <% end %>
         </filters>
+        <services>
+            <% @services.each do |service| %>
+            <service name="<%= service %>" />
+            <% end %>
+        </services>
         <destinations>
             <% @endpoints.each do |endpoint| %>
             <endpoint id="<%= endpoint['id'] %>" protocol="<%= endpoint['protocol'] %>" hostname="<%= endpoint['hostname'] %>" port="<%= endpoint['port'] %>" root-path="<%= endpoint['root_path'] %>" default="<%= endpoint['default'] %>" />

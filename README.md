@@ -14,6 +14,8 @@ Include `recipe[repose]` in your run_list and override attributes as required.
 
 There are 2 ways to setup filters. The first is to include any of the `repose::filter-*` recipes *before* the `repose::default` recipe. The second is to add the filter names to the `node['repose']['filters']` array. You choose.
 
+Services work the same way. Just s/filter/service/g.
+
 # Attributes
 
 ## General attributes
@@ -29,6 +31,7 @@ There are 2 ways to setup filters. The first is to include any of the `repose::f
 * `node['repose']['deploy_auto_clean']` - Auto-clean the deploy directory if `true`.
 * `node['repose']['filter_check_interval']` - The filter check interval in ms.
 * `node['repose']['filters']` - An array of filters to load. Loading the `repose::filter-*` recipes will update this if required.
+* `node['repose']['services']` - An array of services to load. Loading the `repose::service-*` recipes will update this if required.
 
 ## Peer attributes
 

@@ -20,6 +20,7 @@ default['repose']['deploy_auto_clean'] = false
 default['repose']['filter_check_interval'] = 60000
 
 default['repose']['filters'] = []
+default['repose']['services'] = []
 
 default['repose']['peer_search_enabled'] = false
 default['repose']['peer_search_role'] = 'repose'
