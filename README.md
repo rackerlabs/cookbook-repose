@@ -14,6 +14,8 @@ Include `recipe[repose]` in your run_list and override attributes as required.
 
 There are 2 ways to setup filters. The first is to include any of the `repose::filter-*` recipes *before* the `repose::default` recipe. The second is to add the filter names to the `node['repose']['filters']` array. You choose.
 
+Services work the same way. Just s/filter/service/g.
+
 # Attributes
 
 ## General attributes
@@ -29,6 +31,7 @@ There are 2 ways to setup filters. The first is to include any of the `repose::f
 * `node['repose']['deploy_auto_clean']` - Auto-clean the deploy directory if `true`.
 * `node['repose']['filter_check_interval']` - The filter check interval in ms.
 * `node['repose']['filters']` - An array of filters to load. Loading the `repose::filter-*` recipes will update this if required.
+* `node['repose']['services']` - An array of services to load. Loading the `repose::service-*` recipes will update this if required.
 
 ## Peer attributes
 
@@ -67,6 +70,7 @@ The Repose endpoints array defaults to:
 
 * `node['repose']['dist_datastore']['allow_all']` - Allow all hosts to use the dist-datastore if `true`. Be aware that this basically turns off security around the dist-datastore. Use with care.
 * `node['repose']['dist_datastore']['allowed_hosts']` - An array of hosts to whitelist for the dist-datastore.
+* `node['repose']['dist_datastore']['port']` - The port to use for dist-datastore. Set to `nil` to leave out the `<port-config>` block.
 
 ## http-logging attributes
 
@@ -102,10 +106,6 @@ Install Repose on the RHEL family of systems. This recipe is not meant to be use
 
 Uses chef-search to find nodes with a matching Chef environment, search role, and cluster ID, maps them to hashes representing Repose peers, and loads them into the `node['repose']['peers']` array. Not meant to be called directly unless a different cookbook wants to find Repose nodes. E.g. maybe Nginx uses Repose nodes as a backend and wants to consume `node['repose']['peers']`.
 
-## filter-dist-datastore
-
-Setup the dist-datastore filter. *Must* be called before `repose::default`.
-
 ## filter-http-logging
 
 Setup the http-logging filter. *Must* be called before `repose::default`.
@@ -113,6 +113,10 @@ Setup the http-logging filter. *Must* be called before `repose::default`.
 ## filter-ip-identity
 
 Setup the ip-identity filter. *Must* be called before `repose::default`.
+
+## service-dist-datastore
+
+Setup the dist-datastore service. *Must* be called before `repose::default`.
 
 # Vagrant
 

@@ -39,6 +39,7 @@ template '/etc/repose/system-model.cfg.xml' do
     :cluster_id => node['repose']['cluster_id'],
     :peers => node['repose']['peers'],
     :filters => node['repose']['filters'],
+    :services => node['repose']['services'],
     :endpoints => node['repose']['endpoints']
   )
   notifies :restart, 'service[repose-valve]'
@@ -56,4 +57,8 @@ end
 
 node['repose']['filters'].each do |filter|
   include_recipe "repose::filter-#{filter}"
+end
+
+node['repose']['services'].each do |service|
+  include_recipe "repose::service-#{service}"
 end

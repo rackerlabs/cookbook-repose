@@ -3,13 +3,17 @@
 <!-- http://wiki.openrepose.org/display/REPOSE/Distributed+Datastore -->
 <distributed-datastore xmlns='http://openrepose.org/repose/distributed-datastore/v1.0'>
     <% if @allow_all %>
-    <allowed-hosts allow-all="true">
-    </allowed-hosts>
+    <allowed-hosts allow-all="true" />
     <% else %>
     <allowed-hosts allow-all="false">
         <% @allowed_hosts.each do |host| %>
         <allow host="<%= host %>" />
         <% end %>
     </allowed-hosts>
+    <% end %>
+    <% unless @port.nil? %>
+    <port-config>
+        <port port="<%= @port %>" cluster="<%= @cluster_id %>"/>
+    </port-config>
     <% end %>
 </distributed-datastore>
