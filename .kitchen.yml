@@ -23,6 +23,7 @@ suites:
     "recipe[repose::filter-http-logging]",
     "recipe[repose::filter-ip-identity]",
     "recipe[repose::service-dist-datastore]",
+    "recipe[repose::client-auth-n]",
     "recipe[repose::default]",
     "recipe[minitest-handler]"
   ]

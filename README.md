@@ -84,6 +84,15 @@ The Repose endpoints array defaults to:
 * `node['repose']['ip_identity']['white_list_quality']` - The whitelist quality.
 * `node['repose']['ip_identity']['white_list_ip_addresses']` - An array of whitelisted IP addresses.
 
+## client-auth attributes
+
+* `node['repose']['client_auth']['auth_provider']` - The authentication provider to use, either 'RACKSPACE' for Rackspace cloud, or else 'OPENSTACK' for Keystone
+* `node['repose']['client_auth']['username_admin']` - Administrator username making auth-n requests for clients.
+* `node['repose']['client_auth']['password_admin']` - Administrator password making auth-n requests for clients.
+* `node['repose']['client_auth']['tenant_id']` - (Keystone only, optional) Tenant-ID with admin role for the admin user above.
+* `node['repose']['client_auth']['auth_uri']` - URI for the authentication service.
+
+
 # Recipes
 
 ## default
@@ -113,6 +122,10 @@ Setup the http-logging filter. *Must* be called before `repose::default`.
 ## filter-ip-identity
 
 Setup the ip-identity filter. *Must* be called before `repose::default`.
+
+## client-auth
+
+Setup the client-auth filter. *Must* be called before `repose::default`.
 
 ## service-dist-datastore
 

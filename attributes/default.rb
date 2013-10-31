@@ -52,3 +52,9 @@ default['repose']['http_logging']['logfile'] = '/var/log/repose/http.log'
 default['repose']['ip_identity']['quality'] = 0.2
 default['repose']['ip_identity']['white_list_quality'] = 1.0
 default['repose']['ip_identity']['white_list_ip_addresses'] = ['127.0.0.1']
+
+default['repose']['client_auth']['auth_provider'] = 'RACKSPACE'
+default['repose']['client_auth']['username_admin'] = 'admin'
+default['repose']['client_auth']['password_admin'] = 'password'
+default['repose']['client_auth']['tenant_id'] = 'tenant-id'
+default['repose']['client_auth']['auth_uri'] = 'https://auth.api.rackspacecloud.com/v1.1/auth'
