@@ -21,8 +21,8 @@ if node[:repose][:auth_provider] == 'RACKSPACE'
     group node['repose']['group']
     mode '0644'
     variables(
-      :username => node['repose']['client_auth']['username'],
-      :password => node['repose']['client_auth']['password'],
+      :username => node['repose']['client_auth']['username_admin'],
+      :password => node['repose']['client_auth']['password_admin'],
       :auth_uri => node['repose']['client_auth']['auth_uri']
     )
     notifies :restart, 'service[repose-valve]'
@@ -34,8 +34,8 @@ else
     group node['repose']['group']
     mode '0644'
     variables(
-      :username => node['repose']['client_auth']['username'],
-      :password => node['repose']['client_auth']['password'],
+      :username => node['repose']['client_auth']['username_admin'],
+      :password => node['repose']['client_auth']['password_admin'],
       :auth_uri => node['repose']['client_auth']['auth_uri'],
       :tenant_id => node['repose']['client_auth']['tenant_id']
     )
