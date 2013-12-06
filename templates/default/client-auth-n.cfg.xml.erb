@@ -15,7 +15,7 @@
 
     </rackspace-auth>
 
-    <% else %>
+    <% elsif @auth_provider == 'OPENSTACK' %>
 
     <openstack-auth delegable="false" tenanted="true" request-groups="true" token-cache-timeout="600000" group-cache-timeout="600000" xmlns="http://docs.openrepose.org/repose/client-auth/os-ids-auth/v1">
         <identity-service username="<%= @username %>" password="<%= @password %>" tenantId="<%= @tenant_id %>" uri="<%= @auth_uri %>" />
