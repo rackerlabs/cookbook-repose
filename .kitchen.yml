@@ -27,3 +27,26 @@ suites:
     "recipe[minitest-handler]"
   ]
   attributes: {}
+
+- name: client-auth-rackspace
+  run_list: [
+    "recipe[repose::filter-client-auth]",
+    "recipe[repose::default]",
+    "recipe[minitest-handler]"
+  ]
+  attributes:
+    repose:
+      client_auth:
+        auth_provider: 'RACKSPACE'
+
+- name: client-auth-openstack
+  run_list: [
+    "recipe[repose::filter-client-auth]",
+    "recipe[repose::default]",
+    "recipe[minitest-handler]"
+  ]
+  attributes:
+    repose:
+      client_auth:
+        auth_provider: 'OPENSTACK'
+

@@ -84,6 +84,19 @@ The Repose endpoints array defaults to:
 * `node['repose']['ip_identity']['white_list_quality']` - The whitelist quality.
 * `node['repose']['ip_identity']['white_list_ip_addresses']` - An array of whitelisted IP addresses.
 
+## client-auth attributes
+
+* `node['repose']['client_auth']['auth_provider']` - The authentication provider to use, either 'RACKSPACE' for Rackspace cloud, or else 'OPENSTACK' for Keystone
+* `node['repose']['client_auth']['username_admin']` - Administrator username making auth-n requests for clients.
+* `node['repose']['client_auth']['password_admin']` - Administrator password making auth-n requests for clients.
+* `node['repose']['client_auth']['auth_uri']` - URI for the authentication service.
+* `node['repose']['client_auth']['mapping_regex']` - Optional regex to extract the user/tenant/account information from URI.
+    * For example this regex `.*/v1/([-|\w]+)/?.*` will provide this action: '/v1/853473/action => x-pp-user=853473'. Used with the 'CLOUD' Rackspace mapping_type below.
+    * This regex `.*.com/service/([-|\w]+)/?.*` will provide this action: '/service/853473/action => x-pp-user=853473'. Used with the 'MOSSO' Rackspace mapping_type below.
+* `node['repose']['client_auth']['mapping_type']` - (Rackspace only, required if 'mapping_regex' is provided) One of 'CLOUD' or 'MOSSO'.
+* `node['repose']['client_auth']['tenant_id']` - (Keystone only, optional) Tenant-ID with admin role for the admin user above.
+
+
 # Recipes
 
 ## default
@@ -113,6 +126,10 @@ Setup the http-logging filter. *Must* be called before `repose::default`.
 ## filter-ip-identity
 
 Setup the ip-identity filter. *Must* be called before `repose::default`.
+
+## client-auth
+
+Setup the client-auth filter. *Must* be called before `repose::default`.
 
 ## service-dist-datastore
 
