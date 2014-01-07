@@ -7,17 +7,27 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe 'yum::epel'
-
-yum_key 'RPM_GPG_KEY-openrepose' do
-  url 'http://repo.openrepose.org/rhel/RPM_GPG_KEY-openrepose'
+case node['platform_version'].to_i
+when 5
+  yum_repository 'epel' do
+    baseurl 'http://dl.fedoraproject.org/pub/epel/5/$basearch/'
+    description 'Extra Packages for Enterprise Linux 5 - $basearch'
+    gpgkey 'http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL'
+  end
+when 6
+  yum_repository 'epel' do
+    baseurl 'http://dl.fedoraproject.org/pub/epel/6/$basearch/'
+    description 'Extra Packages for Enterprise Linux 6 - $basearch'
+    gpgkey 'http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-6'
+  end
 end
 
 yum_repository 'openrepose' do
   description 'Repose Public repository for RHEL'
-  url 'http://repo.openrepose.org/rhel'
+  baseurl 'http://repo.openrepose.org/rhel'
   # the openrepose repo doesn't sign packages
-  # key 'RPM_GPG_KEY-openrepose'
+  # gpgkey 'http://repo.openrepose.org/rhel/RPM_GPG_KEY-openrepose'
+  gpgcheck false
 end
 
 package 'repose-valve'
