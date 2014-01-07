@@ -8,3 +8,4 @@ version          "0.3.0"
 
 depends          "apt"
 depends          "yum", '~> 3.0.4'
+depends          "yum-epel"
