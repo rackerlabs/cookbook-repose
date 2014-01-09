@@ -16,6 +16,12 @@ end
 
 include_recipe 'repose::load_peers' if node['repose']['peer_search_enabled']
 
+directory "#{node['repose']['config_directory']}" do
+  owner node['repose']['owner']
+  group node['repose']['group']
+  mode '0755'
+end
+
 template "#{node['repose']['config_directory']}/container.cfg.xml" do
   owner node['repose']['owner']
   group node['repose']['group']
