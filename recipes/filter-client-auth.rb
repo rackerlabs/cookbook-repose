@@ -14,7 +14,7 @@ unless node['repose']['filters'].include? 'client-auth'
   node.normal['repose']['filters'] = filters
 end
 
-template '/etc/repose/client-auth-n.cfg.xml' do
+template "#{node['repose']['config_directory']}/client-auth-n.cfg.xml" do
   owner node['repose']['owner']
   group node['repose']['group']
   mode '0644'

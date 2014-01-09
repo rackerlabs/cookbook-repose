@@ -14,7 +14,7 @@ unless node['repose']['filters'].include? 'http-logging'
   node.normal['repose']['filters'] = filters
 end
 
-template '/etc/repose/http-logging.cfg.xml' do
+template "#{node['repose']['config_directory']}/http-logging.cfg.xml" do
   owner node['repose']['owner']
   group node['repose']['group']
   mode '0644'

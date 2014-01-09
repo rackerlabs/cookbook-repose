@@ -16,7 +16,7 @@ end
 
 include_recipe 'repose::load_peers' if node['repose']['peer_search_enabled']
 
-template '/etc/repose/container.cfg.xml' do
+template "#{node['repose']['config_directory']}/container.cfg.xml" do
   owner node['repose']['owner']
   group node['repose']['group']
   mode '0644'
@@ -31,7 +31,7 @@ template '/etc/repose/container.cfg.xml' do
   notifies :restart, 'service[repose-valve]'
 end
 
-template '/etc/repose/system-model.cfg.xml' do
+template "#{node['repose']['config_directory']}/system-model.cfg.xml" do
   owner node['repose']['owner']
   group node['repose']['group']
   mode '0644'
@@ -45,7 +45,7 @@ template '/etc/repose/system-model.cfg.xml' do
   notifies :restart, 'service[repose-valve]'
 end
 
-template '/etc/repose/log4j.properties' do
+template "#{node['repose']['config_directory']}/log4j.properties" do
   owner node['repose']['owner']
   group node['repose']['group']
   mode '0644'

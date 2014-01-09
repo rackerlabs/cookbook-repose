@@ -14,7 +14,7 @@ unless node['repose']['services'].include? 'dist-datastore'
   node.normal['repose']['services'] = services
 end
 
-template '/etc/repose/dist-datastore.cfg.xml' do
+template "#{node['repose']['config_directory']}/dist-datastore.cfg.xml" do
   owner node['repose']['owner']
   group node['repose']['group']
   mode '0644'
