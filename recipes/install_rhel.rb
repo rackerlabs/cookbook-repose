@@ -7,17 +7,14 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe 'yum::epel'
-
-yum_key 'RPM_GPG_KEY-openrepose' do
-  url 'http://repo.openrepose.org/rhel/RPM_GPG_KEY-openrepose'
-end
+include_recipe 'yum-epel'
 
 yum_repository 'openrepose' do
   description 'Repose Public repository for RHEL'
-  url 'http://repo.openrepose.org/rhel'
+  baseurl 'http://repo.openrepose.org/rhel'
   # the openrepose repo doesn't sign packages
-  # key 'RPM_GPG_KEY-openrepose'
+  # gpgkey 'http://repo.openrepose.org/rhel/RPM_GPG_KEY-openrepose'
+  gpgcheck false
 end
 
 package 'repose-valve'
