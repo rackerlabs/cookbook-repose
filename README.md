@@ -26,6 +26,12 @@ Services work the same way. Just s/filter/service/g.
 * `node['repose']['cluster_id']` - The cluster ID.
 * `node['repose']['node_id']` - The node ID.
 * `node['repose']['port']` - The port to bind to.
+* `node['repose']['ssl_port']` - The SSL port to bind to.
+* `node['repose']['config_directory']` - Configuration directory location.
+* `node['repose']['log_path']` - Log directory location.
+* `node['repose']['pid_file']` - PID file location.
+* `node['repose']['java_opts']` - Java options specific to Repose. This is distinct from the system environmment variable `JAVA_OPTS`.
+* `node['repose']['shutdown_port']` - The shutdown port to bind to.
 * `node['repose']['connection_timeout']` - The connection timeout in ms.
 * `node['repose']['read_timeout']` The read timeout in ms.
 * `node['repose']['deploy_auto_clean']` - Auto-clean the deploy directory if `true`.

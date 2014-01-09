@@ -1,0 +1,13 @@
+RUN_PORT=<%= @port %>
+SHUTDOWN_PORT=<%= @shutdown_port %>
+CONFIG_DIRECTORY=<%= @config_directory %>
+NAME=repose-valve
+DAEMON_HOME=/usr/share/lib/repose
+LOG_PATH=<%= @log_path %>
+PID_FILE=<%= @pid_file %>
+USER=<%= @owner %>
+
+daemonize=/usr/sbin/daemonize
+daemonize_opts="-c $DAEMON_HOME -p $PID_FILE -u $USER -o $LOG_PATH/stdout.log -e $LOG_PATH/stderr.log -l /var/lock/subsys/$NAME"
+run_opts="-s $SHUTDOWN_PORT -p $RUN_PORT -c $CONFIG_DIRECTORY"
+java_opts="<%= @java_opts %>"

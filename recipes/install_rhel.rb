@@ -19,3 +19,12 @@ end
 
 package 'repose-valve'
 package 'repose-filters'
+
+template '/etc/sysconfig/repose' do
+  owner 'root'
+  group 'root'
+  mode '0644'
+  variables(
+    node['repose']
+  )
+end
