@@ -27,4 +27,5 @@ template '/etc/sysconfig/repose' do
   variables(
     node['repose']
   )
+  notifies :restart, 'service[repose-valve]'
 end
