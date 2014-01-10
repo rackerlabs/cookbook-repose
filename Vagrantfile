@@ -72,19 +72,11 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
-      :mysql => {
-        :server_root_password => 'rootpass',
-        :server_debian_password => 'debpass',
-        :server_repl_password => 'replpass'
-      }
     }
-
-    chef.run_list = [
-      "recipe[repose::filter-http-logging]",
-      "recipe[repose::filter-ip-identity]",
-      "recipe[repose::service-dist-datastore]",
-      "recipe[repose]",
-      "recipe[minitest-handler]"
-    ]
+    chef.add_recipe("recipe[repose::filter-http-logging]")
+    chef.add_recipe("recipe[repose::filter-ip-identity]")
+    chef.add_recipe("recipe[repose::service-dist-datastore]")
+    chef.add_recipe("recipe[repose]")
+    chef.add_recipe("recipe[minitest-handler]")
   end
 end

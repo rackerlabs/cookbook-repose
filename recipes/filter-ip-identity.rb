@@ -14,7 +14,7 @@ unless node['repose']['filters'].include? 'ip-identity'
   node.normal['repose']['filters'] = filters
 end
 
-template '/etc/repose/ip-identity.cfg.xml' do
+template "#{node['repose']['config_directory']}/ip-identity.cfg.xml" do
   owner node['repose']['owner']
   group node['repose']['group']
   mode '0644'
