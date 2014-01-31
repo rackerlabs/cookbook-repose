@@ -25,7 +25,12 @@ template "#{node['repose']['config_directory']}/client-auth-n.cfg.xml" do
     :auth_uri => node['repose']['client_auth']['auth_uri'],
     :mapping_regex => node['repose']['client_auth']['mapping_regex'],
     :mapping_type => node['repose']['client_auth']['mapping_type'],
-    :tenant_id => node['repose']['client_auth']['tenant_id']
+    :tenant_id => node['repose']['client_auth']['tenant_id'],
+    :delegable => node['repose']['client_auth']['delegable'],
+    :tenanted => node['repose']['client_auth']['tenanted'],
+    :request_groups => node['repose']['client_auth']['request_groups'],
+    :token_cache_timeout => node['repose']['client_auth']['token_cache_timeout'],
+    :group_cache_timeout => node['repose']['client_auth']['group_cache_timeout']
   )
   notifies :restart, 'service[repose-valve]'
 end

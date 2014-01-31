@@ -14,9 +14,9 @@
 
     <% elsif @auth_provider == 'OPENSTACK' %>
 
-    <openstack-auth delegable="false" tenanted="true" request-groups="true" token-cache-timeout="600000" group-cache-timeout="600000" xmlns="http://docs.openrepose.org/repose/client-auth/os-ids-auth/v1">
+    <openstack-auth delegable="<%= @delegable %>" tenanted="<%= @tenanted %>" request-groups="<%= @request_groups %>" token-cache-timeout="<%= @token_cache_timeout %>" group-cache-timeout="<%= @group_cache_timeout %>" xmlns="http://docs.openrepose.org/repose/client-auth/os-ids-auth/v1.0">
         <identity-service username="<%= @username %>" password="<%= @password %>" tenantId="<%= @tenant_id %>" uri="<%= @auth_uri %>" />
-        <% if @mapping_regex %>
+        <% if @tenanted %>
         <client-mapping id-regex="<%= @mapping_regex %>"/>
         <% end %>
         <endpoints-in-header format="XML" cache-timeout="600000" identity-contract-version="2"/>
