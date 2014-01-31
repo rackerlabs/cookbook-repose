@@ -96,13 +96,14 @@ The Repose endpoints array defaults to:
 * `node['repose']['client_auth']['username_admin']` - Administrator username making auth-n requests for clients.
 * `node['repose']['client_auth']['password_admin']` - Administrator password making auth-n requests for clients.
 * `node['repose']['client_auth']['auth_uri']` - URI for the authentication service.
+* `node['repose']['client_auth']['tenanted']` - Whether the tenant_id will ne parsed from the request uri.  If this is set to true then mapping_regex must be provided
 * `node['repose']['client_auth']['mapping_regex']` - Optional regex to extract the user/tenant/account information from URI.
     * For example this regex `.*/v1/([-|\w]+)/?.*` will provide this action: '/v1/853473/action => x-pp-user=853473'. Used with the 'CLOUD' Rackspace mapping_type below.
     * This regex `.*.com/service/([-|\w]+)/?.*` will provide this action: '/service/853473/action => x-pp-user=853473'. Used with the 'MOSSO' Rackspace mapping_type below.
 * `node['repose']['client_auth']['mapping_type']` - (Rackspace only, required if 'mapping_regex' is provided) One of 'CLOUD' or 'MOSSO'.
 * `node['repose']['client_auth']['tenant_id']` - (Keystone only, optional) Tenant-ID with admin role for the admin user above.
 * `node['repose']['client_auth']['delegable']` - Whether auth is delegable
-* `node['repose']['client_auth']['tenanted']` - Wether the tenat_id will ne parsed from the request uri
+
 * `node['repose']['client_auth']['request_groups']` - Whether repose requests the user's list of groups from the identity service
 * `node['repose']['client_auth']['token_cache_timeout']` - timeout for token cache
 * `node['repose']['client_auth']['group_cache_timeout']` - timeout for group cache
