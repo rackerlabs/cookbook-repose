@@ -5,7 +5,7 @@
 <client-auth xmlns="http://docs.rackspacecloud.com/repose/client-auth/v1.0">
     <% if @auth_provider == 'RACKSPACE' %>
 
-    <rackspace-auth delegable="false" request-groups="false" xmlns="http://docs.rackspacecloud.com/repose/client-auth/rs-auth-1.1/v1.0">
+    <rackspace-auth delegable="<%= @delegable %>" request-groups="<%= @request_groups %>" xmlns="http://docs.rackspacecloud.com/repose/client-auth/rs-auth-1.1/v1.0">
         <authentication-server username="<%= @username %>" password="<%= @password %>" uri="<%= @auth_uri %>" />
         <% if @mapping_regex %>
         <account-mapping id-regex="<%= @mapping_regex %>" type="<%= @mapping_type %>"/>

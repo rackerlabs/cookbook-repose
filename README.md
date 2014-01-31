@@ -101,7 +101,11 @@ The Repose endpoints array defaults to:
     * This regex `.*.com/service/([-|\w]+)/?.*` will provide this action: '/service/853473/action => x-pp-user=853473'. Used with the 'MOSSO' Rackspace mapping_type below.
 * `node['repose']['client_auth']['mapping_type']` - (Rackspace only, required if 'mapping_regex' is provided) One of 'CLOUD' or 'MOSSO'.
 * `node['repose']['client_auth']['tenant_id']` - (Keystone only, optional) Tenant-ID with admin role for the admin user above.
-
+* `node['repose']['client_auth']['delegable']` - Whether auth is delegable
+* `node['repose']['client_auth']['tenanted']` - Wether the tenat_id will ne parsed from the request uri
+* `node['repose']['client_auth']['request_groups']` - Whether repose requests the user's list of groups from the identity service
+* `node['repose']['client_auth']['token_cache_timeout']` - timeout for token cache
+* `node['repose']['client_auth']['group_cache_timeout']` - timeout for group cache
 
 # Recipes
 
