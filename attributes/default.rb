@@ -71,3 +71,4 @@ default['repose']['client_auth']['tenanted'] = true
 default['repose']['client_auth']['request_groups'] = true
 default['repose']['client_auth']['token_cache_timeout'] = 600000
 default['repose']['client_auth']['group_cache_timeout'] = 600000
+default['repose']['client_auth']['endpoints_in_header'] = false
