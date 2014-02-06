@@ -29,7 +29,7 @@ default['repose']['filters'] = []
 default['repose']['services'] = []
 
 default['repose']['peer_search_enabled'] = false
-default['repose']['peer_search_role'] = 'repose'
+default['repose']['peer_search_query'] = "roles:repose AND repose_cluster_id:#{node['repose']['cluster_id']}"
 default['repose']['peers'] = [
   { 'id' => 'repose_node1',
     'hostname' => 'localhost',

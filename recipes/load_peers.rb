@@ -17,8 +17,7 @@ if node['repose']['peer_search_enabled']
   if Chef::Config[:solo]
     log 'Chef search disabled'
   else
-    search_query = "roles:#{search_role} AND chef_environment:#{search_env} AND repose_cluster_id:#{search_cluster_id}"
-    found_nodes = search 'node', search_query
+    found_nodes = search 'node', node['repose']['peer_search_query']
     log 'Chef search results' do
       message "Search for \"#{search_query}\" yields \"#{found_nodes}\""
     end
