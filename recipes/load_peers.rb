@@ -19,7 +19,7 @@ if node['repose']['peer_search_enabled']
   else
     found_nodes = search 'node', node['repose']['peer_search_query']
     log 'Chef search results' do
-      message "Search for \"#{search_query}\" yields \"#{found_nodes}\""
+      message "Search for \"#{node['repose']['peer_search_query']}\" yields \"#{found_nodes}\""
     end
   end
 
