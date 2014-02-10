@@ -30,7 +30,8 @@ template "#{node['repose']['config_directory']}/client-auth-n.cfg.xml" do
     :tenanted => node['repose']['client_auth']['tenanted'],
     :request_groups => node['repose']['client_auth']['request_groups'],
     :token_cache_timeout => node['repose']['client_auth']['token_cache_timeout'],
-    :group_cache_timeout => node['repose']['client_auth']['group_cache_timeout']
+    :group_cache_timeout => node['repose']['client_auth']['group_cache_timeout'],
+    :endpoints_in_header => node['repose']['client_auth']['endpoints_in_header']
   )
   notifies :restart, 'service[repose-valve]'
 end

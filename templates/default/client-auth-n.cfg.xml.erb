@@ -19,7 +19,9 @@
         <% if @tenanted %>
         <client-mapping id-regex="<%= @mapping_regex %>"/>
         <% end %>
+        <% if @endpoints_in_header %>
         <endpoints-in-header format="XML" cache-timeout="600000" identity-contract-version="2"/>
+        <% end %>
     </openstack-auth>
 
     <% end %>
