@@ -107,6 +107,7 @@ The Repose endpoints array defaults to:
 * `node['repose']['client_auth']['request_groups']` - Whether repose requests the user's list of groups from the identity service.
 * `node['repose']['client_auth']['token_cache_timeout']` - Timeout for token cache.
 * `node['repose']['client_auth']['group_cache_timeout']` - Timeout for group cache.
+* `node['repose']['client_auth']['endpoints_in_header']` - Enable or disable the listing of service endpoints in the header.
 
 # Recipes
 
