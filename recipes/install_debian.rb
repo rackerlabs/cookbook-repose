@@ -8,10 +8,10 @@
 #
 
 apt_repository 'openrepose' do
-  uri 'http://repo.openrepose.org/debian'
+  uri node['repose']['uri']
   distribution 'stable'
   components ['main']
-  key 'http://repo.openrepose.org/repose-dev@openrepose.org.gpg.key'
+  key node['repose']['key']
 end
 
 package 'repose-valve' do

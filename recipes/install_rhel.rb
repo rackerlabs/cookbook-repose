@@ -11,10 +11,9 @@ include_recipe 'yum-epel'
 
 yum_repository 'openrepose' do
   description 'Repose Public repository for RHEL'
-  baseurl 'http://repo.openrepose.org/rhel'
-  # the openrepose repo doesn't sign packages
-  # gpgkey 'http://repo.openrepose.org/rhel/RPM_GPG_KEY-openrepose'
-  gpgcheck false
+  baseurl node['repose']['baseurl']
+  gpgkey node['repose']['gpgkey']
+  gpgcheck node['repose']['gpgcheck']
 end
 
 package 'repose-valve'

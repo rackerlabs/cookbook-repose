@@ -1,11 +1,16 @@
 if platform_family? 'rhel'
   default['repose']['owner'] = 'repose'
   default['repose']['group'] = 'repose'
+  default['repose']['baseurl'] = 'http://repo.openrepose.org/rhel'
+  default['repose']['gpgkey'] = 'http://repo.openrepose.org/rhel/RPM_GPG_KEY-openrepose'
+  default['repose']['gpgcheck'] = false
 end
 
 if platform_family? 'debian'
   default['repose']['owner'] = 'root'
   default['repose']['group'] = 'root'
+  default['repose']['uri'] = 'http://repo.openrepose.org/debian'
+  default['repose']['key'] = 'http://repo.openrepose.org/repose-dev@openrepose.org.gpg.key'
 end
 
 default['repose']['loglevel'] = 'DEBUG'
