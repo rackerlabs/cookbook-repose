@@ -21,6 +21,8 @@ Services work the same way. Just s/filter/service/g.
 ## General attributes
 
 * `node['repose']['baseurl']` - Location of Yum repository for installing Repose packages (RedHat)
+* `node['repose']['gpgkey']` - Location of package signing key for Repose packages (RedHat)
+* `node['repose']['gpgcheck']` - Whether to verify GPG signature of Repose packages (RedHat)
 * `node['repose']['uri']` - Location of Apt repository for installing Repose packages (Debian)
 * `node['repose']['key']` - Location of package signing key for Repose packages (Debian)
 * `node['repose']['owner']` - The Repose user. `root` on Ubuntu and `repose` on CentOS.
