@@ -8,16 +8,17 @@
 #
 
 apt_repository 'openrepose' do
-  uri node['repose']['uri']
+  uri node['repose']['repo']['baseurl']
   distribution 'stable'
   components ['main']
-  key node['repose']['key']
+  key node['repose']['repo']['gpgkey']
 end
 
-package 'repose-valve' do
-  options '--force-yes' # the openrepose repo doesn't sign packages
-end
-
-package 'repose-filter-bundle' do
-  options '--force-yes' # the openrepose repo doesn't sign packages
+%w{ repose-valve
+    repose-filter-bundle
+}.each do |p|
+  package p do
+    options node['repose']['install_opts']
+    version node['repose']['version']
+  end
 end

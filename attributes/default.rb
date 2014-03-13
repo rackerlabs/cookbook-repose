@@ -1,20 +1,22 @@
-if platform_family? 'rhel'
+case node['platform_family']
+when 'rhel'
   default['repose']['owner'] = 'repose'
   default['repose']['group'] = 'repose'
-  default['repose']['baseurl'] = 'http://repo.openrepose.org/rhel'
-  default['repose']['gpgkey'] = 'http://repo.openrepose.org/rhel/RPM_GPG_KEY-openrepose'
-  default['repose']['gpgcheck'] = false
-end
-
-if platform_family? 'debian'
+  default['repose']['repo']['baseurl'] = 'http://repo.openrepose.org/rhel'
+  default['repose']['repo']['gpgkey'] = 'http://repo.openrepose.org/rhel/RPM_GPG_KEY-openrepose'
+  default['repose']['repo']['gpgcheck'] = false # the openrepose repo doesn't sign packages
+  default['repose']['repo']['enabled'] = true
+  default['repose']['install_opts'] = ''
+when 'debian'
   default['repose']['owner'] = 'root'
   default['repose']['group'] = 'root'
-  default['repose']['uri'] = 'http://repo.openrepose.org/debian'
-  default['repose']['key'] = 'http://repo.openrepose.org/repose-dev@openrepose.org.gpg.key'
+  default['repose']['repo']['baseurl'] = 'http://repo.openrepose.org/debian'
+  default['repose']['repo']['gpgkey'] = 'http://repo.openrepose.org/repose-dev@openrepose.org.gpg.key'
+  default['repose']['install_opts'] = '--force-yes' # the openrepose repo doesn't sign packages
 end
 
+default['repose']['version'] = nil
 default['repose']['loglevel'] = 'DEBUG'
-
 default['repose']['cluster_id'] = 'repose'
 default['repose']['node_id'] = 'repose_node1'
 default['repose']['port'] = 8080
