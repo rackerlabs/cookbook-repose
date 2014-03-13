@@ -7,6 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
+include_recipe 'apt::default'
+
 apt_repository 'openrepose' do
   uri node['repose']['repo']['baseurl']
   distribution 'stable'
