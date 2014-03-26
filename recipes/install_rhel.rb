@@ -11,13 +11,20 @@ include_recipe 'yum-epel'
 
 yum_repository 'openrepose' do
   description 'Repose Public repository for RHEL'
-  baseurl node['repose']['baseurl']
-  gpgkey node['repose']['gpgkey']
-  gpgcheck node['repose']['gpgcheck']
+  baseurl node['repose']['repo']['baseurl']
+  gpgkey node['repose']['repo']['gpgkey']
+  gpgcheck node['repose']['repo']['gpgcheck']
+  enabled node['repose']['repo']['enabled']
 end
 
-package 'repose-valve'
-package 'repose-filters'
+%w{ repose-valve
+    repose-filters
+}.each do |p|
+  package p do
+    options node['repose']['install_opts']
+    version node['repose']['version']
+  end
+end
 
 template '/etc/sysconfig/repose' do
   owner 'root'
