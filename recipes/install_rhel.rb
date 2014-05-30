@@ -27,6 +27,10 @@ end
   end
 end
 
+file '/etc/init.d/repose-valve' do
+  mode 0755
+end
+
 template '/etc/sysconfig/repose' do
   owner 'root'
   group 'root'
