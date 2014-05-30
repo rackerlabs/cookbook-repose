@@ -12,7 +12,7 @@ when 'debian'
   default['repose']['owner'] = 'root'
   default['repose']['group'] = 'root'
   default['repose']['repo']['baseurl'] = 'http://repo.openrepose.org/debian'
-  default['repose']['repo']['gpgkey'] = 'http://repo.openrepose.org/repose-dev@openrepose.org.gpg.key'
+  default['repose']['repo']['gpgkey'] = 'http://repo.openrepose.org/debian/pubkey.gpg'
   default['repose']['repo']['managed'] = true
   default['repose']['install_opts'] = '--force-yes' # the openrepose repo doesn't sign packages
 end
