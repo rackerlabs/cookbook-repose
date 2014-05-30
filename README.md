@@ -110,7 +110,7 @@ The Repose endpoints array defaults to:
 * `node['repose']['client_auth']['tenanted']` - Whether the tenant_id will be parsed from the request uri.  If this is set to true then mapping_regex must be provided.
 * `node['repose']['client_auth']['mapping_regex']` - Optional regex to extract the user/tenant/account information from URI.
     * For example this regex `.*/v1/([-|\w]+)/?.*` will provide this action: '/v1/853473/action => x-pp-user=853473'. Used with the 'CLOUD' Rackspace mapping_type below.
-    * This regex `.*.com/service/([-|\w]+)/?.*` will provide this action: '/service/853473/action => x-pp-user=853473'. Used with the 'MOSSO' Rackspace mapping_type below.
+    * For example this regex `.*.com/service/([-|\w]+)/?.*` will provide this action: '/service/853473/action => x-pp-user=853473'. Used with the 'MOSSO' Rackspace mapping_type below.
 * `node['repose']['client_auth']['mapping_type']` - (Rackspace only, required if 'mapping_regex' is provided) One of 'CLOUD' or 'MOSSO'.
 * `node['repose']['client_auth']['tenant_id']` - (Keystone only, optional) Tenant-ID with admin role for the admin user above.
 * `node['repose']['client_auth']['delegable']` - Whether auth is delegable.
