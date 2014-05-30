@@ -120,6 +120,36 @@ The Repose endpoints array defaults to:
 * `node['repose']['client_auth']['group_cache_timeout']` - Timeout for group cache.
 * `node['repose']['client_auth']['endpoints_in_header']` - Enable or disable the listing of service endpoints in the header.
 
+## rate-limit attributes
+
+* `node['repose']['rate_limit']['uri_regex']` - A regular expression (regex) for the URI at which the user can query their limits.
+* `node['repose']['rate_limit']['include_absolute_limits']` - Enables or disables integration with absolute limits.
+* `node['repose']['rate_limit']['limit_groups']` - An array of limit groups.
+
+The limit groups array defaults to:
+```
+[
+  { 'id' => 'limited',
+    'groups' => 'limited',
+    'default' => true,
+    'limits' => [
+      { 'id' => 'all',
+        'uri' => '*',
+        'uri-regex' => '/.*',
+        'http-methods' => 'POST PUT GET DELETE',
+        'unit' => 'MINUTE',
+        'value' => 10
+      }
+    ]
+  },
+  { 'id' => 'unlimited',
+    'groups' => 'unlimited',
+    'default' => false,
+    'limits' => []
+  }
+]
+```
+
 # Recipes
 
 ## default
@@ -150,7 +180,11 @@ Setup the http-logging filter. *Must* be called before `repose::default`.
 
 Setup the ip-identity filter. *Must* be called before `repose::default`.
 
-## client-auth
+## filter-rate-limiting
+
+Setup the rate-limiting filter. *Must* be called before `repose::default`.
+
+## filter-client-auth
 
 Setup the client-auth filter. *Must* be called before `repose::default`.
 
