@@ -20,13 +20,9 @@ Services work the same way. Just s/filter/service/g.
 
 ## General attributes
 
-* `node['repose']['baseurl']` - Location of Yum repository for installing Repose packages (RedHat)
-* `node['repose']['gpgkey']` - Location of package signing key for Repose packages (RedHat)
-* `node['repose']['gpgcheck']` - Whether to verify GPG signature of Repose packages (RedHat)
-* `node['repose']['uri']` - Location of Apt repository for installing Repose packages (Debian)
-* `node['repose']['key']` - Location of package signing key for Repose packages (Debian)
 * `node['repose']['owner']` - The Repose user. `root` on Ubuntu and `repose` on CentOS.
 * `node['repose']['group']` - The Repose primary group. `root` on Ubuntu and `repose` on CentOS.
+* `node['repose']['install_opts']` - Command line options used for installing pacakges.
 * `node['repose']['loglevel']` - The log level for the main Repose log file.
 * `node['repose']['cluster_id']` - The cluster ID.
 * `node['repose']['node_id']` - The node ID.
@@ -43,6 +39,16 @@ Services work the same way. Just s/filter/service/g.
 * `node['repose']['filter_check_interval']` - The filter check interval in ms.
 * `node['repose']['filters']` - An array of filters to load. Loading the `repose::filter-*` recipes will update this if required.
 * `node['repose']['services']` - An array of services to load. Loading the `repose::service-*` recipes will update this if required.
+
+## Repository attributes
+
+* `node['repose']['repo']['managed']` - Whether or not to manage the Repose repository. If `false` the recipes will assume the Repose repository is already configured.
+* `node['repose']['repo']['baseurl']` - The base URL of the Repose repository.
+* `node['repose']['repo']['gpgkey']` - The GPG key used to sign Repose packages.
+* `node['repose']['repo']['gpgcheck']` - Whether or not to check package signatures. `rhel` only.
+* `node['repose']['repo']['enabled']` - Whether or not the repository is enabled by default. `rhel` only.
+
+These attributes should have reasonable, platform_family specific defaults.
 
 ## Peer attributes
 

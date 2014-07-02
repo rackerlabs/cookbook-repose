@@ -15,6 +15,7 @@ yum_repository 'openrepose' do
   gpgkey node['repose']['repo']['gpgkey']
   gpgcheck node['repose']['repo']['gpgcheck']
   enabled node['repose']['repo']['enabled']
+  only_if { node['repose']['repo']['managed'] }
 end
 
 %w{ repose-valve

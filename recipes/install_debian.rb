@@ -14,6 +14,7 @@ apt_repository 'openrepose' do
   distribution 'stable'
   components ['main']
   key node['repose']['repo']['gpgkey']
+  only_if { node['repose']['repo']['managed'] }
 end
 
 %w{ repose-valve
