@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- http://wiki.openrepose.org/display/REPOSE/Rate+Limiting+Filter -->
+<rate-limiting xmlns="http://docs.rackspacecloud.com/repose/rate-limiting/v1.0">
+    <!--
+        Defines an endpoint with a matching regex to bind GET requests for
+        returning live rate limiting information.
+    -->
+    <request-endpoint uri-regex="<%= @uri_regex %>" include-absolute-limits="<%= @include_absolute_limits %>"/>
+
+    <% @limit_groups.each do |limit_group| %>
+    <!-- Limits for <%= limit_group['id'] %> -->
+    <limit-group id="<%= limit_group['id'] %>" groups="<%= limit_group['groups'] %>" default="<%= limit_group['default'] %>">
+        <% limit_group['limits'].each do |limit| %>
+        <limit id="<%= limit['id'] %>" uri="<%= limit['uri'] %>" uri-regex="<%= limit['uri-regex'] %>" http-methods="<%= limit['http-methods'] %>" unit="<%= limit['unit'] %>" value="<%= limit['value'] %>" />
+        <% end %>
+    </limit-group>
+
+    <% end %>
+</rate-limiting>

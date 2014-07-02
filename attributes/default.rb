@@ -81,3 +81,26 @@ default['repose']['client_auth']['request_groups'] = true
 default['repose']['client_auth']['token_cache_timeout'] = 600000
 default['repose']['client_auth']['group_cache_timeout'] = 600000
 default['repose']['client_auth']['endpoints_in_header'] = false
+
+default['repose']['rate_limiting']['uri_regex'] = '/limits'
+default['repose']['rate_limiting']['include_absolute_limits'] = false
+default['repose']['rate_limiting']['limit_groups'] = [
+  { 'id' => 'limited',
+    'groups' => 'limited',
+    'default' => true,
+    'limits' => [
+      { 'id' => 'all',
+        'uri' => '*',
+        'uri-regex' => '/.*',
+        'http-methods' => 'POST PUT GET DELETE',
+        'unit' => 'MINUTE',
+        'value' => 10
+      }
+    ]
+  },
+  { 'id' => 'unlimited',
+    'groups' => 'unlimited',
+    'default' => false,
+    'limits' => []
+  }
+]

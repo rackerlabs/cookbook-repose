@@ -22,6 +22,7 @@ suites:
   run_list: [
     "recipe[repose::filter-http-logging]",
     "recipe[repose::filter-ip-identity]",
+    "recipe[repose::filter-rate-limiting]",
     "recipe[repose::service-dist-datastore]",
     "recipe[repose::default]",
     "recipe[minitest-handler]"
