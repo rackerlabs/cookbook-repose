@@ -20,7 +20,7 @@ platforms:
 suites:
 - name: default
   run_list: [
-    "recipe[repose::filter-http-logging]",
+    "recipe[repose::filter-slf4j-http-logging]",
     "recipe[repose::filter-ip-identity]",
     "recipe[repose::filter-rate-limiting]",
     "recipe[repose::service-dist-datastore]",

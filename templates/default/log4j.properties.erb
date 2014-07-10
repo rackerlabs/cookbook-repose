@@ -16,3 +16,12 @@ log4j.appender.defaultFile.MaxFileSize=2MB
 log4j.appender.defaultFile.MaxBackupIndex=2
 log4j.appender.defaultFile.layout = org.apache.log4j.PatternLayout
 log4j.appender.defaultFile.layout.ConversionPattern=%d %-4r [%t] %-5p %c %x - %m%n
+
+# Http
+log4j.logger.http=INFO, httpFile
+log4j.appender.httpFile=org.apache.log4j.RollingFileAppender
+log4j.appender.httpFile.File=/var/log/repose/http.log
+log4j.appender.httpFile.MaxFileSize=2MB
+log4j.appender.httpFile.MaxBackupIndex=2
+log4j.appender.httpFile.layout = org.apache.log4j.PatternLayout
+log4j.appender.httpFile.layout.ConversionPattern=%m%n
