@@ -122,9 +122,9 @@ The Repose endpoints array defaults to:
 
 ## rate-limit attributes
 
-* `node['repose']['rate_limit']['uri_regex']` - A regular expression (regex) for the URI at which the user can query their limits.
-* `node['repose']['rate_limit']['include_absolute_limits']` - Enables or disables integration with absolute limits.
-* `node['repose']['rate_limit']['limit_groups']` - An array of limit groups.
+* `node['repose']['rate_limiting']['uri_regex']` - A regular expression (regex) for the URI at which the user can query their limits.
+* `node['repose']['rate_limiting']['include_absolute_limits']` - Enables or disables integration with absolute limits.
+* `node['repose']['rate_limiting']['limit_groups']` - An array of limit groups.
 
 The limit groups array defaults to:
 ```
