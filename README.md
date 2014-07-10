@@ -89,11 +89,10 @@ The Repose endpoints array defaults to:
 * `node['repose']['dist_datastore']['allowed_hosts']` - An array of hosts to whitelist for the dist-datastore.
 * `node['repose']['dist_datastore']['port']` - The port to use for dist-datastore. Set to `nil` to leave out the `<port-config>` block.
 
-## http-logging attributes
+## slf4j-http-logging attributes
 
-* `node['repose']['http_logging']['id']` - The log ID.
-* `node['repose']['http_logging']['format']` - The log format.
-* `node['repose']['http_logging']['logfile']` - The log file.
+* `node['repose']['slf4j_http_logging']['id']` - The log ID.
+* `node['repose']['slf4j_http_logging']['format']` - The log format.
 
 ## ip-identity attributes
 
@@ -172,9 +171,9 @@ Install Repose on the RHEL family of systems. This recipe is not meant to be use
 
 Uses chef-search to find nodes with a matching Chef environment, search role, and cluster ID, maps them to hashes representing Repose peers, and loads them into the `node['repose']['peers']` array. Not meant to be called directly unless a different cookbook wants to find Repose nodes. E.g. maybe Nginx uses Repose nodes as a backend and wants to consume `node['repose']['peers']`.
 
-## filter-http-logging
+## filter-slf4j-http-logging
 
-Setup the http-logging filter. *Must* be called before `repose::default`.
+Setup the slf4j-http-logging filter. *Must* be called before `repose::default`.
 
 ## filter-ip-identity
 
