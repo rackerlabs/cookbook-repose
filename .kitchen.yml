@@ -20,6 +20,7 @@ platforms:
 suites:
 - name: default
   run_list: [
+    "java",
     "recipe[repose::filter-slf4j-http-logging]",
     "recipe[repose::filter-ip-identity]",
     "recipe[repose::filter-rate-limiting]",
@@ -28,7 +29,9 @@ suites:
     "recipe[repose::default]",
     "recipe[minitest-handler]"
   ]
-  attributes: {}
+  attributes:
+    java:
+      jdk_version: 7
 
 - name: client-auth-rackspace
   run_list: [
