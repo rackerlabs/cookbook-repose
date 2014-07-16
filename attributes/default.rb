@@ -103,3 +103,8 @@ default['repose']['rate_limiting']['limit_groups'] = [
     'limits' => []
   }
 ]
+
+default['repose']['connection_pool']['max_total'] = 400
+default['repose']['connection_pool']['max_per_route'] = 200
+default['repose']['connection_pool']['socket_timeout'] = 30000
+default['repose']['connection_pool']['connection_timeout'] = 30000
