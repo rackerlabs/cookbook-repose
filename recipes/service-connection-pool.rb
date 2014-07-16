@@ -4,8 +4,6 @@
 #
 # Copyright (C) 2014 Rackspace Hosting
 #
-# All rights reserved - Do Not Redistribute
-#
 
 template "#{node['repose']['config_directory']}/http-connection-pool.cfg.xml" do
   owner node['repose']['owner']
