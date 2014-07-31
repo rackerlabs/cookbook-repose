@@ -149,6 +149,13 @@ The limit groups array defaults to:
 ]
 ```
 
+## connection-pool attributes
+
+* `node['repose']['connection_pool']['max_total']` - Maximum number of connections that Repose opens across all endpoints. (If set too high, you might run out of memory.) Default is 400.
+* `node['repose']['connection_pool']['max_per_route']` - Maximum number of connections that Repose opens per endpoint. Default is 200.
+* `node['repose']['connection_pool']['socket_timeout']` - Number of milliseconds a request is in flight before it times out. Default is 30000.
+* `node['repose']['connection_pool']['connection_timeout']` - Number of milliseconds a connection waits to send a request. Default is 30000.
+
 # Recipes
 
 ## default
@@ -190,6 +197,10 @@ Setup the client-auth filter. *Must* be called before `repose::default`.
 ## service-dist-datastore
 
 Setup the dist-datastore service. *Must* be called before `repose::default`.
+
+## service-connection-pool
+
+Setup the connection-pool service. This service is enabled by default and does not need to be added to the services array. This recipe allows you to configure the service only.
 
 # Vagrant
 

@@ -4,8 +4,6 @@
 #
 # Copyright (C) 2013 Rackspace Hosting
 #
-# All rights reserved - Do Not Redistribute
-#
 
 include_recipe 'yum-epel'
 
