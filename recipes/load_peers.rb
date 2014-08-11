@@ -22,6 +22,7 @@ if node['repose']['peer_search_enabled']
   end
 
   peers = RackHelpers::Repose.peers found_nodes
+  peers.flatten!
   peers.sort!{ |a,b| a['id'] <=> b['id'] }
 
   node.normal['repose']['peers'] = peers

@@ -19,7 +19,7 @@ end
 
 default['repose']['version'] = nil
 default['repose']['loglevel'] = 'DEBUG'
-default['repose']['cluster_id'] = 'repose'
+default['repose']['cluster_ids'] = ['repose']
 default['repose']['node_id'] = 'repose_node1'
 default['repose']['port'] = 8080
 default['repose']['ssl_port'] = 8443
@@ -34,22 +34,25 @@ default['repose']['pid_file'] = '/var/run/repose-valve.pid'
 default['repose']['user'] = 'repose'
 default['repose']['java_opts'] = ''
 
-default['repose']['filters'] = []
-default['repose']['services'] = []
-
 default['repose']['peer_search_enabled'] = false
 default['repose']['peer_search_query'] = "roles:repose AND repose_cluster_id:#{node['repose']['cluster_id']}"
+
 default['repose']['peers'] = [
-  { 'id' => 'repose_node1',
+  { 'cluster_id' => 'repose',
+    'id' => 'repose_node1',
     'hostname' => 'localhost',
     'port' => 8080,
   }
 ]
 
+default['repose']['filters'] = []
+default['repose']['services'] = []
+
 default['repose']['endpoints'] = [
-  { 'id' => 'open_repose',
+  { 'cluster_id' => 'repose',
+    'id' => 'open_repose',
     'protocol' => 'http',
-    'hostname' => 'www.openrepose.org',
+    'hostname' => 'openrepose.org',
     'port' => 80,
     'root_path' => '/',
     'default' => true,
