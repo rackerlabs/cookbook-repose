@@ -59,17 +59,21 @@ default['repose']['endpoints'] = [
   }
 ]
 
+default['repose']['dist_datastore']['cluster_id'] = ['all']
 default['repose']['dist_datastore']['allow_all'] = false
 default['repose']['dist_datastore']['allowed_hosts'] = ['127.0.0.1']
 default['repose']['dist_datastore']['port'] = 8081
 
+default['repose']['slf4j_http_logging']['cluster_id'] = ['all']
 default['repose']['slf4j_http_logging']['id'] = 'http'
 default['repose']['slf4j_http_logging']['format'] = 'Remote IP=%a Local IP=%A Response Size(bytes)=%b Remote Host=%h Request Method=%m Server Port=%p Query String=%q Time Request Received=%t Status=%s Remote User=%u Rate Limit Group: %{X-PP-Groups}i URL Path Requested=%U X-Forwarded-For=%{X-Forwarded-For}i X-REAL-IP=%{X-Real-IP}i'
 
+default['repose']['ip_identity']['cluster_id'] = ['all']
 default['repose']['ip_identity']['quality'] = 0.2
 default['repose']['ip_identity']['white_list_quality'] = 1.0
 default['repose']['ip_identity']['white_list_ip_addresses'] = ['127.0.0.1']
 
+default['repose']['client_auth']['cluster_id'] = ['all']
 default['repose']['client_auth']['auth_provider'] = 'RACKSPACE'
 default['repose']['client_auth']['username_admin'] = 'admin'
 default['repose']['client_auth']['password_admin'] = 'password'
@@ -84,6 +88,7 @@ default['repose']['client_auth']['token_cache_timeout'] = 600000
 default['repose']['client_auth']['group_cache_timeout'] = 600000
 default['repose']['client_auth']['endpoints_in_header'] = false
 
+default['repose']['rate_limiting']['cluster_id'] = ['all']
 default['repose']['rate_limiting']['uri_regex'] = '/limits'
 default['repose']['rate_limiting']['include_absolute_limits'] = false
 default['repose']['rate_limiting']['limit_groups'] = [
@@ -107,6 +112,7 @@ default['repose']['rate_limiting']['limit_groups'] = [
   }
 ]
 
+default['repose']['connection_pool']['cluster_id'] = ['all']
 default['repose']['connection_pool']['max_total'] = 400
 default['repose']['connection_pool']['max_per_route'] = 200
 default['repose']['connection_pool']['socket_timeout'] = 30000

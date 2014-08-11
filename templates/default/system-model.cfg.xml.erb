@@ -12,12 +12,16 @@
         </nodes>
         <filters>
             <% @filters.each do |filter| %>
+              <% if @filter_cluster_map[filter].include?('all') || @filter_cluster_map[filter].include?(cluster_id) %>
             <filter name="<%= filter %>" />
+              <% end %>
             <% end %>
         </filters>
         <services>
             <% @services.each do |service| %>
+              <% if @service_cluster_map[service].include?('all') || @service_cluster_map[service].include?(cluster_id) %>
             <service name="<%= service %>" />
+              <% end %>
             <% end %>
         </services>
         <destinations>

@@ -20,6 +20,18 @@ directory "#{node['repose']['config_directory']}" do
   mode '0755'
 end
 
+service_cluster_map = {
+  'dist-datastore'  => node['repose']['dist_datastore' ]['cluster_id'],
+  'connection-pool' => node['repose']['connection_pool']['cluster_id']
+}
+
+filter_cluster_map = {
+  'client-auth'        => node['repose']['client_auth'       ]['cluster_id'],
+  'ip-identity'        => node['repose']['ip_identity'       ]['cluster_id'],
+  'rate-limiting'      => node['repose']['rate_limiting'     ]['cluster_id'],
+  'slf4j-http-logging' => node['repose']['slf4j_http_logging']['cluster_id']
+}
+
 template "#{node['repose']['config_directory']}/system-model.cfg.xml" do
   owner node['repose']['owner']
   group node['repose']['group']
@@ -28,7 +40,9 @@ template "#{node['repose']['config_directory']}/system-model.cfg.xml" do
     cluster_ids: node['repose']['cluster_ids'],
     nodes: node['repose']['peers'],
     services: node['repose']['services'],
+    service_cluster_map: service_cluster_map,
     filters: node['repose']['filters'],
+    filter_cluster_map: filter_cluster_map,
     endpoints: node['repose']['endpoints']
   )
   notifies :restart, 'service[repose-valve]'
