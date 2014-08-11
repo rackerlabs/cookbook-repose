@@ -9,7 +9,12 @@ class Chef
         end
 
         def node_to_peer(node)
-          cluster_ids = node['repose']['cluster_ids']
+          unless node['repose']['cluster_id'].nil?
+            cluster_ids = [ node['repose']['cluster_id'] ]
+          else
+            cluster_ids = node['repose']['cluster_ids']
+          end
+
           cluster_ids.to_a.map.with_index do |cluster_id, i|
             { 'cluster_id'  => cluster_id,
               'id'          => node['repose']['node_id'],

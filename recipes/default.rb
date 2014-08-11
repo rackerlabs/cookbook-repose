@@ -14,6 +14,11 @@ end
 
 include_recipe 'repose::load_peers' if node['repose']['peer_search_enabled']
 
+unless node['repose']['cluster_id'].nil?
+  log "Please note that node['repose']['cluster_id'] is deprecated. We've set node['repose']['cluster_ids'] to [#{node['repose']['cluster_id']}] in an effort to maintain compatability with earlier versions. This functionality will be removed in a future version."
+  node.normal['repose']['cluster_ids'] = [ node['repose']['cluster_id'] ]
+end
+
 directory "#{node['repose']['config_directory']}" do
   owner node['repose']['owner']
   group node['repose']['group']
