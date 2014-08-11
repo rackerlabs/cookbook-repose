@@ -35,7 +35,7 @@ default['repose']['user'] = 'repose'
 default['repose']['java_opts'] = ''
 
 default['repose']['peer_search_enabled'] = false
-default['repose']['peer_search_query'] = "roles:repose AND repose_cluster_id:#{node['repose']['cluster_id']}"
+default['repose']['peer_search_query'] = "chef_environment:#{node.chef_environment} AND repose_cluster_ids:*"
 
 default['repose']['peers'] = [
   { 'cluster_id' => 'repose',
