@@ -31,7 +31,7 @@ Other filters are available in Repose and may be added to this cookbook in a lat
 Services work the same way as filters. Just s/filter/service/g.
 
 Available services are:
-  * connection-pool
+  * connection-pool (configuration only)
   * dist-datastore
 
 ## Nodes
@@ -186,7 +186,6 @@ The limit groups array defaults to:
 
 ## connection-pool attributes
 
-* `node['repose']['connection_pool']['cluster_id']` - An array of cluster IDs that use this service or `['all']` for all cluster IDs.
 * `node['repose']['connection_pool']['max_total']` - Maximum number of connections that Repose opens across all endpoints. (If set too high, you might run out of memory.) Default is 400.
 * `node['repose']['connection_pool']['max_per_route']` - Maximum number of connections that Repose opens per endpoint. Default is 200.
 * `node['repose']['connection_pool']['socket_timeout']` - Number of milliseconds a request is in flight before it times out. Default is 30000.

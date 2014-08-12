@@ -112,7 +112,6 @@ default['repose']['rate_limiting']['limit_groups'] = [
   }
 ]
 
-default['repose']['connection_pool']['cluster_id'] = ['all']
 default['repose']['connection_pool']['max_total'] = 400
 default['repose']['connection_pool']['max_per_route'] = 200
 default['repose']['connection_pool']['socket_timeout'] = 30000

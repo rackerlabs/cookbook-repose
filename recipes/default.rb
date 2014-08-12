@@ -25,11 +25,12 @@ directory "#{node['repose']['config_directory']}" do
   mode '0755'
 end
 
+services = node['repose']['services'].reject { |x| x == 'connection-pool' }
 service_cluster_map = {
-  'dist-datastore'  => node['repose']['dist_datastore' ]['cluster_id'],
-  'connection-pool' => node['repose']['connection_pool']['cluster_id']
+  'dist-datastore' => node['repose']['dist_datastore' ]['cluster_id']
 }
 
+filters = node['repose']['filters']
 filter_cluster_map = {
   'client-auth'        => node['repose']['client_auth'       ]['cluster_id'],
   'ip-identity'        => node['repose']['ip_identity'       ]['cluster_id'],
@@ -44,9 +45,9 @@ template "#{node['repose']['config_directory']}/system-model.cfg.xml" do
   variables(
     cluster_ids: node['repose']['cluster_ids'],
     nodes: node['repose']['peers'],
-    services: node['repose']['services'],
+    services: services,
     service_cluster_map: service_cluster_map,
-    filters: node['repose']['filters'],
+    filters: filters,
     filter_cluster_map: filter_cluster_map,
     endpoints: node['repose']['endpoints']
   )
