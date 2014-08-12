@@ -7,10 +7,6 @@
 
 if node['repose']['peer_search_enabled']
 
-  search_role = node['repose']['peer_search_role']
-  search_cluster_id = node['repose']['cluster_id']
-  search_env = node.chef_environment || '_default'
-
   found_nodes = []
   if Chef::Config[:solo]
     log 'Chef search disabled'

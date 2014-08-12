@@ -81,7 +81,7 @@ These attributes should have reasonable, platform_family specific defaults.
 ## Peer attributes
 
 * `node['repose']['peer_search_enabled']` - The `repose::default` recipe loads the `repose::load_peers` recipe if `true`.
-* `node['repose']['peer_search_role']` - The role to use to search for Repose peers with. Also uses the Chef environment and cluster ID.
+* `node['repose']['peer_search_query']` - The query to use to search for Repose peers.
 * `node['repose']['peers']` - An array of Repose peers.
 
 The Repose peers array defaults to:
