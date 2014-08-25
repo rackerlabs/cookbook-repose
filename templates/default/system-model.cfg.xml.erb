@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <system-model xmlns="http://docs.rackspacecloud.com/repose/system-model/v2.0">
-    <repose-cluster id="<%= @cluster_id %>">
+    <% @cluster_ids.each do |cluster_id| %>
+    <repose-cluster id="<%= cluster_id %>">
         <nodes>
-            <% @peers.each do |peer| %>
-            <node id="<%= peer['id'] %>" hostname="<%= peer['hostname'] %>" http-port="<%= peer['port'] %>" />
+            <% @nodes.each do |node| %>
+              <% if node['cluster_id'].nil? || node['cluster_id'] == cluster_id %>
+            <node id="<%= node['id'] %>" hostname="<%= node['hostname'] %>" http-port="<%= node['port'] %>" />
+              <% end %>
             <% end %>
         </nodes>
         <filters>
             <% @filters.each do |filter| %>
+              <% if @filter_cluster_map[filter].include?('all') || @filter_cluster_map[filter].include?(cluster_id) %>
             <filter name="<%= filter %>" />
+              <% end %>
             <% end %>
         </filters>
         <services>
             <% @services.each do |service| %>
+              <% if @service_cluster_map[service].include?('all') || @service_cluster_map[service].include?(cluster_id) %>
             <service name="<%= service %>" />
+              <% end %>
             <% end %>
         </services>
         <destinations>
             <% @endpoints.each do |endpoint| %>
+              <% if endpoint['cluster_id'].nil? || endpoint['cluster_id'] == cluster_id %>
             <endpoint id="<%= endpoint['id'] %>" protocol="<%= endpoint['protocol'] %>" hostname="<%= endpoint['hostname'] %>" port="<%= endpoint['port'] %>" root-path="<%= endpoint['root_path'] %>" default="<%= endpoint['default'] %>" />
+              <% end %>
             <% end %>
         </destinations>
     </repose-cluster>
+    <% end %>
 </system-model>

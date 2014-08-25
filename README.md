@@ -12,9 +12,37 @@ Supports CentOS 6.4, Ubuntu 10.04, and Ubuntu 12.04.
 
 Include `recipe[repose]` in your run_list and override attributes as required.
 
-There are 2 ways to setup filters. The first is to include any of the `repose::filter-*` recipes *before* the `repose::default` recipe. The second is to add the filter names to the `node['repose']['filters']` array. You choose.
+## Filters
 
-Services work the same way. Just s/filter/service/g.
+There are 2 ways to setup filters:
+  1. Include any of the `repose::filter-*` recipes *before* the `repose::default` recipe
+  2. Add the filter names to the `node['repose']['filters']` array
+
+Available filters are:
+  * client-auth
+  * ip-identity
+  * rate-limiting
+  * slf4j-http-logging
+
+Other filters are available in Repose and may be added to this cookbook in a later revision.
+
+## Services
+
+Services work the same way as filters. Just s/filter/service/g.
+
+Available services are:
+  * connection-pool (configuration only)
+  * dist-datastore
+
+## Nodes
+
+There are also 2 ways to setup nodes in `system-model.cfg.xml`:
+  1. Override the `node['repose']['peers']` array as shown below. Note that peers without a `cluster_id` are assumed to belong to all clusters. This is almost certainly not correct if more than 1 cluster is being configured but is implemented to maintain functionality with earlier versions of the cookbook.
+  2. Set `node['repose']['peer_search_enabled']` to `true`. For each Chef node found this way peers will be loaded according to the `node['repose']['cluster_ids']`, `node['repose']['node_id']`, `node['fqdn']`, `node['repose']['port']`, and `node['repose']['ssl_port']` attributes. `node_id` and `fqdn` will be consistant for each `cluster_id` in `cluster_ids`. `port` and `ssl_port` will be incremented by 1 for each `cluster_id` in `cluster_ids`.
+
+## Endpoints
+
+Setup endpoint in `system-model.cfg.xml` by overriding the `node['repose']['endpoints']` array as shown below. Note that endpoints without a `cluster_id` are assumed to belong to all clusters. This is almost certainly not correct if more than 1 cluster is being configured but is implemented to maintain functionality with earlier versions of the cookbook.
 
 # Attributes
 
@@ -24,7 +52,7 @@ Services work the same way. Just s/filter/service/g.
 * `node['repose']['group']` - The Repose primary group. `root` on Ubuntu and `repose` on CentOS.
 * `node['repose']['install_opts']` - Command line options used for installing pacakges.
 * `node['repose']['loglevel']` - The log level for the main Repose log file.
-* `node['repose']['cluster_id']` - The cluster ID.
+* `node['repose']['cluster_ids']` - An array of cluster IDs.
 * `node['repose']['node_id']` - The node ID.
 * `node['repose']['port']` - The port to bind to.
 * `node['repose']['ssl_port']` - The SSL port to bind to.
@@ -53,13 +81,14 @@ These attributes should have reasonable, platform_family specific defaults.
 ## Peer attributes
 
 * `node['repose']['peer_search_enabled']` - The `repose::default` recipe loads the `repose::load_peers` recipe if `true`.
-* `node['repose']['peer_search_role']` - The role to use to search for Repose peers with. Also uses the Chef environment and cluster ID.
+* `node['repose']['peer_search_query']` - The query to use to search for Repose peers.
 * `node['repose']['peers']` - An array of Repose peers.
 
 The Repose peers array defaults to:
 ```
 [
-  { 'id' => 'repose_node1',
+  { 'cluster_id' => 'repose',
+    'id' => 'repose_node1',
     'hostname' => 'localhost',
     'port' => 8080,
   }
@@ -73,7 +102,8 @@ The Repose peers array defaults to:
 The Repose endpoints array defaults to:
 ```
 [
-  { 'id' => 'open_repose',
+  { 'cluster_id' => 'repose',
+    'id' => 'open_repose',
     'protocol' => 'http',
     'hostname' => 'openrepose.org',
     'port' => 80,
@@ -85,23 +115,27 @@ The Repose endpoints array defaults to:
 
 ## dist-datastore attributes
 
+* `node['repose']['dist_datastore']['cluster_id']` - An array of cluster IDs that use this service or `['all']` for all cluster IDs.
 * `node['repose']['dist_datastore']['allow_all']` - Allow all hosts to use the dist-datastore if `true`. Be aware that this basically turns off security around the dist-datastore. Use with care.
 * `node['repose']['dist_datastore']['allowed_hosts']` - An array of hosts to whitelist for the dist-datastore.
-* `node['repose']['dist_datastore']['port']` - The port to use for dist-datastore. Set to `nil` to leave out the `<port-config>` block.
+* `node['repose']['dist_datastore']['port']` - The port to use for dist-datastore. Set to `nil` to leave out the `<port-config>` block. Will be incremented by 1 for each `cluster_id` in `node['repose']['cluster_ids']`.
 
 ## slf4j-http-logging attributes
 
+* `node['repose']['slf4j_http_logging']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
 * `node['repose']['slf4j_http_logging']['id']` - The log ID.
 * `node['repose']['slf4j_http_logging']['format']` - The log format.
 
 ## ip-identity attributes
 
+* `node['repose']['ip_identity']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
 * `node['repose']['ip_identity']['quality']` - The default quality.
 * `node['repose']['ip_identity']['white_list_quality']` - The whitelist quality.
 * `node['repose']['ip_identity']['white_list_ip_addresses']` - An array of whitelisted IP addresses.
 
 ## client-auth attributes
 
+* `node['repose']['client_auth']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
 * `node['repose']['client_auth']['auth_provider']` - The authentication provider to use, either 'RACKSPACE' for Rackspace cloud, or else 'OPENSTACK' for Keystone
 * `node['repose']['client_auth']['username_admin']` - Administrator username making auth-n requests for clients.
 * `node['repose']['client_auth']['password_admin']` - Administrator password making auth-n requests for clients.
@@ -121,6 +155,7 @@ The Repose endpoints array defaults to:
 
 ## rate-limit attributes
 
+* `node['repose']['rate_limiting']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
 * `node['repose']['rate_limiting']['uri_regex']` - A regular expression (regex) for the URI at which the user can query their limits.
 * `node['repose']['rate_limiting']['include_absolute_limits']` - Enables or disables integration with absolute limits.
 * `node['repose']['rate_limiting']['limit_groups']` - An array of limit groups.

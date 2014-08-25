@@ -19,7 +19,7 @@ end
 
 default['repose']['version'] = nil
 default['repose']['loglevel'] = 'DEBUG'
-default['repose']['cluster_id'] = 'repose'
+default['repose']['cluster_ids'] = ['repose']
 default['repose']['node_id'] = 'repose_node1'
 default['repose']['port'] = 8080
 default['repose']['ssl_port'] = 8443
@@ -34,39 +34,46 @@ default['repose']['pid_file'] = '/var/run/repose-valve.pid'
 default['repose']['user'] = 'repose'
 default['repose']['java_opts'] = ''
 
-default['repose']['filters'] = []
-default['repose']['services'] = []
-
 default['repose']['peer_search_enabled'] = false
-default['repose']['peer_search_query'] = "roles:repose AND repose_cluster_id:#{node['repose']['cluster_id']}"
+default['repose']['peer_search_query'] = "chef_environment:#{node.chef_environment} AND repose_cluster_ids:*"
+
 default['repose']['peers'] = [
-  { 'id' => 'repose_node1',
+  { 'cluster_id' => 'repose',
+    'id' => 'repose_node1',
     'hostname' => 'localhost',
     'port' => 8080,
   }
 ]
 
+default['repose']['filters'] = []
+default['repose']['services'] = []
+
 default['repose']['endpoints'] = [
-  { 'id' => 'open_repose',
+  { 'cluster_id' => 'repose',
+    'id' => 'open_repose',
     'protocol' => 'http',
-    'hostname' => 'www.openrepose.org',
+    'hostname' => 'openrepose.org',
     'port' => 80,
     'root_path' => '/',
     'default' => true,
   }
 ]
 
+default['repose']['dist_datastore']['cluster_id'] = ['all']
 default['repose']['dist_datastore']['allow_all'] = false
 default['repose']['dist_datastore']['allowed_hosts'] = ['127.0.0.1']
 default['repose']['dist_datastore']['port'] = 8081
 
+default['repose']['slf4j_http_logging']['cluster_id'] = ['all']
 default['repose']['slf4j_http_logging']['id'] = 'http'
 default['repose']['slf4j_http_logging']['format'] = 'Remote IP=%a Local IP=%A Response Size(bytes)=%b Remote Host=%h Request Method=%m Server Port=%p Query String=%q Time Request Received=%t Status=%s Remote User=%u Rate Limit Group: %{X-PP-Groups}i URL Path Requested=%U X-Forwarded-For=%{X-Forwarded-For}i X-REAL-IP=%{X-Real-IP}i'
 
+default['repose']['ip_identity']['cluster_id'] = ['all']
 default['repose']['ip_identity']['quality'] = 0.2
 default['repose']['ip_identity']['white_list_quality'] = 1.0
 default['repose']['ip_identity']['white_list_ip_addresses'] = ['127.0.0.1']
 
+default['repose']['client_auth']['cluster_id'] = ['all']
 default['repose']['client_auth']['auth_provider'] = 'RACKSPACE'
 default['repose']['client_auth']['username_admin'] = 'admin'
 default['repose']['client_auth']['password_admin'] = 'password'
@@ -81,6 +88,7 @@ default['repose']['client_auth']['token_cache_timeout'] = 600000
 default['repose']['client_auth']['group_cache_timeout'] = 600000
 default['repose']['client_auth']['endpoints_in_header'] = false
 
+default['repose']['rate_limiting']['cluster_id'] = ['all']
 default['repose']['rate_limiting']['uri_regex'] = '/limits'
 default['repose']['rate_limiting']['include_absolute_limits'] = false
 default['repose']['rate_limiting']['limit_groups'] = [

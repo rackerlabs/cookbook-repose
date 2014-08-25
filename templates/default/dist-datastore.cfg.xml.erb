@@ -13,7 +13,9 @@
     <% end %>
     <% unless @port.nil? %>
     <port-config>
-        <port port="<%= @port %>" cluster="<%= @cluster_id %>"/>
+        <% @cluster_ids.each.with_index do |cluster_id, i| %>
+        <port port="<%= i + @port.to_i %>" cluster="<%= cluster_id %>"/>
+        <% end %>
     </port-config>
     <% end %>
 </distributed-datastore>
