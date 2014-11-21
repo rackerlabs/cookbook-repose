@@ -268,7 +268,8 @@ This cookbook includes support for test-kitchen and minitest. Run the test suite
 kitchen test
 ```
 
-# Author
+# Author(s)
 
 * Author: Brendan ODonnell (<brendan.odonnell@rackspace.com>)
+* Author: Nick Silkey (<nick.silkey@rackspace.com>)
 
