@@ -155,6 +155,9 @@ The Repose endpoints array defaults to:
 * `node['repose']['client_auth']['group_cache_timeout']` - Timeout for group cache.
 * `node['repose']['client_auth']['endpoints_in_header']` - Enable or disable the listing of service endpoints in the header.
 
+* `node['repose']['client_auth']['white_list']` - You can configure Repose authentication to allow the processing of requests that do not require authentication. Default to `false`.
+* `node['repose']['client_auth']['uri_regex']` - The whitelist contains a list of regular expressions Repose will attempt to match against the full request URI. If the URI matches a regular expression on the white list, the request is passed to the origin service. Otherwise, authentication is performed against the request.
+
 ## rate-limit attributes
 
 * `node['repose']['rate_limiting']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.

@@ -87,6 +87,9 @@ default['repose']['client_auth']['request_groups'] = true
 default['repose']['client_auth']['token_cache_timeout'] = 600000
 default['repose']['client_auth']['group_cache_timeout'] = 600000
 default['repose']['client_auth']['endpoints_in_header'] = false
+default['repose']['client_auth']['white_list'] = false
+default['repose']['client_auth']['uri_regex'] = nil
+
 
 default['repose']['rate_limiting']['cluster_id'] = ['all']
 default['repose']['rate_limiting']['uri_regex'] = '/limits'
