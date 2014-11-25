@@ -8,6 +8,8 @@ This cookbook manages Repose.
 
 Supports CentOS 6.4, Ubuntu 10.04, and Ubuntu 12.04.
 
+Requires Repose v6.2.0 or greater due to package differences.
+
 # Usage
 
 Include `recipe[repose]` in your run_list and override attributes as required.

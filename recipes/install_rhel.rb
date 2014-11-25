@@ -17,7 +17,7 @@ yum_repository 'openrepose' do
 end
 
 %w{ repose-valve
-    repose-filters
+    repose-filter-bundle
 }.each do |p|
   package p do
     options node['repose']['install_opts']
