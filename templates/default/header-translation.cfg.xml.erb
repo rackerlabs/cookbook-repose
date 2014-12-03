@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<header-translation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://docs.api.rackspacecloud.com/repose/header-translation/v1.0 ../config/header-translation.xsd" xmlns="http://docs.api.rackspacecloud.com/repose/header-translation/v1.0">
+	<% headers.each do |header| %>
+    <header original-name="<%= header['original_name'] %>" new-name="<%= header['new_name'] %>" remove-original="<%= header['remove_original'] %>"/>
+	<% end %>
+</header-translation>

@@ -35,7 +35,8 @@ filter_cluster_map = {
   'client-auth'        => node['repose']['client_auth'       ]['cluster_id'],
   'ip-identity'        => node['repose']['ip_identity'       ]['cluster_id'],
   'rate-limiting'      => node['repose']['rate_limiting'     ]['cluster_id'],
-  'slf4j-http-logging' => node['repose']['slf4j_http_logging']['cluster_id']
+  'slf4j-http-logging' => node['repose']['slf4j_http_logging']['cluster_id'],
+  'header-translation' => node['repose']['header-translation']['cluster_id']
 }
 
 template "#{node['repose']['config_directory']}/system-model.cfg.xml" do
