@@ -261,4 +261,5 @@ kitchen test
 # Author
 
 * Author: Brendan ODonnell (<brendan.odonnell@rackspace.com>)
+* Author: Dimitry Ushakov  (<dimitry.ushakov@rackspace.com>)
 
