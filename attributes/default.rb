@@ -68,6 +68,18 @@ default['repose']['slf4j_http_logging']['cluster_id'] = ['all']
 default['repose']['slf4j_http_logging']['id'] = 'http'
 default['repose']['slf4j_http_logging']['format'] = 'Remote IP=%a Local IP=%A Response Size(bytes)=%b Remote Host=%h Request Method=%m Server Port=%p Query String=%q Time Request Received=%t Status=%s Remote User=%u Rate Limit Group: %{X-PP-Groups}i URL Path Requested=%U X-Forwarded-For=%{X-Forwarded-For}i X-REAL-IP=%{X-Real-IP}i'
 
+default['repose']['header_translation']['cluster_id'] = ['all']
+default['repose']['header_translation']['headers'] = [
+  { 'original_name' => 'Content-Type',
+    'new_name' => 'rax-content-type'
+  },
+  { 'original_name' => 'Content-Length',
+    'new_name' => 'rax-content-length not-rax-content-length something-else',
+    'remove_original' => true
+  }
+]
+
+
 default['repose']['ip_identity']['cluster_id'] = ['all']
 default['repose']['ip_identity']['quality'] = 0.2
 default['repose']['ip_identity']['white_list_quality'] = 1.0
