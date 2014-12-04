@@ -5,16 +5,16 @@
     -->
     <pool id="default"
           default="true"
-          chunked-encoding="true"
+          chunked-encoding="<%= @chunked_encoding %>"
           http.conn-manager.max-total="<%= @max_total %>"
           http.conn-manager.max-per-route="<%= @max_per_route %>"
           http.socket.timeout="<%= @socket_timeout %>"
-          http.socket.buffer-size="8192"
-          http.connection.timeout="<%=@connection_timeout %>"
-          http.connection.max-line-length="8192"
-          http.connection.max-header-count="100"
-          http.connection.max-status-line-garbage="100"
-          http.tcp.nodelay="true"
-          keepalive.timeout="0"/>
+          http.socket.buffer-size="<%= @socket_buffer_size %>"
+          http.connection.timeout="<%= @connection_timeout %>"
+          http.connection.max-line-length="<%= @connection_max_line_length %>"
+          http.connection.max-header-count="<%= @connection_max_header_count %>"
+          http.connection.max-status-line-garbage="<%= @connection_max_status_line_garbage %>"
+          http.tcp.nodelay="<%= @tcp_nodelay %>"
+          keepalive.timeout="<%= keepalive_timeout %>"/>
 
 </http-connection-pools>

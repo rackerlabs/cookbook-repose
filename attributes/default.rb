@@ -7,7 +7,7 @@ when 'rhel'
   default['repose']['repo']['gpgcheck'] = false # the openrepose repo doesn't sign packages
   default['repose']['repo']['enabled'] = true
   default['repose']['repo']['managed'] = true
-  default['repose']['install_opts'] = ''
+  default['repose']['install_opts'] = '-o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"' # default apt config will block upgrades
 when 'debian'
   default['repose']['owner'] = 'root'
   default['repose']['group'] = 'root'
@@ -99,6 +99,9 @@ default['repose']['client_auth']['request_groups'] = true
 default['repose']['client_auth']['token_cache_timeout'] = 600000
 default['repose']['client_auth']['group_cache_timeout'] = 600000
 default['repose']['client_auth']['endpoints_in_header'] = false
+default['repose']['client_auth']['white_list'] = false
+default['repose']['client_auth']['uri_regex'] = nil
+
 
 default['repose']['rate_limiting']['cluster_id'] = ['all']
 default['repose']['rate_limiting']['uri_regex'] = '/limits'
@@ -124,7 +127,14 @@ default['repose']['rate_limiting']['limit_groups'] = [
   }
 ]
 
+default['repose']['connection_pool']['chunked_encoding'] = true
 default['repose']['connection_pool']['max_total'] = 400
 default['repose']['connection_pool']['max_per_route'] = 200
 default['repose']['connection_pool']['socket_timeout'] = 30000
 default['repose']['connection_pool']['connection_timeout'] = 30000
+default['repose']['connection_pool']['socket_buffer_size'] = 8192
+default['repose']['connection_pool']['connection_max_line_length'] = 8192
+default['repose']['connection_pool']['connection_max_header_count'] = 100
+default['repose']['connection_pool']['connection_max_status_line_garbage'] = 100
+default['repose']['connection_pool']['tcp_nodelay'] = true
+default['repose']['connection_pool']['keepalive_timeout'] = 0

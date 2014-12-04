@@ -155,6 +155,9 @@ The Repose endpoints array defaults to:
 * `node['repose']['client_auth']['group_cache_timeout']` - Timeout for group cache.
 * `node['repose']['client_auth']['endpoints_in_header']` - Enable or disable the listing of service endpoints in the header.
 
+* `node['repose']['client_auth']['white_list']` - You can configure Repose authentication to allow the processing of requests that do not require authentication. Default to `false`.
+* `node['repose']['client_auth']['uri_regex']` - The whitelist contains a list of regular expressions Repose will attempt to match against the full request URI. If the URI matches a regular expression on the white list, the request is passed to the origin service. Otherwise, authentication is performed against the request.
+
 ## rate-limit attributes
 
 * `node['repose']['rate_limiting']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
@@ -188,10 +191,17 @@ The limit groups array defaults to:
 
 ## connection-pool attributes
 
+* `node['repose']['connection_pool']['chunked_encoding']` - Use the default unless your programming language does not support chunked encoding. Some Repose filters modify request bodies. Due to this possibility Repose will, by default, send requests with entities as chunked. Setting chunked-encoding to false will cause Repose to attempt to evaluate the actual content length of the request by reading the ServletInputStream. Default is true.
 * `node['repose']['connection_pool']['max_total']` - Maximum number of connections that Repose opens across all endpoints. (If set too high, you might run out of memory.) Default is 400.
 * `node['repose']['connection_pool']['max_per_route']` - Maximum number of connections that Repose opens per endpoint. Default is 200.
 * `node['repose']['connection_pool']['socket_timeout']` - Number of milliseconds a request is in flight before it times out. Default is 30000.
 * `node['repose']['connection_pool']['connection_timeout']` - Number of milliseconds a connection waits to send a request. Default is 30000.
+* `node['repose']['connection_pool']['socket_buffer_size']` - Default is 8192.
+* `node['repose']['connection_pool']['connection_max_line_length']` - Default is 8192.
+* `node['repose']['connection_pool']['connection_max_header_count']` - Maximum number of headers that can be sent in the request. Default is 100.
+* `node['repose']['connection_pool']['connection_max_status_line_garbage']` - Maximum number of lines allotted for garbage. Default is 100.
+* `node['repose']['connection_pool']['tcp_nodelay']` - Default is true.
+* `node['repose']['connection_pool']['keepalive_timeout']` - If a Keep-Alive header is not present in the response, the value of keepalive.timeout is evaluated. If this value is 0, the connection will be kept alive indefinitely. If the value is greater than 0, the connection will be kept alive for the number of milliseconds specified. Set to 1 to connect:close. Default is 0.
 
 # Recipes
 
@@ -258,8 +268,9 @@ This cookbook includes support for test-kitchen and minitest. Run the test suite
 kitchen test
 ```
 
-# Author
+# Author(s)
 
 * Author: Brendan ODonnell (<brendan.odonnell@rackspace.com>)
 * Author: Dimitry Ushakov  (<dimitry.ushakov@rackspace.com>)
+* Author: Nick Silkey (<nick.silkey@rackspace.com>)
 
