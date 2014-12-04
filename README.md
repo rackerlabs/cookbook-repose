@@ -188,10 +188,17 @@ The limit groups array defaults to:
 
 ## connection-pool attributes
 
+* `node['repose']['connection_pool']['chunked_encoding']` - Use the default unless your programming language does not support chunked encoding. Some Repose filters modify request bodies. Due to this possibility Repose will, by default, send requests with entities as chunked. Setting chunked-encoding to false will cause Repose to attempt to evaluate the actual content length of the request by reading the ServletInputStream. Default is true.
 * `node['repose']['connection_pool']['max_total']` - Maximum number of connections that Repose opens across all endpoints. (If set too high, you might run out of memory.) Default is 400.
 * `node['repose']['connection_pool']['max_per_route']` - Maximum number of connections that Repose opens per endpoint. Default is 200.
 * `node['repose']['connection_pool']['socket_timeout']` - Number of milliseconds a request is in flight before it times out. Default is 30000.
 * `node['repose']['connection_pool']['connection_timeout']` - Number of milliseconds a connection waits to send a request. Default is 30000.
+* `node['repose']['connection_pool']['socket_buffer_size']` - Default is 8192.
+* `node['repose']['connection_pool']['connection_max_line_length']` - Default is 8192.
+* `node['repose']['connection_pool']['connection_max_header_count']` - Maximum number of headers that can be sent in the request. Default is 100.
+* `node['repose']['connection_pool']['connection_max_status_line_garbage']` - Maximum number of lines allotted for garbage. Default is 100.
+* `node['repose']['connection_pool']['tcp_nodelay']` - Default is true.
+* `node['repose']['connection_pool']['keepalive_timeout']` - If a Keep-Alive header is not present in the response, the value of keepalive.timeout is evaluated. If this value is 0, the connection will be kept alive indefinitely. If the value is greater than 0, the connection will be kept alive for the number of milliseconds specified. Set to 1 to connect:close. Default is 0.
 
 # Recipes
 

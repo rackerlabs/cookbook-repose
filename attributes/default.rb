@@ -112,7 +112,14 @@ default['repose']['rate_limiting']['limit_groups'] = [
   }
 ]
 
+default['repose']['connection_pool']['chunked_encoding'] = true
 default['repose']['connection_pool']['max_total'] = 400
 default['repose']['connection_pool']['max_per_route'] = 200
 default['repose']['connection_pool']['socket_timeout'] = 30000
 default['repose']['connection_pool']['connection_timeout'] = 30000
+default['repose']['connection_pool']['socket_buffer_size'] = 8192
+default['repose']['connection_pool']['connection_max_line_length'] = 8192
+default['repose']['connection_pool']['connection_max_header_count'] = 100
+default['repose']['connection_pool']['connection_max_status_line_garbage'] = 100
+default['repose']['connection_pool']['tcp_nodelay'] = true
+default['repose']['connection_pool']['keepalive_timeout'] = 0
