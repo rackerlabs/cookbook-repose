@@ -7,7 +7,7 @@ when 'rhel'
   default['repose']['repo']['gpgcheck'] = false # the openrepose repo doesn't sign packages
   default['repose']['repo']['enabled'] = true
   default['repose']['repo']['managed'] = true
-  default['repose']['install_opts'] = ''
+  default['repose']['install_opts'] = '-o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"' # default apt config will block upgrades
 when 'debian'
   default['repose']['owner'] = 'root'
   default['repose']['group'] = 'root'
