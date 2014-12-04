@@ -25,4 +25,11 @@
     </openstack-auth>
 
     <% end %>
+
+    <% if @white_list %>
+    <white-list>
+        <uri-pattern uri-regex="<%= @uri_regex %>" />
+    </white-list>
+    <% end %>
+
 </client-auth>
