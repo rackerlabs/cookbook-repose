@@ -25,6 +25,7 @@ Available filters are:
   * ip-identity
   * rate-limiting
   * slf4j-http-logging
+  * header-translation
 
 Other filters are available in Repose and may be added to this cookbook in a later revision.
 
@@ -189,6 +190,23 @@ The limit groups array defaults to:
 ]
 ```
 
+## header-translation attributes
+
+* `node['repose']['header_translation']['headers']` - header list of original headers (the ones passed in the request) and the new headers (the ones that will have duplicate values of original headers).  new_name can be a list of headers white-space separated. You can also set an optional remove_attribute key if you'd like the original header to be removed.  to set the array. 
+
+The default headers are:
+```
+[
+  { 'original_name' => 'Content-Type',
+    'new_name' => 'rax-content-type'
+  },
+  { 'original_name' => 'Content-Length',
+    'new_name' => 'rax-content-length not-rax-content-length something-else',
+    'remove_original' => true
+  }
+]
+```
+
 ## connection-pool attributes
 
 * `node['repose']['connection_pool']['chunked_encoding']` - Use the default unless your programming language does not support chunked encoding. Some Repose filters modify request bodies. Due to this possibility Repose will, by default, send requests with entities as chunked. Setting chunked-encoding to false will cause Repose to attempt to evaluate the actual content length of the request by reading the ServletInputStream. Default is true.
@@ -272,4 +290,4 @@ kitchen test
 
 * Author: Brendan ODonnell (<brendan.odonnell@rackspace.com>)
 * Author: Nick Silkey (<nick.silkey@rackspace.com>)
-
+* Author: Dimitry Ushakov  (<dimitry.ushakov@rackspace.com>)
