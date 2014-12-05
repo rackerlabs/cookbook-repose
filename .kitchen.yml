@@ -20,6 +20,7 @@ platforms:
 suites:
 - name: default
   run_list: [
+    "apt",
     "java",
     "recipe[repose::filter-slf4j-http-logging]",
     "recipe[repose::filter-ip-identity]",
