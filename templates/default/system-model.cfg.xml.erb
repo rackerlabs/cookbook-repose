@@ -2,31 +2,35 @@
 
 <system-model xmlns="http://docs.rackspacecloud.com/repose/system-model/v2.0">
     <% @cluster_ids.each do |cluster_id| %>
-    <repose-cluster id="<%= cluster_id %>">
+    <repose-cluster id="<%= cluster_id['id'] %>"
+      <% unless cluster_id['rewrite_host_header'].nil? %>
+    rewrite-host-header="<%= cluster_id['rewrite_host_header'] %>"
+    <% end %>
+    >
         <nodes>
             <% @nodes.each do |node| %>
-              <% if node['cluster_id'].nil? || node['cluster_id'] == cluster_id %>
+              <% if node['cluster_id'].nil? || node['cluster_id'] == cluster_id['id'] %>
             <node id="<%= node['id'] %>" hostname="<%= node['hostname'] %>" http-port="<%= node['port'] %>" />
               <% end %>
             <% end %>
         </nodes>
         <filters>
             <% @filters.each do |filter| %>
-              <% if @filter_cluster_map[filter].include?('all') || @filter_cluster_map[filter].include?(cluster_id) %>
+              <% if @filter_cluster_map[filter].include?('all') || @filter_cluster_map[filter].include?(cluster_id['id']) %>
             <filter name="<%= filter %>" />
               <% end %>
             <% end %>
         </filters>
         <services>
             <% @services.each do |service| %>
-              <% if @service_cluster_map[service].include?('all') || @service_cluster_map[service].include?(cluster_id) %>
+              <% if @service_cluster_map[service].include?('all') || @service_cluster_map[service].include?(cluster_id['id']) %>
             <service name="<%= service %>" />
               <% end %>
             <% end %>
         </services>
         <destinations>
             <% @endpoints.each do |endpoint| %>
-              <% if endpoint['cluster_id'].nil? || endpoint['cluster_id'] == cluster_id %>
+              <% if endpoint['cluster_id'].nil? || endpoint['cluster_id'] == cluster_id['id'] %>
             <endpoint id="<%= endpoint['id'] %>" protocol="<%= endpoint['protocol'] %>" hostname="<%= endpoint['hostname'] %>" port="<%= endpoint['port'] %>" root-path="<%= endpoint['root_path'] %>" default="<%= endpoint['default'] %>" />
               <% end %>
             <% end %>
