@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: repose
-# Recipe:: filter-http-logging
+# Recipe:: filter-slf4j-http-logging 
 #
 # Copyright (C) 2013 Rackspace Hosting
 #
