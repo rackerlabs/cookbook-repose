@@ -73,7 +73,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision :chef_solo do |chef|
     chef.json = {
     }
-    chef.add_recipe("recipe[repose::filter-http-logging]")
     chef.add_recipe("recipe[repose::filter-ip-identity]")
     chef.add_recipe("recipe[repose::filter-client-auth]")
     chef.add_recipe("recipe[repose::service-dist-datastore]")
