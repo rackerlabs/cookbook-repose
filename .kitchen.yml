@@ -26,6 +26,7 @@ suites:
     "recipe[repose::filter-ip-identity]",
     "recipe[repose::filter-rate-limiting]",
     "recipe[repose::filter-header-translation]",
+    "recipe[repose::filter-header-normalization]",
     "recipe[repose::service-connection-pool]",
     "recipe[repose::service-dist-datastore]",
     "recipe[repose::default]",

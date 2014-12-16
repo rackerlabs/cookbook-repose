@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- http://wiki.openrepose.org/pages/viewpage.action?pageId=328681 -->
+<header-normalization xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+                      xmlns='http://docs.api.rackspacecloud.com/repose/header-normalization/v1.0'
+                      xsi:schemaLocation='http://docs.api.rackspacecloud.com/repose/header-normalization/v1.0 ../config/header-normalization-configuration.xsd'>
+
+    <header-filters>
+		
+	<% @whitelist.each do |target| %>
+
+        <target
+        <% unless target['uri_regex'].nil? %>
+        uri-regex="<%= target['uri_regex'] %>"
+        <% end %>
+       
+        <% unless target['http_methods'].nil? %>
+        http-methods="<%= target['http_methods'] %>"
+        <% end %>
+        >
+		<whitelist id="<%= target['id'] %>">
+	    	<% target['headers'].each do |header| %>
+        		<header id="<%= header %>"/>
+        	<% end %>
+		</whitelist>
+        </target>
+
+    <% end %>
+
+	<% @blacklist.each do |target| %>
+
+        <target 
+        <% unless target['uri_regex'].nil? %>
+        uri-regex="<%= target['uri_regex'] %>"
+        <% end %>
+
+        <% unless target['http_methods'].nil? %>
+        http-methods="<%= target['http_methods'] %>"
+        <% end %>
+        >
+		<blacklist id="<%= target['id'] %>">
+	    	<% target['headers'].each do |header| %>
+        		<header id="<%= header %>"/>
+        	<% end %>
+		</blacklist>
+        </target>
+
+    <% end %>
+
+    </header-filters>
+
+</header-normalization>
