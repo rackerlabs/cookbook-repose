@@ -26,6 +26,7 @@ Available filters are:
   * rate-limiting
   * slf4j-http-logging
   * header-translation
+  * DeRP
 
 Other filters are available in Repose and may be added to this cookbook in a later revision.
 

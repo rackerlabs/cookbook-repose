@@ -79,6 +79,8 @@ default['repose']['header_translation']['headers'] = [
   }
 ]
 
+default['repose']['derp']['cluster_id'] = ['all']
+
 default['repose']['ip_identity']['cluster_id'] = ['all']
 default['repose']['ip_identity']['quality'] = 0.2
 default['repose']['ip_identity']['white_list_quality'] = 1.0
