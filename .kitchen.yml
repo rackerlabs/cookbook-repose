@@ -38,6 +38,11 @@ suites:
   attributes:
     java:
       jdk_version: 7
+    repose:
+      client_auth:
+        auth_provider: 'OPENSTACK'
+      rewrite_host_header: false
+
 
 - name: client-auth-rackspace
   run_list: [
