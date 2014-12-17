@@ -26,6 +26,7 @@ Available filters are:
   * rate-limiting
   * slf4j-http-logging
   * header-translation
+  * header-normalization
 
 Other filters are available in Repose and may be added to this cookbook in a later revision.
 
@@ -203,6 +204,35 @@ The default headers are:
   { 'original_name' => 'Content-Length',
     'new_name' => 'rax-content-length not-rax-content-length something-else',
     'remove_original' => true
+  }
+]
+```
+
+## header-normalization attributes
+
+* `node['repose']['header_normalization']['whitelist']` - a hash of whitelist blocks, each encapsulating an array of headers to be whitelisted by Repose for delivery to the origin service or next filter in the chain. A unique 'id' key identifies each whitelist entry, with optional 'uri_regex' and 'http_methods' keys to induce further constraints. 
+* `node['repose']['header_normalization']['blacklist']` - a hash of blacklist blocks, each encapsulating an array of headers to be blacklisted by Repose for non-delivery to the origin service or next filter in the chain. A unique 'id' key identifies each blacklist entry, with optional 'uri_regex' and 'http_methods' keys to induce further constraints. 
+
+The default whitelist is:
+```
+[
+  { 'id' => 'credentials',
+    'uri_regex' => '/servers/(.*)',
+    'headers'   => ['X-Auth-Key','X-Auth-User']
+  },
+  { 'id' => 'modification',
+    'uri_regex' => '/resource/(.*)',
+    'http_methods' => 'PUT POST',
+    'headers'   => ['X-Modify']
+  }
+]
+```
+
+The default blacklist is:
+```
+[
+  { 'id' => 'rate-limit-headers',
+    'headers'   => ['X-PP-User','X-PP-Groups']
   }
 ]
 ```
