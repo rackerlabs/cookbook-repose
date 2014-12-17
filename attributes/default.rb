@@ -81,6 +81,24 @@ default['repose']['header_translation']['headers'] = [
 
 default['repose']['derp']['cluster_id'] = ['all']
 
+default['repose']['header_normalization']['cluster_id'] = ['all']
+default['repose']['header_normalization']['whitelist'] = [
+  { 'id' => 'credentials',
+    'uri_regex' => '/servers/(.*)',
+    'headers'   => ['X-Auth-Key','X-Auth-User']
+  },
+  { 'id' => 'modification',
+    'uri_regex' => '/resource/(.*)',
+    'http_methods' => 'PUT POST',
+    'headers'   => ['X-Modify']
+  }
+]
+default['repose']['header_normalization']['blacklist'] = [
+  { 'id' => 'rate-limit-headers',
+    'headers'   => ['X-PP-User','X-PP-Groups']
+  }
+]
+
 default['repose']['ip_identity']['cluster_id'] = ['all']
 default['repose']['ip_identity']['quality'] = 0.2
 default['repose']['ip_identity']['white_list_quality'] = 1.0
