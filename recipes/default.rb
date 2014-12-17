@@ -37,6 +37,7 @@ filter_cluster_map = {
   'rate-limiting'        => node['repose']['rate_limiting'     ]['cluster_id'],
   'slf4j-http-logging'   => node['repose']['slf4j_http_logging']['cluster_id'],
   'header-translation'   => node['repose']['header_translation']['cluster_id'],
+  'derp'                 => node['repose']['derp']['cluster_id'],
   'header-normalization' => node['repose']['header_normalization']['cluster_id']
 }
 
