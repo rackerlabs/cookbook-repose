@@ -47,6 +47,7 @@ template "#{node['repose']['config_directory']}/system-model.cfg.xml" do
   mode '0644'
   variables(
     cluster_ids: node['repose']['cluster_ids'],
+    rewrite_host_header: node['repose']['rewrite_host_header'],
     nodes: node['repose']['peers'],
     services: services,
     service_cluster_map: service_cluster_map,

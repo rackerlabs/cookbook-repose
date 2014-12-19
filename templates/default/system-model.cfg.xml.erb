@@ -2,7 +2,11 @@
 
 <system-model xmlns="http://docs.rackspacecloud.com/repose/system-model/v2.0">
     <% @cluster_ids.each do |cluster_id| %>
-    <repose-cluster id="<%= cluster_id %>">
+    <repose-cluster id="<%= cluster_id %>"
+      <% unless @rewrite_host_header.nil? %>
+    rewrite-host-header="<%= @rewrite_host_header %>"
+    <% end %>
+    >
         <nodes>
             <% @nodes.each do |node| %>
               <% if node['cluster_id'].nil? || node['cluster_id'] == cluster_id %>

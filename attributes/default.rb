@@ -20,6 +20,7 @@ end
 default['repose']['version'] = nil
 default['repose']['loglevel'] = 'DEBUG'
 default['repose']['cluster_ids'] = ['repose']
+default['repose']['rewrite_host_header'] = true
 default['repose']['node_id'] = 'repose_node1'
 default['repose']['port'] = 8080
 default['repose']['ssl_port'] = 8443
