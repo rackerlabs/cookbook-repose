@@ -38,7 +38,8 @@ filter_cluster_map = {
   'slf4j-http-logging'   => node['repose']['slf4j_http_logging']['cluster_id'],
   'header-translation'   => node['repose']['header_translation']['cluster_id'],
   'derp'                 => node['repose']['derp']['cluster_id'],
-  'header-normalization' => node['repose']['header_normalization']['cluster_id']
+  'header-normalization' => node['repose']['header_normalization']['cluster_id'],
+  'content-type-stripper' => node['repose']['content_type_stripper']['cluster_id']
 }
 
 template "#{node['repose']['config_directory']}/system-model.cfg.xml" do
