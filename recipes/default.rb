@@ -35,6 +35,7 @@ filter_cluster_map = {
   'client-auth'           => node['repose']['client_auth'          ]['cluster_id'],
   'content-type-stripper' => node['repose']['content_type_stripper']['cluster_id'],
   'derp'                  => node['repose']['derp'                 ]['cluster_id'],
+  'header-identity'       => node['repose']['header_identity'      ]['cluster_id'],
   'header-normalization'  => node['repose']['header_normalization' ]['cluster_id'],
   'header-translation'    => node['repose']['header_translation'   ]['cluster_id'],
   'ip-identity'           => node['repose']['ip_identity'          ]['cluster_id'],
