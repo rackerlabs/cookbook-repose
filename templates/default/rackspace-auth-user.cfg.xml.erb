@@ -1,0 +1,15 @@
+<rackspace-auth-user xmlns='http://docs.openrepose.org/rackspace-auth-user/v1.0'>
+    <!-- Both of the version configurations are optional; however, if neither are specified, this filter is a no-op. -->
+    <% if @v1_1['enabled'] %>
+    <v1_1 content-body-read-limit="<%= @v1_1['read_limit'] %>">
+        <group><%= @v1_1['group'] %></group>
+        <quality><%= @v1_1['quality'] %></quality>
+    </v1_1>
+    <% end %>
+    <% if @v2_0['enabled'] %>
+    <v2_0 content-body-read-limit="<%= @v2_0['read_limit'] %>">
+        <group><%= @v2_0['group'] %></group>
+        <quality><%= @v2_0['quality'] %></quality>
+    </v2_0>
+    <% end %>
+</rackspace-auth-user>

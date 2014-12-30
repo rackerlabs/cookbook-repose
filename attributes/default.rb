@@ -164,3 +164,13 @@ default['repose']['connection_pool']['keepalive_timeout'] = 0
 default['repose']['translation']['cluster_id'] = ['all']
 default['repose']['translation']['request_translations'] = []
 default['repose']['translation']['response_translations'] = []
+
+default['repose']['rackspace_auth_user']['cluster_id'] = ['all']
+default['repose']['rackspace_auth_user']['v1_1']['enabled'] = true
+default['repose']['rackspace_auth_user']['v1_1']['read_limit'] = 4096
+default['repose']['rackspace_auth_user']['v1_1']['group'] = 'Pre_Auth'
+default['repose']['rackspace_auth_user']['v1_1']['quality'] = 0.6
+default['repose']['rackspace_auth_user']['v2_0']['enabled'] = true
+default['repose']['rackspace_auth_user']['v2_0']['read_limit'] = 4096
+default['repose']['rackspace_auth_user']['v2_0']['group'] = 'Pre_Auth'
+default['repose']['rackspace_auth_user']['v2_0']['quality'] = 0.6
