@@ -23,6 +23,7 @@ suites:
     "apt",
     "java",
     "recipe[repose::filter-slf4j-http-logging]",
+    "recipe[repose::filter-content-type-stripper]",
     "recipe[repose::filter-ip-identity]",
     "recipe[repose::filter-rate-limiting]",
     "recipe[repose::filter-header-translation]",
