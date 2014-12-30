@@ -26,6 +26,7 @@ suites:
     "recipe[repose::filter-content-type-stripper]",
     "recipe[repose::filter-ip-identity]",
     "recipe[repose::filter-rate-limiting]",
+    "recipe[repose::filter-header-identity]",
     "recipe[repose::filter-header-translation]",
     "recipe[repose::filter-header-normalization]",
     "recipe[repose::filter-translation]",
