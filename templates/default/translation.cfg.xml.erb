@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translation xmlns="http://docs.rackspacecloud.com/repose/translation/v1.0">
+    <% unless @request_translations.empty? %>
+    <request-translations>
+        <% @request_translations.each do |translation| %>
+        <request-translation
+            <% %w{ http_methods code_regex content_type accept translated_content_type }.each do |attr| %>
+            <% if translation.has_key? attr %>
+            <%= attr.gsub(/_/, '-') %>="<%= translation[attr] %>"
+            <% end %>
+            <% end %>
+            >
+            <style-sheets>
+                <% translation['style_sheets'].to_a.each do |style| %>
+                <style id="<%= style['id'] %>">
+                    <xsl>
+<%= style['xsl'] %>
+                    </xsl>
+                </style>
+                <% end %>
+            </style-sheets>
+        </request-translation>
+        <% end %>
+    </request-translations>
+    <% end %>
+    <% unless @response_translations.empty? %>
+    <response-translations>
+        <% @response_translations.each do |translation| %>
+        <response-translation
+            <% %w{ http_methods code_regex content_type accept translated_content_type }.each do |attr| %>
+            <% if translation.has_key? attr %>
+            <%= attr.gsub(/_/, '-') %>="<%= translation[attr] %>"
+            <% end %>
+            <% end %>
+            >
+            <style-sheets>
+                <% translation['style_sheets'].to_a.each do |style| %>
+                <style id="<%= style['id'] %>">
+                    <xsl>
+<%= style['xsl'] %>
+                    </xsl>
+                </style>
+                <% end %>
+            </style-sheets>
+        </response-translation>
+        <% end %>
+    </response-translations>
+    <% end %>
+</translation>
