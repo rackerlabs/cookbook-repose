@@ -31,6 +31,7 @@ suites:
     "recipe[repose::filter-header-normalization]",
     "recipe[repose::filter-translation]",
     "recipe[repose::filter-rackspace-auth-user]",
+    "recipe[repose::filter-uri-identity]",
     "recipe[repose::service-connection-pool]",
     "recipe[repose::service-dist-datastore]",
     "recipe[repose::default]",
