@@ -30,6 +30,7 @@ Available filters are:
   * header-normalization
   * [content-type-stripper](https://repose.atlassian.net/wiki/display/REPOSE/Content+Type+Stripper+filter) (system-model only)
   * [translation](https://repose.atlassian.net/wiki/display/REPOSE/Translation+filter)
+  * [rackspace-auth-user](https://repose.atlassian.net/wiki/display/REPOSE/Rackspace+Auth+User+filter)
 
 Other filters are available in Repose and may be added to this cookbook in a later revision.
 
@@ -265,6 +266,18 @@ The default blacklist is:
 * `node['repose']['translation']['response_translations']` - Enumerated translations that specify a chain of stylesheets to be applied to a request response body and the criteria for when the chain should be applied.
 
 The default values for request\_translations and response\_translations are `[]` because no sensable examples exist for a generic origin service. See the online documentation for configuration examples.
+
+## rackspace-auth-user attributes
+
+* `node['repose']['rackspace_auth_user']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
+* `node['repose']['rackspace_auth_user']['v1_1']['enabled']` - Specifies whether version 1.1 of the Rackspace identity contract should be parsed.
+* `node['repose']['rackspace_auth_user']['v1_1']['read_limit']` - Specifies the size of the content.
+* `node['repose']['rackspace_auth_user']['v1_1']['group']` - Defines the X-PP Groups header for this filter.
+* `node['repose']['rackspace_auth_user']['v1_1']['quality']` - Defines the quality assigned to the header.
+* `node['repose']['rackspace_auth_user']['v2_0']['enabled']` - Specifies whether version 2.0 of the Rackspace identity contract should be parsed.
+* `node['repose']['rackspace_auth_user']['v2_0']['read_limit']` - Specifies the size of the content.
+* `node['repose']['rackspace_auth_user']['v2_0']['group']` - Defines the X-PP Groups header for this filter.
+* `node['repose']['rackspace_auth_user']['v2_0']['quality']` - Defines the quality assigned to the header.
 
 # Recipes
 
