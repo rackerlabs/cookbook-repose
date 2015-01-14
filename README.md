@@ -32,6 +32,7 @@ Available filters are:
   * [translation](https://repose.atlassian.net/wiki/display/REPOSE/Translation+filter)
   * [rackspace-auth-user](https://repose.atlassian.net/wiki/display/REPOSE/Rackspace+Auth+User+filter)
   * [header-identity](https://repose.atlassian.net/wiki/display/REPOSE/Header+Identity+filter)
+  * [uri-identity](https://repose.atlassian.net/wiki/display/REPOSE/URI+Identity+filter)
 
 Other filters are available in Repose and may be added to this cookbook in a later revision.
 
@@ -296,6 +297,21 @@ The default values for request\_translations and response\_translations are `[]`
 * `node['repose']['rackspace_auth_user']['v2_0']['read_limit']` - Specifies the size of the content.
 * `node['repose']['rackspace_auth_user']['v2_0']['group']` - Defines the X-PP Groups header for this filter.
 * `node['repose']['rackspace_auth_user']['v2_0']['quality']` - Defines the quality assigned to the header.
+
+## uri-identity attributes
+
+* `node['repose']['uri_identity']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
+* `node['repose']['uri_identity']['mappings']` - An array of regular expressions used to extract the identification information from the request URI.
+* `node['repose']['uri_identity']['group']` - Names the rate limiting group associated with the extracted identification data.
+* `node['repose']['uri_identity']['quality']` - Defines the quality assigned to user by the incoming identification data.
+
+The default mappings are:
+```
+[
+  '.*/servers/(\w*)/.*',
+  '.*/servers/(\w*)/.*'
+]
+```
 
 # Recipes
 

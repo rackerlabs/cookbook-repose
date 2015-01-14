@@ -184,3 +184,11 @@ default['repose']['rackspace_auth_user']['v2_0']['enabled'] = true
 default['repose']['rackspace_auth_user']['v2_0']['read_limit'] = 4096
 default['repose']['rackspace_auth_user']['v2_0']['group'] = 'Pre_Auth'
 default['repose']['rackspace_auth_user']['v2_0']['quality'] = 0.6
+
+default['repose']['uri_identity']['cluster_id'] = ['all']
+default['repose']['uri_identity']['mappings'] = [
+  '.*/servers/(\w*)/.*',
+  '.*/servers/(\w*)/.*'
+]
+default['repose']['uri_identity']['group'] = 'User_Standard'
+default['repose']['uri_identity']['quality'] = 0.5
