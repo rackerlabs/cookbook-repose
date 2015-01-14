@@ -31,6 +31,7 @@ Available filters are:
   * [content-type-stripper](https://repose.atlassian.net/wiki/display/REPOSE/Content+Type+Stripper+filter) (system-model only)
   * [translation](https://repose.atlassian.net/wiki/display/REPOSE/Translation+filter)
   * [rackspace-auth-user](https://repose.atlassian.net/wiki/display/REPOSE/Rackspace+Auth+User+filter)
+  * [header-identity](https://repose.atlassian.net/wiki/display/REPOSE/Header+Identity+filter)
 
 Other filters are available in Repose and may be added to this cookbook in a later revision.
 
@@ -212,6 +213,23 @@ The default headers are:
 ]
 ```
 
+## header-identity attributes
+
+* `node['repose']['header_identity']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
+* `node['repose']['header_identity']['headers']` - Lists the headers to identify the incoming user.
+
+The default headers are:
+```
+[
+  { 'id' => 'X-Auth-Token',
+    'quality' => 0.95
+  },
+  { 'id' => 'X-Forwarded-For',
+    'quality' => 0.5
+  }
+]
+```
+
 ## header-normalization attributes
 
 * `node['repose']['header_normalization']['whitelist']` - a hash of whitelist blocks, each encapsulating an array of headers to be whitelisted by Repose for delivery to the origin service or next filter in the chain. A unique 'id' key identifies each whitelist entry, with optional 'uri_regex' and 'http_methods' keys to induce further constraints. 
@@ -301,29 +319,9 @@ Install Repose on the RHEL family of systems. This recipe is not meant to be use
 
 Uses chef-search to find nodes with a matching Chef environment, search role, and cluster ID, maps them to hashes representing Repose peers, and loads them into the `node['repose']['peers']` array. Not meant to be called directly unless a different cookbook wants to find Repose nodes. E.g. maybe Nginx uses Repose nodes as a backend and wants to consume `node['repose']['peers']`.
 
-## filter-slf4j-http-logging
+## filter-* or service-*
 
-Setup the slf4j-http-logging filter. *Must* be called before `repose::default`.
-
-## filter-ip-identity
-
-Setup the ip-identity filter. *Must* be called before `repose::default`.
-
-## filter-rate-limiting
-
-Setup the rate-limiting filter. *Must* be called before `repose::default`.
-
-## filter-client-auth
-
-Setup the client-auth filter. *Must* be called before `repose::default`.
-
-## service-dist-datastore
-
-Setup the dist-datastore service. *Must* be called before `repose::default`.
-
-## service-connection-pool
-
-Setup the connection-pool service. This service is enabled by default and does not need to be added to the services array. This recipe allows you to configure the service only.
+Setup a paticular filter or service. *Must* be called before `repose::default`.
 
 # Vagrant
 

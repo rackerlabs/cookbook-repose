@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- http://wiki.openrepose.org/display/REPOSE/Header+Identity -->
+<header-identity  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns='http://docs.api.rackspacecloud.com/repose/header-identity/v1.0'
+    xsi:schemaLocation='http://docs.api.rackspacecloud.com/repose/header-identity/v1.0 ../config/header-identity-configuration.xsd'>
+
+    <source-headers>
+        <% @headers.each do |header| %>
+        <header
+            id="<%= header['id'] %>"
+            <% if header.has_key? 'quality' %>
+            quality="<%= header['quality'] %>"
+            <% end %>
+            />
+        <% end %>
+    </source-headers>
+
+</header-identity>

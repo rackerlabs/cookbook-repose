@@ -102,6 +102,16 @@ default['repose']['header_normalization']['blacklist'] = [
   }
 ]
 
+default['repose']['header_identity']['cluster_id'] = ['all']
+default['repose']['header_identity']['headers'] = [
+  { 'id' => 'X-Auth-Token',
+    'quality' => 0.95
+  },
+  { 'id' => 'X-Forwarded-For',
+    'quality' => 0.5
+  }
+]
+
 default['repose']['ip_identity']['cluster_id'] = ['all']
 default['repose']['ip_identity']['quality'] = 0.2
 default['repose']['ip_identity']['white_list_quality'] = 1.0
