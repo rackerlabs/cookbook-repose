@@ -160,3 +160,7 @@ default['repose']['connection_pool']['connection_max_header_count'] = 100
 default['repose']['connection_pool']['connection_max_status_line_garbage'] = 100
 default['repose']['connection_pool']['tcp_nodelay'] = true
 default['repose']['connection_pool']['keepalive_timeout'] = 0
+
+default['repose']['translation']['cluster_id'] = ['all']
+default['repose']['translation']['request_translations'] = []
+default['repose']['translation']['response_translations'] = []

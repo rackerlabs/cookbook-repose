@@ -29,6 +29,7 @@ Available filters are:
   * DeRP
   * header-normalization
   * [content-type-stripper](https://repose.atlassian.net/wiki/display/REPOSE/Content+Type+Stripper+filter) (system-model only)
+  * [translation](https://repose.atlassian.net/wiki/display/REPOSE/Translation+filter)
 
 Other filters are available in Repose and may be added to this cookbook in a later revision.
 
@@ -256,6 +257,14 @@ The default blacklist is:
 * `node['repose']['connection_pool']['connection_max_status_line_garbage']` - Maximum number of lines allotted for garbage. Default is 100.
 * `node['repose']['connection_pool']['tcp_nodelay']` - Default is true.
 * `node['repose']['connection_pool']['keepalive_timeout']` - If a Keep-Alive header is not present in the response, the value of keepalive.timeout is evaluated. If this value is 0, the connection will be kept alive indefinitely. If the value is greater than 0, the connection will be kept alive for the number of milliseconds specified. Set to 1 to connect:close. Default is 0.
+
+## translation attributes
+
+* `node['repose']['translation']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
+* `node['repose']['translation']['request_translations']` - Enumerated translations that specify a chain of stylesheets to be applied to a request request body and the criteria for when the chain should be applied.
+* `node['repose']['translation']['response_translations']` - Enumerated translations that specify a chain of stylesheets to be applied to a request response body and the criteria for when the chain should be applied.
+
+The default values for request\_translations and response\_translations are `[]` because no sensable examples exist for a generic origin service. See the online documentation for configuration examples.
 
 # Recipes
 
