@@ -82,6 +82,8 @@ default['repose']['header_translation']['headers'] = [
 
 default['repose']['derp']['cluster_id'] = ['all']
 
+default['repose']['content_type_stripper']['cluster_id'] = ['all']
+
 default['repose']['header_normalization']['cluster_id'] = ['all']
 default['repose']['header_normalization']['whitelist'] = [
   { 'id' => 'credentials',

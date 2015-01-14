@@ -28,6 +28,7 @@ Available filters are:
   * header-translation
   * DeRP
   * header-normalization
+  * [content-type-stripper](https://repose.atlassian.net/wiki/display/REPOSE/Content+Type+Stripper+filter) (system-model only)
 
 Other filters are available in Repose and may be added to this cookbook in a later revision.
 
@@ -237,6 +238,10 @@ The default blacklist is:
   }
 ]
 ```
+
+## content-type-stripper attributes
+
+* `node['repose']['content_type_stripper']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
 
 ## connection-pool attributes
 
