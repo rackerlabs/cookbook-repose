@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:rax="http://docs.rackspace.com/api" xmlns:atom="http://www.w3.org/2005/Atom">
+<doc title="Feeds Catalog"/>
+<grammars>
+<include href="core_xsd/entry.xsd"/>
+<include href="core_xsd/feedsapi.xsd"/>
+</grammars>
+<resources base="http://localhost">
+ 
+<!-- Static paths for administration -->
+<resource id="buildinfo" path="buildinfo">
+<method name="GET"/>
+</resource>
+ 
+<!-- Resources exposed to observers (GET only) -->
+<resource id="observers"
+path="/"
+rax:roles="cloudfeeds:observer observer admin identity:user-admin">
+<!-- product events -->
+<resource id="backup_events_obs"
+path="backup/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudBackupTenant"/>
+<resource id="bigdata_events_obs"
+path="bigdata/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#BigDataTenant"/>
+<resource id="cbs_events_obs"
+path="cbs/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudBlockStorageTenant"/>
+<resource id="dbaas_events_obs"
+path="dbaas/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudDatabaseTenant"/>
+<resource id="dns_events_obs"
+path="dns/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudDNSTenant"/>
+<resource id="files_events_obs"
+path="files/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudFilesTenant"/>
+<resource id="glance_events_obs"
+path="glance/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#GlanceTenant"/>
+<resource id="identity_events_obs"
+path="identity/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudIdentityTenant"/>
+<resource id="lbaas_events_obs"
+path="lbaas/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudLoadBalancersTenant"/>
+<resource id="monitoring_events_obs"
+path="monitoring/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudMonitoringTenant"/>
+<resource id="nova_events_obs"
+path="nova/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudServersOpenStackTenant wadl/product.wadl#RHELTenant"/>
+<resource id="queues_events_obs"
+path="queues/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudQueuesTenant"/>
+<resource id="servers_events_obs"
+path="servers/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudServersTenant wadl/product.wadl#RHELTenant"/>
+<resource id="ssl_events_obs"
+path="ssl/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#SslTenant"/>
+<!-- Feeds Catalog -->
+<resource id="feedscatalog_obs"
+path="feedscatalog/catalog"
+type="wadl/feed.wadl#TenantFeedsCatalog"/>
+<!-- Test related feed -->
+<resource id="functest1_events_obs"
+path="functest1/events"
+type="wadl/feed.wadl#TenantAtomFeed
+wadl/product.wadl#BigDataTenant wadl/product.wadl#BigDataSummaryTenant
+wadl/product.wadl#CloudBackupTenant wadl/product.wadl#CloudBackupSummaryTenant
+wadl/product.wadl#CloudBlockStorageTenant wadl/product.wadl#CloudBlockStorageSummaryTenant
+wadl/product.wadl#CloudDatabaseTenant wadl/product.wadl#CloudDatabaseSummaryTenant
+wadl/product.wadl#CloudDNSTenant
+wadl/product.wadl#CloudFilesTenant wadl/product.wadl#CloudFilesSummaryTenant
+wadl/product.wadl#CloudIdentityTenant
+wadl/product.wadl#CloudLoadBalancersTenant wadl/product.wadl#CloudLoadBalancersSummaryTenant
+wadl/product.wadl#CloudMonitoringTenant wadl/product.wadl#CloudMonitoringSummaryTenant
+wadl/product.wadl#CloudQueuesTenant wadl/product.wadl#CloudQueuesSummaryTenant
+wadl/product.wadl#CloudServersTenant wadl/product.wadl#CloudServersSummaryTenant
+wadl/product.wadl#CloudServersOpenStackTenant wadl/product.wadl#CloudServersOpenStackSummaryTenant
+wadl/product.wadl#GlanceTenant wadl/product.wadl#GlanceSummaryTenant
+wadl/product.wadl#RHELTenant
+wadl/product.wadl#SslTenant"/>
+<resource id="functest2_events_obs"
+path="functest2/events"
+type="wadl/feed.wadl#TenantAtomFeed
+wadl/product.wadl#BigDataTenant wadl/product.wadl#BigDataSummaryTenant
+wadl/product.wadl#CloudBackupTenant wadl/product.wadl#CloudBackupSummaryTenant
+wadl/product.wadl#CloudBlockStorage wadl/product.wadl#CloudBlockStorageSummaryTenant
+wadl/product.wadl#CloudDatabaseTenant wadl/product.wadl#CloudDatabaseSummaryTenant
+wadl/product.wadl#CloudDNSTenant
+wadl/product.wadl#CloudFilesTenant wadl/product.wadl#CloudFilesSummaryTenant
+wadl/product.wadl#CloudIdentityTenant
+wadl/product.wadl#CloudLoadBalancersTenant wadl/product.wadl#CloudLoadBalancersSummaryTenant
+wadl/product.wadl#CloudMonitoringTenant wadl/product.wadl#CloudMonitoringSummaryTenant
+wadl/product.wadl#CloudQueuesTenant wadl/product.wadl#CloudQueuesSummaryTenant
+wadl/product.wadl#CloudServersTenant wadl/product.wadl#CloudServersSummaryTenant
+wadl/product.wadl#CloudServersOpenStackTenant wadl/product.wadl#CloudServersOpenStackSummaryTenant
+wadl/product.wadl#GlanceTenant wadl/product.wadl#GlanceSummaryTenant
+wadl/product.wadl#RHELTenant
+wadl/product.wadl#SslTenant"/>
+ 
+<resource path="/usagesummary/">
+<resource id="backup_usagesummary_events_obs"
+path="backup/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudBackupSummaryTenant"/>
+<resource id="bigdata_usagesummary_events_obs"
+path="bigdata/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#BigDataSummaryTenant"/>
+<resource id="cbs_usagesummary_events_obs"
+path="cbs/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudBlockStorageSummaryTenant"/>
+<resource id="dbaas_usagesummary_events_obs"
+path="dbaas/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudDatabaseSummaryTenant"/>
+<resource id="files_usagesummary_events_obs"
+path="files/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudFilesSummaryTenant"/>
+<resource id="glance_usagesummary_events_obs"
+path="glance/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#GlanceSummaryTenant"/>
+<resource id="lbaas_usagesummary_events_obs"
+path="lbaas/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudLoadBalancersSummaryTenant"/>
+<resource id="monitoring_usagesummary_events_obs"
+path="monitoring/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudMonitoringSummaryTenant"/>
+<resource id="nova_usagesummary_events_obs"
+path="nova/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudServersOpenStackSummaryTenant wadl/product.wadl#RHELSummaryTenant"/>
+<resource id="queues_usagesummary_events_obs"
+path="queues/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudQueuesSummaryTenant"/>
+<resource id="servers_usagesummary_events_obs"
+path="servers/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#CloudServersSummaryTenant wadl/product.wadl#RHELSummaryTenant"/>
+<resource id="ssl_usagesummary_events_obs"
+path="ssl/events"
+type="wadl/feed.wadl#TenantAtomFeed wadl/product.wadl#SslTenant"/>
+</resource>
+</resource>
+</resources>
+</application>

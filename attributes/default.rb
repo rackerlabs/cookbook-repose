@@ -192,3 +192,39 @@ default['repose']['uri_identity']['mappings'] = [
 ]
 default['repose']['uri_identity']['group'] = 'User_Standard'
 default['repose']['uri_identity']['quality'] = 0.5
+
+default['repose']['api_validator']['cluster_id'] = ['all']
+default['repose']['api_validator']['multi_role_match'] = true 
+default['repose']['api_validator']['delegating_quality'] = 0.6 
+default['repose']['api_validator']['validators'] = [
+  { 'role' => 'default',
+    'enable_api_coverage' => 'true',
+    'default' => 'true',
+    'wadl' => 'allfeeds_observer.wadl',
+    'dot_output' => '/var/log/repose/allfeeds_observer.dot',
+    'do_xsd_grammar_transform' => 'true',
+	'enable_pre_process_extension' => 'true',
+	'remove_dups' => 'true',
+	'xpath_version' => '2',
+	'xsl_engine' => 'XalanC',
+	'xsd_engine' => 'SaxonEE',
+	'join_xpath_checks' => 'true',
+	'check_headers' => 'true',
+	'enable_rax_roles' => 'true'
+  },
+  { 'role' => 'cloudfeeds:service-admin',
+    'enable_api_coverage' => [],
+    'default' => [],
+    'wadl' => 'allfeeds.wadl',
+    'dot_output' => '/var/log/repose/allfeeds.dot',
+    'do_xsd_grammar_transform' => 'true',
+	'enable_pre_process_extension' => 'true',
+	'remove_dups' => 'true',
+	'xpath_version' => '2',
+	'xsl_engine' => 'XalanC',
+	'xsd_engine' => 'SaxonEE',
+	'join_xpath_checks' => 'true',
+	'check_headers' => 'true',
+	'enable_rax_roles' => 'true'
+  }
+]

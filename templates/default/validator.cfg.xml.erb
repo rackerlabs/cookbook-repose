@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<validators multi-role-match="<%= @multi_role_match %>" xmlns="http://openrepose.org/repose/validator/v1.0">
+
+    <!-- delegating support has not yet been released 
+
+    <% unless @delegating_quality.nil? %>
+    <delegating quality="<%= @delegating_quality %>"/>
+    <% end %>
+	-->
+
+	<% @validators.each do |validator| %>
+	<validator
+        role="<%= validator['role'] %>"
+
+        <% unless validator['enable_api_coverage'].empty? %>
+        enable-api-coverage="<%= validator['enable_api_coverage'] %>"
+        <% end %>
+
+        <% unless validator['default'].empty? %>
+        default="<%= validator['default'] %>"
+        <% end %>
+
+        wadl="<%= validator['wadl'] %>"
+
+        <% unless validator['dot_output'].empty? %>
+        dot-output="<%= validator['dot_output'] %>"
+        <% end %>
+
+        <% unless validator['do_xsd_grammar_transform'].empty? %>
+        do-xsd-grammar-transform="<%= validator['do_xsd_grammar_transform'] %>"
+        <% end %>
+
+        <% unless validator['enable_pre_process_extension'].empty? %>
+        enable-pre-process-extension="<%= validator['enable_pre_process_extension'] %>"
+        <% end %>
+
+        <% unless validator['remove_dups'].empty? %>
+        remove-dups="<%= validator['remove_dups'] %>"
+        <% end %>
+
+        <% unless validator['xpath_version'].empty? %>
+        xpath-version="<%= validator['xpath_version'] %>"
+        <% end %>
+
+        <% unless validator['xsl_engine'].empty? %>
+        xsl-engine="<%= validator['xsl_engine'] %>"
+        <% end %>
+
+        <% unless validator['xsd_engine'].empty? %>
+        xsd-engine="<%= validator['xsd_engine'] %>"
+        <% end %>
+
+        <% unless validator['join_xpath_checks'].empty? %>
+        join-xpath-checks="<%= validator['join_xpath_checks'] %>"
+        <% end %>
+
+        <% unless validator['check_headers'].empty? %>
+        check-headers="<%= validator['check_headers'] %>"
+        <% end %>
+
+        <% unless validator['enable_rax_roles'].empty? %>
+        enable-rax-roles="<%= validator['enable_rax_roles'] %>"
+        <% end %>
+    />
+	<% end %>
+</validators>
