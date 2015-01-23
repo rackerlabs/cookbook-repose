@@ -281,6 +281,7 @@ The default blacklist is:
 ## translation attributes
 
 * `node['repose']['translation']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
+* `node['repose']['translation']['allow_doctype_decl']` - If false, then any request/response body that contains an DOCTYPE section will be rejected.  If true, then DOCTYPE sections will be allowed.
 * `node['repose']['translation']['request_translations']` - Enumerated translations that specify a chain of stylesheets to be applied to a request request body and the criteria for when the chain should be applied.
 * `node['repose']['translation']['response_translations']` - Enumerated translations that specify a chain of stylesheets to be applied to a request response body and the criteria for when the chain should be applied.
 
