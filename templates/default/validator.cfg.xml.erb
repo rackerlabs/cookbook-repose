@@ -12,53 +12,53 @@
 	<validator
         role="<%= validator['role'] %>"
 
-        <% unless validator['enable_api_coverage'].empty? %>
+        <% if validator.has_key? 'enable_api_coverage' %>
         enable-api-coverage="<%= validator['enable_api_coverage'] %>"
         <% end %>
 
-        <% unless validator['default'].empty? %>
+        <% if validator.has_key? 'default' %>
         default="<%= validator['default'] %>"
         <% end %>
 
         wadl="<%= validator['wadl'] %>"
 
-        <% unless validator['dot_output'].empty? %>
+        <% if validator.has_key? 'dot_output' %>
         dot-output="<%= validator['dot_output'] %>"
         <% end %>
 
-        <% unless validator['do_xsd_grammar_transform'].empty? %>
+        <% if validator.has_key? 'do_xsd_grammar_transform' %>
         do-xsd-grammar-transform="<%= validator['do_xsd_grammar_transform'] %>"
         <% end %>
 
-        <% unless validator['enable_pre_process_extension'].empty? %>
+        <% if validator.has_key? 'enable_pre_process_extension' %>
         enable-pre-process-extension="<%= validator['enable_pre_process_extension'] %>"
         <% end %>
 
-        <% unless validator['remove_dups'].empty? %>
+        <% if validator.has_key? 'remove_dups' %>
         remove-dups="<%= validator['remove_dups'] %>"
         <% end %>
 
-        <% unless validator['xpath_version'].empty? %>
+        <% if validator.has_key? 'xpath_version' %>
         xpath-version="<%= validator['xpath_version'] %>"
         <% end %>
 
-        <% unless validator['xsl_engine'].empty? %>
+        <% if validator.has_key? 'xsl_engine' %>
         xsl-engine="<%= validator['xsl_engine'] %>"
         <% end %>
 
-        <% unless validator['xsd_engine'].empty? %>
+        <% if validator.has_key? 'xsd_engine' %>
         xsd-engine="<%= validator['xsd_engine'] %>"
         <% end %>
 
-        <% unless validator['join_xpath_checks'].empty? %>
+        <% if validator.has_key? 'join_xpath_checks' %>
         join-xpath-checks="<%= validator['join_xpath_checks'] %>"
         <% end %>
 
-        <% unless validator['check_headers'].empty? %>
+        <% if validator.has_key? 'check_headers' %>
         check-headers="<%= validator['check_headers'] %>"
         <% end %>
 
-        <% unless validator['enable_rax_roles'].empty? %>
+        <% if validator.has_key? 'enable_rax_roles' %>
         enable-rax-roles="<%= validator['enable_rax_roles'] %>"
         <% end %>
     />

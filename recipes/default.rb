@@ -32,6 +32,7 @@ service_cluster_map = {
 
 filters = node['repose']['filters']
 filter_cluster_map = {
+  'api-validator'         => node['repose']['api_validator'        ]['cluster_id'],
   'client-auth'           => node['repose']['client_auth'          ]['cluster_id'],
   'content-type-stripper' => node['repose']['content_type_stripper']['cluster_id'],
   'derp'                  => node['repose']['derp'                 ]['cluster_id'],
@@ -43,8 +44,7 @@ filter_cluster_map = {
   'rate-limiting'         => node['repose']['rate_limiting'        ]['cluster_id'],
   'slf4j-http-logging'    => node['repose']['slf4j_http_logging'   ]['cluster_id'],
   'translation'           => node['repose']['translation'          ]['cluster_id'],
-  'uri-identity'          => node['repose']['uri_identity'         ]['cluster_id'],
-  'api-validator'         => node['repose']['api_validator'        ]['cluster_id']
+  'uri-identity'          => node['repose']['uri_identity'         ]['cluster_id']
 }
 
 template "#{node['repose']['config_directory']}/system-model.cfg.xml" do

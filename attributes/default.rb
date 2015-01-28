@@ -213,8 +213,6 @@ default['repose']['api_validator']['validators'] = [
 	'enable_rax_roles' => 'true'
   },
   { 'role' => 'cloudfeeds:service-admin',
-    'enable_api_coverage' => [],
-    'default' => [],
     'wadl' => 'allfeeds.wadl',
     'dot_output' => '/var/log/repose/allfeeds.dot',
     'do_xsd_grammar_transform' => 'true',

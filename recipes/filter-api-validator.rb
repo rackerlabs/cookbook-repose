@@ -24,12 +24,12 @@ template "#{node['repose']['config_directory']}/validator.cfg.xml" do
   notifies :restart, 'service[repose-valve]'
 end
 
-cookbook_file "allfeeds_observer.wadl" do
-  path "#{node['repose']['config_directory']}/allfeeds_observer.wadl"
-  action :create_if_missing
-end
-
-cookbook_file "allfeeds.wadl" do
-  path "#{node['repose']['config_directory']}/allfeeds.wadl"
-  action :create_if_missing
+node['repose']['api_validator']['validators'].each do |f|
+  if f.has_key?("wadl") 
+    wfile = f['wadl']
+    cookbook_file wfile do
+      path "#{node['repose']['config_directory']}/#{wfile}"
+      action :create_if_missing
+    end
+  end
 end
