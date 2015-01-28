@@ -29,4 +29,3 @@ describe_recipe 'repose::default' do
   end
 
 end
-

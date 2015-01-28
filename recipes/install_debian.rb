@@ -15,9 +15,9 @@ apt_repository 'openrepose' do
   only_if { node['repose']['repo']['managed'] }
 end
 
-%w{ repose-valve
+%w( repose-valve
     repose-filter-bundle
-}.each do |p|
+).each do |p|
   package p do
     options node['repose']['install_opts']
     version node['repose']['version']

@@ -17,8 +17,8 @@ template "#{node['repose']['config_directory']}/header-normalization.cfg.xml" do
   group node['repose']['group']
   mode '0644'
   variables(
-    :whitelist => node['repose']['header_normalization']['whitelist'],
-    :blacklist => node['repose']['header_normalization']['blacklist']
+    whitelist: node['repose']['header_normalization']['whitelist'],
+    blacklist: node['repose']['header_normalization']['blacklist']
   )
   notifies :restart, 'service[repose-valve]'
 end

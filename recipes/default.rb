@@ -8,7 +8,7 @@
 include_recipe 'repose::install'
 
 service 'repose-valve' do
-  supports :restart => true, :status => true
+  supports restart: true, status: true
   action [:enable, :start]
 end
 
@@ -16,7 +16,7 @@ include_recipe 'repose::load_peers' if node['repose']['peer_search_enabled']
 
 unless node['repose']['cluster_id'].nil?
   log "Please note that node['repose']['cluster_id'] is deprecated. We've set node['repose']['cluster_ids'] to [#{node['repose']['cluster_id']}] in an effort to maintain compatability with earlier versions. This functionality will be removed in a future version."
-  node.normal['repose']['cluster_ids'] = [ node['repose']['cluster_id'] ]
+  node.normal['repose']['cluster_ids'] = [node['repose']['cluster_id']]
 end
 
 directory "#{node['repose']['config_directory']}" do
@@ -27,23 +27,23 @@ end
 
 services = node['repose']['services'].reject { |x| x == 'connection-pool' }
 service_cluster_map = {
-  'dist-datastore' => node['repose']['dist_datastore' ]['cluster_id']
+  'dist-datastore' => node['repose']['dist_datastore']['cluster_id']
 }
 
 filters = node['repose']['filters']
 filter_cluster_map = {
-  'client-auth'           => node['repose']['client_auth'          ]['cluster_id'],
+  'client-auth'           => node['repose']['client_auth']['cluster_id'],
   'content-type-stripper' => node['repose']['content_type_stripper']['cluster_id'],
-  'derp'                  => node['repose']['derp'                 ]['cluster_id'],
-  'header-identity'       => node['repose']['header_identity'      ]['cluster_id'],
-  'header-normalization'  => node['repose']['header_normalization' ]['cluster_id'],
-  'header-translation'    => node['repose']['header_translation'   ]['cluster_id'],
-  'ip-identity'           => node['repose']['ip_identity'          ]['cluster_id'],
-  'rackspace-auth-user'   => node['repose']['rackspace_auth_user'  ]['cluster_id'],
-  'rate-limiting'         => node['repose']['rate_limiting'        ]['cluster_id'],
-  'slf4j-http-logging'    => node['repose']['slf4j_http_logging'   ]['cluster_id'],
-  'translation'           => node['repose']['translation'          ]['cluster_id'],
-  'uri-identity'          => node['repose']['uri_identity'         ]['cluster_id']
+  'derp'                  => node['repose']['derp']['cluster_id'],
+  'header-identity'       => node['repose']['header_identity']['cluster_id'],
+  'header-normalization'  => node['repose']['header_normalization']['cluster_id'],
+  'header-translation'    => node['repose']['header_translation']['cluster_id'],
+  'ip-identity'           => node['repose']['ip_identity']['cluster_id'],
+  'rackspace-auth-user'   => node['repose']['rackspace_auth_user']['cluster_id'],
+  'rate-limiting'         => node['repose']['rate_limiting']['cluster_id'],
+  'slf4j-http-logging'    => node['repose']['slf4j_http_logging']['cluster_id'],
+  'translation'           => node['repose']['translation']['cluster_id'],
+  'uri-identity'          => node['repose']['uri_identity']['cluster_id']
 }
 
 template "#{node['repose']['config_directory']}/system-model.cfg.xml" do

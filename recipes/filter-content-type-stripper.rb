@@ -13,5 +13,3 @@ unless node['repose']['filters'].include? 'content-type-stripper'
 end
 
 # No configuration template required - content-type-stripper doesn't have a config
-
-
