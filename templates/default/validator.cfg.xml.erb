@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<validators multi-role-match="<%= @multi_role_match %>" xmlns="http://openrepose.org/repose/validator/v1.0">
+
+    <!-- delegating support has not yet been released 
+
+    <% unless @delegating_quality.nil? %>
+    <delegating quality="<%= @delegating_quality %>"/>
+    <% end %>
+	-->
+
+	<% @validators.each do |validator| %>
+	<validator
+        role="<%= validator['role'] %>"
+
+        <% if validator.has_key? 'enable_api_coverage' %>
+        enable-api-coverage="<%= validator['enable_api_coverage'] %>"
+        <% end %>
+
+        <% if validator.has_key? 'default' %>
+        default="<%= validator['default'] %>"
+        <% end %>
+
+        wadl="<%= validator['wadl'] %>"
+
+        <% if validator.has_key? 'dot_output' %>
+        dot-output="<%= validator['dot_output'] %>"
+        <% end %>
+
+        <% if validator.has_key? 'do_xsd_grammar_transform' %>
+        do-xsd-grammar-transform="<%= validator['do_xsd_grammar_transform'] %>"
+        <% end %>
+
+        <% if validator.has_key? 'enable_pre_process_extension' %>
+        enable-pre-process-extension="<%= validator['enable_pre_process_extension'] %>"
+        <% end %>
+
+        <% if validator.has_key? 'remove_dups' %>
+        remove-dups="<%= validator['remove_dups'] %>"
+        <% end %>
+
+        <% if validator.has_key? 'xpath_version' %>
+        xpath-version="<%= validator['xpath_version'] %>"
+        <% end %>
+
+        <% if validator.has_key? 'xsl_engine' %>
+        xsl-engine="<%= validator['xsl_engine'] %>"
+        <% end %>
+
+        <% if validator.has_key? 'xsd_engine' %>
+        xsd-engine="<%= validator['xsd_engine'] %>"
+        <% end %>
+
+        <% if validator.has_key? 'join_xpath_checks' %>
+        join-xpath-checks="<%= validator['join_xpath_checks'] %>"
+        <% end %>
+
+        <% if validator.has_key? 'check_headers' %>
+        check-headers="<%= validator['check_headers'] %>"
+        <% end %>
+
+        <% if validator.has_key? 'enable_rax_roles' %>
+        enable-rax-roles="<%= validator['enable_rax_roles'] %>"
+        <% end %>
+    />
+	<% end %>
+</validators>

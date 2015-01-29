@@ -88,7 +88,7 @@ default['repose']['header_normalization']['cluster_id'] = ['all']
 default['repose']['header_normalization']['whitelist'] = [
   { 'id' => 'credentials',
     'uri_regex' => '/servers/(.*)',
-    'headers'   => ['X-Auth-Key','X-Auth-User']
+    'headers'   => ['X-Auth-Key', 'X-Auth-User']
   },
   { 'id' => 'modification',
     'uri_regex' => '/resource/(.*)',
@@ -98,7 +98,7 @@ default['repose']['header_normalization']['whitelist'] = [
 ]
 default['repose']['header_normalization']['blacklist'] = [
   { 'id' => 'rate-limit-headers',
-    'headers'   => ['X-PP-User','X-PP-Groups']
+    'headers'   => ['X-PP-User', 'X-PP-Groups']
   }
 ]
 
@@ -192,3 +192,37 @@ default['repose']['uri_identity']['mappings'] = [
 ]
 default['repose']['uri_identity']['group'] = 'User_Standard'
 default['repose']['uri_identity']['quality'] = 0.5
+
+default['repose']['api_validator']['cluster_id'] = ['all']
+default['repose']['api_validator']['multi_role_match'] = true
+default['repose']['api_validator']['delegating_quality'] = 0.6
+default['repose']['api_validator']['validators'] = [
+  { 'role' => 'default',
+    'enable_api_coverage' => 'true',
+    'default' => 'true',
+    'wadl' => 'default.wadl',
+    'dot_output' => '/var/log/repose/default.dot',
+    'do_xsd_grammar_transform' => 'true',
+    'enable_pre_process_extension' => 'true',
+    'remove_dups' => 'true',
+    'xpath_version' => '2',
+    'xsl_engine' => 'XalanC',
+    'xsd_engine' => 'Xerces',
+    'join_xpath_checks' => 'true',
+    'check_headers' => 'true',
+    'enable_rax_roles' => 'true'
+  },
+  { 'role' => 'admin',
+    'wadl' => 'admin.wadl',
+    'dot_output' => '/var/log/repose/admin.dot',
+    'do_xsd_grammar_transform' => 'true',
+    'enable_pre_process_extension' => 'true',
+    'remove_dups' => 'true',
+    'xpath_version' => '2',
+    'xsl_engine' => 'XalanC',
+    'xsd_engine' => 'Xerces',
+    'join_xpath_checks' => 'true',
+    'check_headers' => 'false',
+    'enable_rax_roles' => 'true'
+  }
+]
