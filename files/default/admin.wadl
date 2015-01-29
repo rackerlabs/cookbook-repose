@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rax="http://docs.rackspace.com/api" >
+  <resources base="http://localhost">
+
+    <resource path="/admin_resource">
+      <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="template" name="id"/>
+      <method name="PUT" id="adminPut">
+        <response>
+          <representation mediaType="application/xml"/>
+        </response>
+      </method>
+      <method name="DELETE" id="adminDelete"/>
+      <method name="GET" id="adminGet">
+        <request>
+          <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="search"/>
+        </request>
+        <response>
+          <representation mediaType="application/xml"/>
+        </response>
+      </method>
+      <method name="POST" id="adminPost">
+        <request>
+          <representation mediaType="application/xml"/>
+        </request>
+        <response>
+          <representation mediaType="*/*"/>
+        </response>
+      </method>
+    </resource>
+
+  </resources>
+</application>
