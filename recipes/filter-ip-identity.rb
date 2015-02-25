@@ -17,11 +17,9 @@ template "#{node['repose']['config_directory']}/ip-identity.cfg.xml" do
   group node['repose']['group']
   mode '0644'
   variables(
-    :quality => node['repose']['ip_identity']['quality'],
-    :white_list_quality => node['repose']['ip_identity']['white_list_quality'],
-    :white_list_ip_addresses => node['repose']['ip_identity']['white_list_ip_addresses']
+    quality: node['repose']['ip_identity']['quality'],
+    white_list_quality: node['repose']['ip_identity']['white_list_quality'],
+    white_list_ip_addresses: node['repose']['ip_identity']['white_list_ip_addresses']
   )
   notifies :restart, 'service[repose-valve]'
 end
-
-

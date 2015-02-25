@@ -2,17 +2,16 @@ class Chef
   module RackHelpers
     module Repose
       class << self
-
         def peers(nodes)
           nodes = [nodes] if nodes.class == Chef::Node
-          nodes.map{ |node| node_to_peer(node) }
+          nodes.map { |node| node_to_peer(node) }
         end
 
         def node_to_peer(node)
-          unless node['repose']['cluster_id'].nil?
-            cluster_ids = [ node['repose']['cluster_id'] ]
-          else
+          if node['repose']['cluster_id'].nil?
             cluster_ids = node['repose']['cluster_ids']
+          else
+            cluster_ids = [node['repose']['cluster_id']]
           end
 
           cluster_ids.to_a.map.with_index do |cluster_id, i|
@@ -25,7 +24,6 @@ class Chef
             }
           end
         end
-
       end
     end
   end

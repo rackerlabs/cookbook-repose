@@ -352,6 +352,11 @@ This cookbook includes support for Vagrant. Start the VM by following these step
 
 # Tests
 
+Run the Ruby linter with
+```
+rubocop --config .rubocop_todo.yml
+```
+
 This cookbook includes support for test-kitchen and minitest. Run the test suite with
 
 ```

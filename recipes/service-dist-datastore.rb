@@ -17,10 +17,10 @@ template "#{node['repose']['config_directory']}/dist-datastore.cfg.xml" do
   group node['repose']['group']
   mode '0644'
   variables(
-    :allow_all => node['repose']['dist_datastore']['allow_all'],
-    :allowed_hosts => node['repose']['dist_datastore']['allowed_hosts'],
-    :cluster_ids => node['repose']['cluster_ids'],
-    :port => node['repose']['dist_datastore']['port']
+    allow_all: node['repose']['dist_datastore']['allow_all'],
+    allowed_hosts: node['repose']['dist_datastore']['allowed_hosts'],
+    cluster_ids: node['repose']['cluster_ids'],
+    port: node['repose']['dist_datastore']['port']
   )
   notifies :restart, 'service[repose-valve]'
 end
