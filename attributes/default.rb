@@ -192,3 +192,6 @@ default['repose']['uri_identity']['mappings'] = [
 ]
 default['repose']['uri_identity']['group'] = 'User_Standard'
 default['repose']['uri_identity']['quality'] = 0.5
+
+default['repose']['api_validator']['cluster_id'] = ['all']
+default['repose']['api_validator']['enable_rax_roles'] = true

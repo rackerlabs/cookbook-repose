@@ -32,6 +32,7 @@ service_cluster_map = {
 
 filters = node['repose']['filters']
 filter_cluster_map = {
+  'api-validator'         => node['repose']['api_validator'        ]['cluster_id'],
   'client-auth'           => node['repose']['client_auth'          ]['cluster_id'],
   'content-type-stripper' => node['repose']['content_type_stripper']['cluster_id'],
   'derp'                  => node['repose']['derp'                 ]['cluster_id'],

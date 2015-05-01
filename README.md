@@ -33,6 +33,7 @@ Available filters are:
   * [rackspace-auth-user](https://repose.atlassian.net/wiki/display/REPOSE/Rackspace+Auth+User+filter)
   * [header-identity](https://repose.atlassian.net/wiki/display/REPOSE/Header+Identity+filter)
   * [uri-identity](https://repose.atlassian.net/wiki/display/REPOSE/URI+Identity+filter)
+  * [api-validator](https://repose.atlassian.net/wiki/display/REPOSE/API+Validation+filter)
 
 Other filters are available in Repose and may be added to this cookbook in a later revision.
 
@@ -312,6 +313,13 @@ The default mappings are:
   '.*/servers/(\w*)/.*'
 ]
 ```
+
+## api-validator attributes
+
+* `node['repose']['api_validator']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
+* `node['repose']['api_validator']['wadl']` - The WADL/Checker Document location can be specified as an absolute path or as a relative path to Repose's configuration root directory. The path is not a URL; it is a path on the filesystem.
+* `node['repose']['api_validator']['dot_output']` - Dot output file for this validator.
+* `node['repose']['api_validator']['enable_rax_roles']` - Enables the use of rax:roles in WADL files to determine resource access. If set to true, rax:roles defined in the supplied WADL files will be used to determine resource access and check-headers will also be enabled regardless of your setting. If set to false, rax:roles defined in WADL files are not used to determine resource access. Default is false.
 
 # Recipes
 
