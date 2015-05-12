@@ -317,9 +317,11 @@ The default mappings are:
 ## api-validator attributes
 
 * `node['repose']['api_validator']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
+* `node['repose']['api_validator']['enable_rax_roles']` - Enables the use of rax:roles in WADL files to determine resource access. If set to true, rax:roles defined in the supplied WADL files will be used to determine resource access and check-headers will also be enabled regardless of your setting. If set to false, rax:roles defined in WADL files are not used to determine resource access. Default is false.
 * `node['repose']['api_validator']['wadl']` - The WADL/Checker Document location can be specified as an absolute path or as a relative path to Repose's configuration root directory. The path is not a URL; it is a path on the filesystem.
 * `node['repose']['api_validator']['dot_output']` - Dot output file for this validator.
-* `node['repose']['api_validator']['enable_rax_roles']` - Enables the use of rax:roles in WADL files to determine resource access. If set to true, rax:roles defined in the supplied WADL files will be used to determine resource access and check-headers will also be enabled regardless of your setting. If set to false, rax:roles defined in WADL files are not used to determine resource access. Default is false.
+
+The files pointed to by `node['repose']['api_validator']['wadl']` and `node['repose']['api_validator']['dot_output']` should be created either in a wrapper or in the application cookbook.
 
 # Recipes
 
