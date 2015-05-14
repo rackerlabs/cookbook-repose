@@ -62,12 +62,23 @@ template "#{node['repose']['config_directory']}/system-model.cfg.xml" do
     service_cluster_map: service_cluster_map,
     filters: filters,
     filter_cluster_map: filter_cluster_map,
-    endpoints: node['repose']['endpoints']
+    endpoints: node['repose']['endpoints'],
+    version: node['repose']['version']
   )
   notifies :restart, 'service[repose-valve]'
 end
 
 template "#{node['repose']['config_directory']}/log4j.properties" do
+  owner node['repose']['owner']
+  group node['repose']['group']
+  mode '0644'
+  variables(
+    loglevel: node['repose']['loglevel']
+  )
+  notifies :restart, 'service[repose-valve]'
+end
+
+template "#{node['repose']['config_directory']}/log4j2.xml" do
   owner node['repose']['owner']
   group node['repose']['group']
   mode '0644'
@@ -85,7 +96,8 @@ template "#{node['repose']['config_directory']}/container.cfg.xml" do
     connection_timeout: node['repose']['connection_timeout'],
     read_timeout: node['repose']['read_timeout'],
     deploy_auto_clean: node['repose']['deploy_auto_clean'],
-    filter_check_interval: node['repose']['filter_check_interval']
+    filter_check_interval: node['repose']['filter_check_interval'],
+    version: node['repose']['version']
   )
   notifies :restart, 'service[repose-valve]'
 end

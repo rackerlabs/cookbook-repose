@@ -1,4 +1,8 @@
+<% if @version.nil? || @version.split('.')[0].to_i > 6 %>
+<rackspace-auth-user xmlns='http://docs.openrepose.org/repose/rackspace-auth-user/v1.0'>
+<% else %>
 <rackspace-auth-user xmlns='http://docs.openrepose.org/rackspace-auth-user/v1.0'>
+<% end %>  
     <!-- Both of the version configurations are optional; however, if neither are specified, this filter is a no-op. -->
     <% if @v1_1['enabled'] %>
     <v1_1 content-body-read-limit="<%= @v1_1['read_limit'] %>">

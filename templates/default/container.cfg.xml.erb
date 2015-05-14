@@ -5,6 +5,10 @@
     <deployment-config connection-timeout="<%= @connection_timeout %>" read-timeout="<%= @read_timeout %>">
         <deployment-directory auto-clean="<%= @deploy_auto_clean %>">/var/repose</deployment-directory>
         <artifact-directory check-interval="<%= @filter_check_interval %>">/usr/share/repose/filters</artifact-directory>
+<% if @version.nil? || @version.split('.')[0].to_i > 6 %>
+        <logging-configuration href="file:///etc/repose/log4j2.xml" />
+<% else %>
         <logging-configuration href="log4j.properties" />
+<% end %>  
     </deployment-config>
 </repose-container>
