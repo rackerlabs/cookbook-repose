@@ -172,6 +172,7 @@ default['repose']['connection_pool']['tcp_nodelay'] = true
 default['repose']['connection_pool']['keepalive_timeout'] = 0
 
 default['repose']['translation']['cluster_id'] = ['all']
+default['repose']['translation']['allow_doctype_decl'] = false
 default['repose']['translation']['request_translations'] = []
 default['repose']['translation']['response_translations'] = []
 
