@@ -60,6 +60,10 @@ default['repose']['endpoints'] = [
   }
 ]
 
+default['repose']['add_header']['cluster_id'] = ['all']
+default['repose']['add_header']['request_headers'] = []
+default['repose']['add_header']['response_headers'] = []
+
 default['repose']['dist_datastore']['cluster_id'] = ['all']
 default['repose']['dist_datastore']['allow_all'] = false
 default['repose']['dist_datastore']['allowed_hosts'] = ['127.0.0.1']
@@ -162,8 +166,8 @@ default['repose']['rate_limiting']['limit_groups'] = [
     'limits' => [
       { 'id' => 'all',
         'uri' => '*',
-        'uri-regex' => '/.*',
-        'http-methods' => 'POST PUT GET DELETE',
+        'uri_regex' => '/.*',
+        'http_methods' => 'POST PUT GET DELETE',
         'unit' => 'MINUTE',
         'value' => 10
       }
@@ -223,3 +227,5 @@ default['repose']['api_validator']['cluster_id'] = ['all']
 default['repose']['api_validator']['enable_rax_roles'] = true
 default['repose']['api_validator']['wadl'] = nil
 default['repose']['api_validator']['dot_output'] = nil
+default['repose']['api_validator']['enable_rax_roles'] = false
+default['repose']['api_validator']['enable_api_coverage'] = true

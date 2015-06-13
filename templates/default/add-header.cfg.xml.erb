@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<% if @version.nil? || @version.split('.')[0].to_i > 6 %>
 <add-headers xmlns="http://docs.api.rackspacecloud.com/repose/add-header/v1.0">
+<% else %>
+<add-headers xmlns="http://docs.openrepose.org/repose/add-header/v1.0">
+<% end %>  
   <!-- This section is for headers to add in the request -->
   <% if !@requests.empty? %>
     <request>

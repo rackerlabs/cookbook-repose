@@ -19,6 +19,8 @@ template "#{node['repose']['config_directory']}/add-header.cfg.xml" do
   notifies :restart, 'service[repose-valve]'
   variables(
     requests: node['repose']['add_header']['requests'],
-    responses: node['repose']['add_header']['responses']
+    responses: node['repose']['add_header']['responses'],
+    version: node['repose']['version']
+
   )
 end
