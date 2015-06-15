@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<translation xmlns="http://docs.rackspacecloud.com/repose/translation/v1.0" allow-doctype-decl="<%= @allow_doctype_decl %>" >
+<% if !@version.nil? && @version.split('.')[0].to_i < 7 %>
+<translation xmlns="http://docs.rackspacecloud.com/repose/translation/v1.0" allow-doctype-decl="<%= @allow_doctype_decl %>">
+<% else %>
+<translation xmlns="http://docs.openrepose.org/repose/translation/v1.0" allow-doctype-decl="<%= @allow_doctype_decl %>">
+<% end %>
     <% unless @request_translations.empty? %>
     <request-translations>
         <% @request_translations.each do |translation| %>

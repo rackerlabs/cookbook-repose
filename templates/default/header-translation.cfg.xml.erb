@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<% if !@version.nil? && @version.split('.')[0].to_i < 7 %>
 <header-translation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://docs.api.rackspacecloud.com/repose/header-translation/v1.0 ../config/header-translation.xsd" xmlns="http://docs.api.rackspacecloud.com/repose/header-translation/v1.0">
+<% else %>
+<header-translation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://docs.openrepose.org/repose/header-translation/v1.0 ../config/header-translation.xsd"
+                    xmlns="http://docs.openrepose.org/repose/header-translation/v1.0">
+<% end %>
 	<% @headers.each do |header| %>
 	<header
     original-name="<%= header['original_name'] %>"

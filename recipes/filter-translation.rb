@@ -19,7 +19,8 @@ template "#{node['repose']['config_directory']}/translation.cfg.xml" do
   variables(
     allow_doctype_decl: node['repose']['translation']['allow_doctype_decl'],
     request_translations: node['repose']['translation']['request_translations'],
-    response_translations: node['repose']['translation']['response_translations']
+    response_translations: node['repose']['translation']['response_translations'],
+    version: node['repose']['version']
   )
   notifies :restart, 'service[repose-valve]'
 end
