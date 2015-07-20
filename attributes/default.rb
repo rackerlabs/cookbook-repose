@@ -134,6 +134,20 @@ default['repose']['client_auth']['endpoints_in_header'] = false
 default['repose']['client_auth']['white_list'] = false
 default['repose']['client_auth']['uri_regex'] = nil
 
+default['repose']['client_authorization']['cluster_id'] = 'all'
+default['repose']['client_authorization']['username_admin'] = 'admin'
+default['repose']['client_authorization']['password_admin'] = 'password'
+default['repose']['client_authorization']['auth_uri'] = 'https://auth.api.rackspacecloud.com/v1.1/auth'
+default['repose']['client_authorization']['tenant_id_admin'] = nil
+default['repose']['client_authorization']['endpoint_list_ttl'] = 300
+default['repose']['client_authorization']['connection_pool_id'] = nil
+default['repose']['client_authorization']['service_endpoint'] = 'https://exampleservice.api.rackspacecloud.com/v1.0'
+default['repose']['client_authorization']['service_region'] = nil
+default['repose']['client_authorization']['service_name'] = nil
+default['repose']['client_authorization']['service_type'] = nil
+default['repose']['client_authorization']['ignore_tenant_roles'] = []
+default['repose']['client_authorization']['roles'] = []
+default['repose']['client_authorization']['delegating_quality'] = nil
 
 default['repose']['rate_limiting']['cluster_id'] = ['all']
 default['repose']['rate_limiting']['uri_regex'] = '/limits'
