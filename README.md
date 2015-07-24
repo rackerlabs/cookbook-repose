@@ -34,6 +34,7 @@ Available filters are:
   * [header-identity](https://repose.atlassian.net/wiki/display/REPOSE/Header+Identity+filter)
   * [uri-identity](https://repose.atlassian.net/wiki/display/REPOSE/URI+Identity+filter)
   * [api-validator](https://repose.atlassian.net/wiki/display/REPOSE/API+Validation+filter)
+  * [client-authorization](https://repose.atlassian.net/wiki/display/REPOSE/Client+Authorization+filter)
 
 Other filters are available in Repose and may be added to this cookbook in a later revision.
 
@@ -323,6 +324,22 @@ The default mappings are:
 * `node['repose']['api_validator']['dot_output']` - Dot output file for this validator.
 
 The files pointed to by `node['repose']['api_validator']['wadl']` and `node['repose']['api_validator']['dot_output']` should be created either in a wrapper or in the application cookbook.
+
+## client-authorization attributes
+
+* `node['repose']['client_authorization']['username_admin']` - Adminstrator username making auth-n requests for clients.
+* `node['repose']['client_authorization']['password_admin']` - Adminstrator password making auth-n requests for clients.
+* `node['repose']['client_authorization']['auth_uri']` - URI for the authentication service.
+* `node['repose']['client_authorization']['tenant_id_admin']` - Optional. Tenant ID for the auth user.
+* `node['repose']['client_authorization']['endpoint_list_ttl']` - Optional. Time to live in seconds for cached endpoint listings.
+* `node['repose']['client_authorization']['connection_pool_id']` - Optional. ID of connection to service pool.
+* `node['repose']['client_authorization']['service_endpoint']` - The URI to expect in the client's catalog.
+* `node['repose']['client_authorization']['service_region']` - Optional. The service region to expect in the client's catalog.
+* `node['repose']['client_authorization']['service_name']` - Optional. The service name to expect in the client's catalog.
+* `node['repose']['client_authorization']['service_type']` - Optional. The service type to expect in the client's catalog.
+* `node['repose']['client_authorization']['ignore_tenant_roles']` - Optional. List of roles that bypass the tenant requirement check.
+* `node['repose']['client_authorization']['roles']` - Optional. List of roles that bypass the tenant requirement check.
+* `node['repose']['client_authorization']['delegating_quality']` - Optional. A double in the range [0..1] assigned to the delegation header. Used to organize delegation order by priority.
 
 # Recipes
 

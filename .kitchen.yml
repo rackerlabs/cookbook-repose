@@ -32,6 +32,7 @@ suites:
     "recipe[repose::filter-rate-limiting]",
     "recipe[repose::filter-translation]",
     "recipe[repose::filter-content-type-stripper]",
+    "recipe[repose::filter-client-authorization]",
     "recipe[repose::service-connection-pool]",
     "recipe[repose::service-dist-datastore]",
     "recipe[repose::default]",
