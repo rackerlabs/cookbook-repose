@@ -12,7 +12,7 @@ unless node['repose']['filters'].include? 'client-authorization'
   node.normal['repose']['filters'] = filters
 end
 
-template "#{node['repose']['config_directory']}/client-authorization.cfg.xml" do
+template "#{node['repose']['config_directory']}/openstack-authorization.cfg.xml" do
   owner node['repose']['owner']
   group node['repose']['group']
   mode '0644'
