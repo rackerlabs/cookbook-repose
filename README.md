@@ -6,7 +6,7 @@ This cookbook manages Repose.
 
 # Requirements
 
-Supports CentOS 6.4, Ubuntu 10.04, and Ubuntu 12.04.
+Supports CentOS 6.5, Ubuntu 14.04, and Ubuntu 12.04.
 
 Requires Repose v6.2.0 or greater due to package differences.
 
