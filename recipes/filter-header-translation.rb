@@ -17,7 +17,7 @@ template "#{node['repose']['config_directory']}/header-translation.cfg.xml" do
   group node['repose']['group']
   mode '0644'
   variables(
-    :headers => node['repose']['header_translation']['headers']
+    headers: node['repose']['header_translation']['headers']
   )
   notifies :restart, 'service[repose-valve]'
 end

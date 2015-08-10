@@ -42,7 +42,7 @@ default['repose']['peers'] = [
   { 'cluster_id' => 'repose',
     'id' => 'repose_node1',
     'hostname' => 'localhost',
-    'port' => 8080,
+    'port' => 8080
   }
 ]
 
@@ -56,7 +56,7 @@ default['repose']['endpoints'] = [
     'hostname' => 'openrepose.org',
     'port' => 80,
     'root_path' => '/',
-    'default' => true,
+    'default' => true
   }
 ]
 
@@ -88,7 +88,7 @@ default['repose']['header_normalization']['cluster_id'] = ['all']
 default['repose']['header_normalization']['whitelist'] = [
   { 'id' => 'credentials',
     'uri_regex' => '/servers/(.*)',
-    'headers'   => ['X-Auth-Key','X-Auth-User']
+    'headers'   => ['X-Auth-Key', 'X-Auth-User']
   },
   { 'id' => 'modification',
     'uri_regex' => '/resource/(.*)',
@@ -98,7 +98,7 @@ default['repose']['header_normalization']['whitelist'] = [
 ]
 default['repose']['header_normalization']['blacklist'] = [
   { 'id' => 'rate-limit-headers',
-    'headers'   => ['X-PP-User','X-PP-Groups']
+    'headers'   => ['X-PP-User', 'X-PP-Groups']
   }
 ]
 
