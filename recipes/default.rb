@@ -86,7 +86,9 @@ template "#{node['repose']['config_directory']}/log4j2.xml" do
   variables(
     loglevel: node['repose']['loglevel'],
     openrepose_loglevel: node['repose']['openrepose_loglevel'],
-    intrafilter_loglevel: node['repose']['intrafilter_loglevel']
+    intrafilter_loglevel: node['repose']['intrafilter_loglevel'],
+    loggers: node['repose']['loggers'],
+    appenders: node['repose']['appenders']
   )
   notifies :restart, 'service[repose-valve]'
 end

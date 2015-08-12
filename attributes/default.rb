@@ -34,6 +34,8 @@ default['repose']['log_path'] = '/var/log/repose'
 default['repose']['pid_file'] = '/var/run/repose-valve.pid'
 default['repose']['user'] = 'repose'
 default['repose']['java_opts'] = ''
+default['repose']['loggers'] = []
+default['repose']['appenders'] = []
 
 default['repose']['peer_search_enabled'] = false
 default['repose']['peer_search_query'] = "chef_environment:#{node.chef_environment} AND repose_cluster_ids:*"
@@ -226,6 +228,6 @@ default['repose']['add_header']['responses'] = []
 default['repose']['api_validator']['cluster_id'] = ['all']
 default['repose']['api_validator']['enable_rax_roles'] = true
 default['repose']['api_validator']['wadl'] = nil
-default['repose']['api_validator']['dot_output'] = nil
+default['repose']['api_validator']['dot_output'] = "/tmp/default.out"
 default['repose']['api_validator']['enable_rax_roles'] = false
 default['repose']['api_validator']['enable_api_coverage'] = true

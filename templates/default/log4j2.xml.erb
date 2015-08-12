@@ -12,6 +12,9 @@
             </Policies>
             <DefaultRolloverStrategy max="2"/>
         </RollingFile>
+        <% @appenders.each do |appender| %>
+            <%= appender %>
+        <% end if @appenders %>
     </Appenders>
     <Loggers>
         <Root level="<%= @loglevel %>">
@@ -25,5 +28,8 @@
         <Logger name="org.springframework" level="warn"/>
         <Logger name="org.openrepose" level="<%= @openrepose_loglevel %>"/>
         <Logger name="intrafilter-logging" level="<%= @intrafilter_loglevel %>"/>
+        <% @loggers.each do |logger| %>
+            <%= logger %>
+        <% end if @loggers %>
     </Loggers>
 </Configuration>
