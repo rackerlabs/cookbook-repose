@@ -33,6 +33,7 @@ suites:
     "recipe[repose::filter-translation]",
     "recipe[repose::filter-content-type-stripper]",
     "recipe[repose::filter-client-authorization]",
+    "recipe[repose::filter-uri-stripper]",
     "recipe[repose::service-connection-pool]",
     "recipe[repose::service-dist-datastore]",
     "recipe[repose::default]",

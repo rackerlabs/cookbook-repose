@@ -130,6 +130,7 @@ default['repose']['client_auth']['tenanted'] = true
 default['repose']['client_auth']['request_groups'] = true
 default['repose']['client_auth']['token_cache_timeout'] = 600000
 default['repose']['client_auth']['group_cache_timeout'] = 600000
+default['repose']['client_auth']['ignore_tenant_roles'] = []
 default['repose']['client_auth']['endpoints_in_header'] = false
 default['repose']['client_auth']['white_list'] = false
 default['repose']['client_auth']['uri_regex'] = nil
@@ -207,6 +208,10 @@ default['repose']['uri_identity']['mappings'] = [
 ]
 default['repose']['uri_identity']['group'] = 'User_Standard'
 default['repose']['uri_identity']['quality'] = 0.5
+
+default['repose']['uri_stripper']['cluster_id'] = ['all']
+default['repose']['uri_stripper']['rewrite_location'] = true
+default['repose']['uri_stripper']['token_index'] = 1
 
 default['repose']['api_validator']['cluster_id'] = ['all']
 default['repose']['api_validator']['enable_rax_roles'] = true
