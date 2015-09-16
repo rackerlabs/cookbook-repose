@@ -11,8 +11,8 @@
     />
     <service-endpoint href="<%= @service_endpoint %>"
         <% if @service_region != nil %>region="<%= @service_region %>" <% end %>
-        <% if @service_name != nil %>service_name="<%= @service_name %>" <% end %>
-        <% if @service_type != nil %>service_type="<%= @service_type %>" <% end %>
+        <% if @service_name != nil %>name="<%= @service_name %>" <% end %>
+        <% if @service_type != nil %>type="<%= @service_type %>" <% end %>
     />
     <% if not @ignore_tenant_roles.empty? %>
         <ignore-tenant-roles>
