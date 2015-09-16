@@ -45,7 +45,8 @@ filter_cluster_map = {
   'rate-limiting'         => node['repose']['rate_limiting'        ]['cluster_id'],
   'slf4j-http-logging'    => node['repose']['slf4j_http_logging'   ]['cluster_id'],
   'translation'           => node['repose']['translation'          ]['cluster_id'],
-  'uri-identity'          => node['repose']['uri_identity'         ]['cluster_id']
+  'uri-identity'          => node['repose']['uri_identity'         ]['cluster_id'],
+  'uri-stripper'          => node['repose']['uri_stripper'         ]['cluster_id']
 }
 
 template "#{node['repose']['config_directory']}/system-model.cfg.xml" do

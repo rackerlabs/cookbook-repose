@@ -35,6 +35,7 @@ Available filters are:
   * [uri-identity](https://repose.atlassian.net/wiki/display/REPOSE/URI+Identity+filter)
   * [api-validator](https://repose.atlassian.net/wiki/display/REPOSE/API+Validation+filter)
   * [client-authorization](https://repose.atlassian.net/wiki/display/REPOSE/Client+Authorization+filter)
+  * [uri-stripper](https://repose.atlassian.net/wiki/display/REPOSE/URI+Stripper+filter)
 
 Other filters are available in Repose and may be added to this cookbook in a later revision.
 
@@ -340,6 +341,11 @@ The files pointed to by `node['repose']['api_validator']['wadl']` and `node['rep
 * `node['repose']['client_authorization']['ignore_tenant_roles']` - Optional. List of roles that bypass the tenant requirement check.
 * `node['repose']['client_authorization']['roles']` - Optional. List of roles that bypass the tenant requirement check.
 * `node['repose']['client_authorization']['delegating_quality']` - Optional. A double in the range [0..1] assigned to the delegation header. Used to organize delegation order by priority.
+
+## uri-stripper attributes
+
+* `node['repose']['uri_stripper']['rewrite_location']` - The rewrite location for the Location header.
+* `node['repose']['uri_stripper']['token_index']` - The token index to be removed from the request path.
 
 # Recipes
 

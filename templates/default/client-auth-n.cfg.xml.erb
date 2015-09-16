@@ -18,6 +18,13 @@
         <identity-service username="<%= @username %>" password="<%= @password %>" tenantId="<%= @tenant_id %>" uri="<%= @auth_uri %>" />
         <% if @tenanted %>
         <client-mapping id-regex="<%= @mapping_regex %>"/>
+        <% unless @ignore_tenant_roles.empty? %>
+        <ignore-tenant-roles>
+        <% for @role in @ignore_tenant_roles %>
+            <role><%= @role %></role>
+        <% end %>
+        </ignore-tenant-roles>
+        <% end %>
         <% end %>
         <% if @endpoints_in_header %>
         <endpoints-in-header format="XML" cache-timeout="600000" identity-contract-version="2"/>
