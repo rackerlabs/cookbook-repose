@@ -13,5 +13,3 @@ unless node['repose']['filters'].include? 'derp'
 end
 
 # No configuration template required - derp doesn't have a config
-
-

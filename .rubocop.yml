@@ -1,0 +1,20 @@
+Metrics/AbcSize:
+  Max: 23
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FileName:
+  Enabled: false
+
+Style/UnlessElse:
+  Enabled: false

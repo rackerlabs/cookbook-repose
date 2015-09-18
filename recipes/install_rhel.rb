@@ -16,10 +16,10 @@ yum_repository 'openrepose' do
   only_if { node['repose']['repo']['managed'] }
 end
 
-%w{ repose-valve
-    repose-filter-bundle
-    repose-extensions-filter-bundle
-}.each do |p|
+%w(repose-valve
+   repose-filter-bundle
+   repose-extensions-filter-bundle
+).each do |p|
   package p do
     options node['repose']['install_opts']
     version node['repose']['version']

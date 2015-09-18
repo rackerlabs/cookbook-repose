@@ -17,8 +17,8 @@ template "#{node['repose']['config_directory']}/uri-stripper.cfg.xml" do
   group node['repose']['group']
   mode '0644'
   variables(
-    :rewrite_location => node['repose']['uri_stripper']['rewrite_location'],
-    :token_index => node['repose']['uri_stripper']['token_index']
+    rewrite_location: node['repose']['uri_stripper']['rewrite_location'],
+    token_index: node['repose']['uri_stripper']['token_index']
   )
   notifies :restart, 'service[repose-valve]'
 end

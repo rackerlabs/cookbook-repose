@@ -17,9 +17,9 @@ template "#{node['repose']['config_directory']}/validator.cfg.xml" do
   group node['repose']['group']
   mode '0644'
   variables(
-    :wadl => node['repose']['api_validator']['wadl'],
-    :dot_output => node['repose']['api_validator']['dot_output'],
-    :enable_rax_roles => node['repose']['api_validator']['enable_rax_roles'],
+    wadl: node['repose']['api_validator']['wadl'],
+    dot_output: node['repose']['api_validator']['dot_output'],
+    enable_rax_roles: node['repose']['api_validator']['enable_rax_roles']
   )
   notifies :restart, 'service[repose-valve]'
 end
