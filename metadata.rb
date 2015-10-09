@@ -4,7 +4,7 @@ maintainer_email 'cit-ops@rackspace.com'
 license 'All rights reserved'
 description 'Installs/Configures repose'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '2.11.4'
+version '2.11.5'
 
 depends 'apt'
 depends 'yum', '~> 3.0'
