@@ -213,6 +213,10 @@ default['repose']['uri_stripper']['cluster_id'] = ['all']
 default['repose']['uri_stripper']['rewrite_location'] = true
 default['repose']['uri_stripper']['token_index'] = 1
 
+default['repose']['add_header']['cluster_id'] = ['all']
+default['repose']['add_header']['requests'] = []
+default['repose']['add_header']['responses'] = []
+
 default['repose']['api_validator']['cluster_id'] = ['all']
 default['repose']['api_validator']['enable_rax_roles'] = true
 default['repose']['api_validator']['wadl'] = nil
