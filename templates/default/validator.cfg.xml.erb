@@ -1,7 +1,11 @@
 <?xml version="1.1" encoding="UTF-8"?>
 
 <!-- https://repose.atlassian.net/wiki/display/REPOSE/API+Validation+filter -->
+<% if !@version.nil? && @version.split('.')[0].to_i < 7 %>
 <validators multi-role-match="true" xmlns='http://openrepose.org/repose/validator/v1.0'>
+<% else %>
+<validators multi-role-match="true" xmlns='http://docs.openrepose.org/repose/validator/v1.0'>
+<% end %>
    <validator
       role="default"
       default="true"
