@@ -20,6 +20,13 @@
         <% for @mapping in @mapping_regex %>
         <client-mapping id-regex="<%= @mapping %>"/>
         <% end %>
+        <% unless @service_admin_roles.empty? %>
+        <service-admin-roles>
+        <% for @role in @service_admin_roles %>
+            <role><%= @role %></role>
+        <% end %>
+        </service-admin-roles>
+        <% end %>
         <% unless @ignore_tenant_roles.empty? %>
         <ignore-tenant-roles>
         <% for @role in @ignore_tenant_roles %>
