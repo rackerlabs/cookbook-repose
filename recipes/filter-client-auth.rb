@@ -29,6 +29,7 @@ template "#{node['repose']['config_directory']}/client-auth-n.cfg.xml" do
     request_groups: node['repose']['client_auth']['request_groups'],
     token_cache_timeout: node['repose']['client_auth']['token_cache_timeout'],
     group_cache_timeout: node['repose']['client_auth']['group_cache_timeout'],
+    service_admin_roles: node['repose']['client_auth']['service_admin_roles'],
     ignore_tenant_roles: node['repose']['client_auth']['ignore_tenant_roles'],
     endpoints_in_header: node['repose']['client_auth']['endpoints_in_header'],
     white_list: node['repose']['client_auth']['white_list'],
