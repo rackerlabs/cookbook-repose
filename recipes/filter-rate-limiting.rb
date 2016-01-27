@@ -18,6 +18,7 @@ template "#{node['repose']['config_directory']}/rate-limiting.cfg.xml" do
   mode '0644'
   variables(
     uri_regex: node['repose']['rate_limiting']['uri_regex'],
+    global_limits: node['repose']['rate_limiting']['global_limits'],
     include_absolute_limits: node['repose']['rate_limiting']['include_absolute_limits'],
     limit_groups: node['repose']['rate_limiting']['limit_groups']
   )

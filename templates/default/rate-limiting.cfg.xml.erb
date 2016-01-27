@@ -8,6 +8,16 @@
     -->
     <request-endpoint uri-regex="<%= @uri_regex %>" include-absolute-limits="<%= @include_absolute_limits %>"/>
 
+    <% unless @global_limits.empty? %>
+    <global-limit-group>
+      <% @global_limits.each do |global_limit| %>
+      <!-- Limits for <%= global_limit['id'] %> -->
+      <limit id="<%= global_limit['id'] %>" uri="<%= global_limit['uri'] %>" uri-regex="<%= global_limit['uri-regex'] %>" http-methods="<%= global_limit['http-methods'] %>" unit="<%= global_limit['unit'] %>" value="<%= global_limit['value'] %>" />
+
+      <% end %>
+    </global-limit-group>
+    <% end %>
+
     <% @limit_groups.each do |limit_group| %>
     <!-- Limits for <%= limit_group['id'] %> -->
     <limit-group id="<%= limit_group['id'] %>" groups="<%= limit_group['groups'] %>" default="<%= limit_group['default'] %>">
