@@ -175,6 +175,7 @@ The Repose endpoints array defaults to:
 * `node['repose']['rate_limiting']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
 * `node['repose']['rate_limiting']['uri_regex']` - A regular expression (regex) for the URI at which the user can query their limits.
 * `node['repose']['rate_limiting']['include_absolute_limits']` - Enables or disables integration with absolute limits.
+* `node['repose']['rate_limiting']['global_limits']` - An array of global limits.  Defaults to empty thus disabled.
 * `node['repose']['rate_limiting']['limit_groups']` - An array of limit groups.
 
 The limit groups array defaults to:
@@ -197,6 +198,19 @@ The limit groups array defaults to:
     'groups' => 'unlimited',
     'default' => false,
     'limits' => []
+  }
+]
+```
+
+Global limit groups are similarly organized:
+```
+[
+  { 'id' => 'create-server',
+    'uri' => '/server/create',
+    'uri-regex' => '/server/create/?',
+    'method' => 'POST',
+    'value' => 10,
+    'unit' => 'SECOND'
   }
 ]
 ```
