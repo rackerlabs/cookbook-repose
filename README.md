@@ -153,18 +153,18 @@ The Repose endpoints array defaults to:
 
 * `node['repose']['keystone_v2']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
 * `node['repose']['keystone_v2']['username_admin']` - Administrator username making auth-n requests for clients.
-* `node['repose']['keystene_v2']['password_admin']` - Administrator password making auth-n requests for clients.
-* `node['repose']['keystene_v2']['uri']` - target URI (i.e., the URI of your Identity Service endpoint) for authentication requests.
-* `node['repose']['keystene_v2']['pool']` - Tells the connection pool service to map to the pool with specified id. If default is chosen, the default connection pool configurations in connection pool service is used.
-* `node['repose']['keystene_v2']['groups_in_header']` - Set the user's groups in the x-pp-groups header. If the user has no groups, the header will not be set.	
-* `node['repose']['keystene_v2']['roles_in_header']` - Set the user's roles in the x-roles header.
-* `node['repose']['keystene_v2']['catalog_in_header']` - Set the user's service catalog in the x-catalog header.
-* `node['repose']['keystene_v2']['delegating_quality']` - If present, the filter will not send a failing response when an invalid state is reached. Instead, it will add the data relating to the failure to a header and forward the request to be handled by a different filter or service.  If not present, the filter will send a failing response when an invalid state is reached.  The quality, a double between 0 and 1, assigned to the delegation header on delegation. This value will be used to order delegation based on priority when multiple delegations are present.	
-* `node['repose']['keystene_v2']['white_list']` - A list of URI patterns all users can access.
+* `node['repose']['keystone_v2']['password_admin']` - Administrator password making auth-n requests for clients.
+* `node['repose']['keystone_v2']['uri']` - target URI (i.e., the URI of your Identity Service endpoint) for authentication requests.
+* `node['repose']['keystone_v2']['pool']` - Tells the connection pool service to map to the pool with specified id. If default is chosen, the default connection pool configurations in connection pool service is used.
+* `node['repose']['keystone_v2']['groups_in_header']` - Set the user's groups in the x-pp-groups header. If the user has no groups, the header will not be set.	
+* `node['repose']['keystone_v2']['roles_in_header']` - Set the user's roles in the x-roles header.
+* `node['repose']['keystone_v2']['catalog_in_header']` - Set the user's service catalog in the x-catalog header.
+* `node['repose']['keystone_v2']['delegating_quality']` - If present, the filter will not send a failing response when an invalid state is reached. Instead, it will add the data relating to the failure to a header and forward the request to be handled by a different filter or service.  If not present, the filter will send a failing response when an invalid state is reached.  The quality, a double between 0 and 1, assigned to the delegation header on delegation. This value will be used to order delegation based on priority when multiple delegations are present.	
+* `node['repose']['keystone_v2']['white_list']` - A list of URI patterns all users can access.
 ```
 white_list = ['$/v1','$/v1/application.wadl$']
 ```
-* `node['repose']['keystene_v2']['cache']` - A container element for all configuration associated with caching.	Can provide timeouts for token, endpoints, and groups and a list of atom feeds
+* `node['repose']['keystone_v2']['cache']` - A container element for all configuration associated with caching.	Can provide timeouts for token, endpoints, and groups and a list of atom feeds
 ```
 cache = {
   'timeout_variability' => 10,
@@ -177,7 +177,7 @@ cache = {
   ]
 }
 ```
-* `node['repose']['keystene_v2']['tenant_handling']` - A container element for all configuration associated with tenants.	
+* `node['repose']['keystone_v2']['tenant_handling']` - A container element for all configuration associated with tenants.	
 ```
 tenant_handling = {
   'send_all_tenant_ids' => false,
@@ -192,7 +192,7 @@ tenant_handling = {
   }
 }
 ```
-* `node['repose']['keystene_v2']['require_service_endpoint']` - If this element is included, authorization will be enforced. The use associated with the provided x-auth-token must have an endpoint meeting the criteria defined by the attributes in this element.
+* `node['repose']['keystone_v2']['require_service_endpoint']` - If this element is included, authorization will be enforced. The use associated with the provided x-auth-token must have an endpoint meeting the criteria defined by the attributes in this element.
 ```
 require_service_endpoint = {
   'public_url' => 'https://somethingorother',
@@ -201,7 +201,7 @@ require_service_endpoint = {
   'type' => 'myservicecatalogentry'
 }
 ```
-* `node['repose']['keystene_v2']['pre_authorized_roles']` - If tenant ID validation is enabled, the Keystone v2 filter can be configured to bypass the check for certain requests. To do so, add the <pre-authorized-roles> element to your configuration file as a child of the root element. This element will have <role> children elements which define the roles for which the tenant ID check does not occur. These roles will be compared to the roles returned in a token from the Keystone v2 service, and if there is a match, the project ID check will be skipped.
+* `node['repose']['keystone_v2']['pre_authorized_roles']` - If tenant ID validation is enabled, the Keystone v2 filter can be configured to bypass the check for certain requests. To do so, add the <pre-authorized-roles> element to your configuration file as a child of the root element. This element will have <role> children elements which define the roles for which the tenant ID check does not occur. These roles will be compared to the roles returned in a token from the Keystone v2 service, and if there is a match, the project ID check will be skipped.
 ```
 pre_authorized_roles = ['observer','admin']
 ```
