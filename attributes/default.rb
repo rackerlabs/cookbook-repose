@@ -66,6 +66,9 @@ default['repose']['add_header']['cluster_id'] = ['all']
 default['repose']['add_header']['request_headers'] = []
 default['repose']['add_header']['response_headers'] = []
 
+default['repose']['url_extractor_to_header']['cluster_id'] = ['all']
+default['repose']['url_extractor_to_header']['extractor_headers'] = []
+
 default['repose']['dist_datastore']['cluster_id'] = ['all']
 default['repose']['dist_datastore']['allow_all'] = false
 default['repose']['dist_datastore']['allowed_hosts'] = ['127.0.0.1']

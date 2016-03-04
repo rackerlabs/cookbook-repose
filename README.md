@@ -37,6 +37,7 @@ Available filters are:
   * [client-authorization](https://repose.atlassian.net/wiki/display/REPOSE/Client+Authorization+filter)
   * [uri-stripper](https://repose.atlassian.net/wiki/display/REPOSE/URI+Stripper+filter)
   * [add-header](https://repose.atlassian.net/wiki/display/REPOSE/Add+Header+Filter)
+  * [url-extractor-to-header](https://repose.atlassian.net/wiki/display/REPOSE/URL+Extractor+to+Header)
 
 Other filters are available in Repose and may be added to this cookbook in a later revision.
 
@@ -361,6 +362,18 @@ The files pointed to by `node['repose']['api_validator']['wadl']` and `node['rep
 
 * `node['repose']['uri_stripper']['rewrite_location']` - The rewrite location for the Location header.
 * `node['repose']['uri_stripper']['token_index']` - The token index to be removed from the request path.
+
+## uri-extractor-to-header attributes
+
+* `node['repose']['uri_extractor_to_header']['extractor_headers']` - Hash of headers to insert into requests (client -> origin).
+Example hash of inserting headers into requests:
+
+```
+{ 'name' => 'X-Inbound-Header',
+  'url_regex' => '\some\random\.*\url',
+  'default' => ""
+}
+```
 
 ## add-header attributes
 
