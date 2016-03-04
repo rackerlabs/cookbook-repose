@@ -49,6 +49,7 @@ filter_cluster_map = {
   'uri-stripper'            => node['repose']['uri_stripper']['cluster_id'],
   'add-header'              => node['repose']['add_header']['cluster_id']
   'url-extractor-to-header' => node['repose']['url_extractor_to_header']['cluster_id']
+  'keystone-v2'           => node['repose']['keystone_v2']['cluster_id']
 }
 
 template "#{node['repose']['config_directory']}/system-model.cfg.xml" do
