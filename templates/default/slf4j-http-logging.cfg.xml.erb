@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<% if !@version.nil? && @version.split('.')[0].to_i < 7 %>
 <slf4j-http-logging xmlns="http://docs.rackspacecloud.com/repose/slf4j-http-logging/v1.0">
+<% else %>
+<slf4j-http-logging xmlns="http://docs.openrepose.org/repose/slf4j-http-logging/v1.0">
+<% end %>
         <!-- The id attribute is the named target of the log output,
              it can then be used in log4j backend to determine which appender to go to -->
         <!-- The format includes what will be logged. The arguments with % are a subset of the apache mod_log_config

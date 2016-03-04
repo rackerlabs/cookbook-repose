@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<% if @version.nil? || @version.split('.')[0].to_i > 6 %>
+<system-model xmlns='http://docs.openrepose.org/repose/system-model/v2.0'>
+<% else %>
 <system-model xmlns="http://docs.rackspacecloud.com/repose/system-model/v2.0">
+<% end %>  
     <% @cluster_ids.each do |cluster_id| %>
     <repose-cluster id="<%= cluster_id %>"
       <% unless @rewrite_host_header.nil? %>

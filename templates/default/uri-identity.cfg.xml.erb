@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- http://wiki.openrepose.org/display/REPOSE/URI+Identity -->
+<% if !@version.nil? && @version.split('.')[0].to_i < 7 %>
 <uri-identity  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
    xmlns='http://docs.api.rackspacecloud.com/repose/uri-identity/v1.0'
    xsi:schemaLocation='http://docs.api.rackspacecloud.com/repose/uri-identity/v1.0 ../config/uri-identity-configuration.xsd'>
-
+<% else %>
+<uri-identity xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+              xmlns='http://docs.openrepose.org/repose/uri-identity/v1.0'
+              xsi:schemaLocation='http://docs.openrepose.org/repose/uri-identity/v1.0 ../config/uri-identity-configuration.xsd'>
+<% end %>              
    <identification-mappings>
       <% @mappings.each do |mapping| %>
       <mapping identification-regex="<%= mapping %>"/>

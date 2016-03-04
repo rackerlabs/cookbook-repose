@@ -32,9 +32,10 @@ service_cluster_map = {
 
 filters = node['repose']['filters']
 filter_cluster_map = {
-  'api-validator'         => node['repose']['api_validator']['cluster_id'],
-  'client-auth'           => node['repose']['client_auth']['cluster_id'],
   'client-authorization'  => node['repose']['client_authorization']['cluster_id'],
+  'add-header'            => node['repose']['add_header'           ]['cluster_id'],
+  'api-validator'         => node['repose']['api_validator'        ]['cluster_id'],
+  'client-auth'           => node['repose']['client_auth'          ]['cluster_id'],
   'content-type-stripper' => node['repose']['content_type_stripper']['cluster_id'],
   'derp'                  => node['repose']['derp']['cluster_id'],
   'header-identity'       => node['repose']['header_identity']['cluster_id'],
@@ -62,7 +63,8 @@ template "#{node['repose']['config_directory']}/system-model.cfg.xml" do
     service_cluster_map: service_cluster_map,
     filters: filters,
     filter_cluster_map: filter_cluster_map,
-    endpoints: node['repose']['endpoints']
+    endpoints: node['repose']['endpoints'],
+    version: node['repose']['version']
   )
   notifies :restart, 'service[repose-valve]'
 end
@@ -77,6 +79,20 @@ template "#{node['repose']['config_directory']}/log4j.properties" do
   notifies :restart, 'service[repose-valve]'
 end
 
+template "#{node['repose']['config_directory']}/log4j2.xml" do
+  owner node['repose']['owner']
+  group node['repose']['group']
+  mode '0644'
+  variables(
+    loglevel: node['repose']['loglevel'],
+    openrepose_loglevel: node['repose']['openrepose_loglevel'],
+    intrafilter_loglevel: node['repose']['intrafilter_loglevel'],
+    loggers: node['repose']['loggers'],
+    appenders: node['repose']['appenders']
+  )
+  notifies :restart, 'service[repose-valve]'
+end
+
 template "#{node['repose']['config_directory']}/container.cfg.xml" do
   owner node['repose']['owner']
   group node['repose']['group']
@@ -85,7 +101,8 @@ template "#{node['repose']['config_directory']}/container.cfg.xml" do
     connection_timeout: node['repose']['connection_timeout'],
     read_timeout: node['repose']['read_timeout'],
     deploy_auto_clean: node['repose']['deploy_auto_clean'],
-    filter_check_interval: node['repose']['filter_check_interval']
+    filter_check_interval: node['repose']['filter_check_interval'],
+    version: node['repose']['version']
   )
   notifies :restart, 'service[repose-valve]'
 end

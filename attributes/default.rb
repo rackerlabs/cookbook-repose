@@ -34,6 +34,8 @@ default['repose']['log_path'] = '/var/log/repose'
 default['repose']['pid_file'] = '/var/run/repose-valve.pid'
 default['repose']['user'] = 'repose'
 default['repose']['java_opts'] = ''
+default['repose']['loggers'] = []
+default['repose']['appenders'] = []
 
 default['repose']['peer_search_enabled'] = false
 default['repose']['peer_search_query'] = "chef_environment:#{node.chef_environment} AND repose_cluster_ids:*"
@@ -59,6 +61,10 @@ default['repose']['endpoints'] = [
     'default' => true
   }
 ]
+
+default['repose']['add_header']['cluster_id'] = ['all']
+default['repose']['add_header']['request_headers'] = []
+default['repose']['add_header']['response_headers'] = []
 
 default['repose']['dist_datastore']['cluster_id'] = ['all']
 default['repose']['dist_datastore']['allow_all'] = false
@@ -162,8 +168,8 @@ default['repose']['rate_limiting']['limit_groups'] = [
     'limits' => [
       { 'id' => 'all',
         'uri' => '*',
-        'uri-regex' => '/.*',
-        'http-methods' => 'POST PUT GET DELETE',
+        'uri_regex' => '/.*',
+        'http_methods' => 'POST PUT GET DELETE',
         'unit' => 'MINUTE',
         'value' => 10
       }
@@ -222,4 +228,6 @@ default['repose']['add_header']['responses'] = []
 default['repose']['api_validator']['cluster_id'] = ['all']
 default['repose']['api_validator']['enable_rax_roles'] = true
 default['repose']['api_validator']['wadl'] = nil
-default['repose']['api_validator']['dot_output'] = nil
+default['repose']['api_validator']['dot_output'] = "/tmp/default.out"
+default['repose']['api_validator']['enable_rax_roles'] = false
+default['repose']['api_validator']['enable_api_coverage'] = true
