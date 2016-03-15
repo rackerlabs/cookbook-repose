@@ -29,7 +29,7 @@ template "#{node['repose']['config_directory']}/keystone-v2.cfg.xml" do
     cache: node['repose']['keystone_v2']['cache'],
     tenant_handling: node['repose']['keystone_v2']['tenant_handling'],
     require_service_endpoint: node['repose']['keystone_v2']['require_service_endpoint'],
-    pre_authorized_roles: node['repose']['keystone_v2']['pre_authorize_roles']
+    pre_authorized_roles: node['repose']['keystone_v2']['pre_authorized_roles']
   )
   notifies :restart, 'service[repose-valve]'
 end

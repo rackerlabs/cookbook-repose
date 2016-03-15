@@ -38,9 +38,17 @@
     <% end %>
 
     <% if @tenant_handling %>
-    <tenant-handling send-all-tenant-ids="<%= @tenant_handling['send_all_tenant_ids'] %>">
+    <tenant-handling 
+        <% if @tenant_handling['send_all_tenant_ids'] %>
+         send-all-tenant-ids="<%= @tenant_handling['send_all_tenant_ids'] %>"
+        <% end %>
+        >
         <% if @tenant_handling['validate_tenant'] %>
-        <validate-tenant strip-token-tenant-prefixes="<%= @@tenant_handling['validate_tenant']['strip_token_tenant_prefixes'] %>">
+            <validate-tenant 
+            <% if @tenant_handling['validate_tenant']['strip_token_tenant_prefixes'] %>			
+                strip-token-tenant-prefixes="<%= @@tenant_handling['validate_tenant']['strip_token_tenant_prefixes'] %>"
+            <% end %>
+            >
 	    <uri-extraction-regex><%= @tenant_handling['validate_tenant']['url_extraction_regex'] %></uri-extraction-regex>
 	</validate-tenant>
 	<% end %>
@@ -51,7 +59,18 @@
     <% end %>
 
    <% if @require_service_endpoint %>
-    <require-service-endpoint public-url="<%= @require_service_endpoint['public_url'] %>" region="<%= @require_service_endpoint['region'] %>" name="<%= @require_service_endpoint['name'] %>" type="<%= @require_service_endpoint['type'] %>"/>
+     <require-service-endpoint 
+         public-url="<%= @require_service_endpoint['public_url'] %>" 
+        <% if @require_service_endpoint['region'] %>
+         region="<%= @require_service_endpoint['region'] %>" 
+        <% end %>
+        <% if @require_service_endpoint['name'] %>
+         name="<%= @require_service_endpoint['name'] %>" 
+        <% end %>
+        <% if @require_service_endpoint['type'] %>
+         type="<%= @require_service_endpoint['type'] %>"
+        <% end %>
+    />
    <% end %>
 
    <% if @pre_authorized_roles %>
