@@ -126,6 +126,21 @@ default['repose']['ip_identity']['quality'] = 0.2
 default['repose']['ip_identity']['white_list_quality'] = 1.0
 default['repose']['ip_identity']['white_list_ip_addresses'] = ['127.0.0.1']
 
+default['repose']['keystone_v2']['cluster_id'] = ['all']
+default['repose']['keystone_v2']['username_admin'] = 'admin'
+default['repose']['keystone_v2']['password_admin'] = 'password'
+default['repose']['keystone_v2']['pool'] = 'default'
+default['repose']['keystone_v2']['groups_in_header'] = false
+default['repose']['keystone_v2']['roles_in_header'] = false
+default['repose']['keystone_v2']['catalog_in_header'] = false
+default['repose']['keystone_v2']['uri'] = 'https://identity.api.rackspacecloud.com/v2.0'
+default['repose']['keystone_v2']['delegating_quality'] = nil
+default['repose']['keystone_v2']['white_list'] = nil
+default['repose']['keystone_v2']['cache'] = nil
+default['repose']['keystone_v2']['tenant_handling'] = nil
+default['repose']['keystone_v2']['require_service_endpoint'] = nil
+default['repose']['keystone_v2']['pre_authorized_roles'] = nil
+
 default['repose']['client_auth']['cluster_id'] = ['all']
 default['repose']['client_auth']['auth_provider'] = 'RACKSPACE'
 default['repose']['client_auth']['username_admin'] = 'admin'
