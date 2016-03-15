@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <url-extractor-to-header xmlns="http://docs.openrepose.org/repose/url-extractor-to-header/v1.0">
-    <% if @extractor_headers.empty?
+    <% if @extractor_headers %>
        <% @extractor_headers.each do |header| %>
-       <extraction header="<%= header['name'] %>" url-regex="<%= header['url-regex'] %>" default="<%= header['default'] %>"/>
+         <extraction header="<%= header['name'] %>" url-regex="<%= header['url-regex'] %>" default="<%= header['default'] %>"/>
+       <% end %>
+    <% end %>
 </url-extractor-to-header>
