@@ -35,6 +35,7 @@ suites:
     "recipe[repose::filter-client-authorization]",
     "recipe[repose::filter-uri-stripper]",
     "recipe[repose::filter-add-header]",
+    "recipe[repose::filter-keystone-v2]",
     "recipe[repose::service-connection-pool]",
     "recipe[repose::service-dist-datastore]",
     "recipe[repose::default]",
