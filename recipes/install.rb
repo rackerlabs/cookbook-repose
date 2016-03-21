@@ -5,7 +5,9 @@
 # Copyright (C) 2013 Rackspace Hosting
 #
 
-include_recipe value_for_platform_family(
-  'rhel'   => 'repose::install_rhel',
-  'debian' => 'repose::install_debian'
-)
+case node['platform_family']
+when 'rhel'
+  include_recipe 'repose::install_rhel'
+when 'debian'
+  include_recipe 'repose::install_debian'
+end

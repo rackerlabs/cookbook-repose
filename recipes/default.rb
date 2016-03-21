@@ -8,7 +8,7 @@
 include_recipe 'repose::install'
 
 service 'repose-valve' do
-  supports restart: true, status: true
+  supports :restart => true, :status => true
   action [:enable, :start]
 end
 
