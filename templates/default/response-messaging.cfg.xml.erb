@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<response-messaging xmlns="http://docs.openrepose.org/repose/response-messaging/v1.0">
+
+    <% @status_codes.each do | node | %>
+    <status-code id="<%= node['id'] %>" code-regex="<%= node['code_regex'] %>"
+                 <% if node.has_key?('overwrite') %>
+                 overwrite="<%= node['overwrite'] %>"
+                 <% end %>
+    >
+        <% node['messages'].each do | msg | %>
+        <message media-type="<%= msg['media_type'] %>"
+                 <% if msg.has_key?('content_type') %>
+                 content-type="<%= msg['content_type']%>"
+                 <% end %>
+        >
+        <%= msg['content'] %>
+        </message>
+        <% end %>
+    </status-code>
+    <% end %>
+
+</response-messaging>

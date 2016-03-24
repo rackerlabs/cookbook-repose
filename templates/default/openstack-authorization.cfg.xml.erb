@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<% if !@version.nil? && @version.split('.')[0].to_i < 7 %>
 <rackspace-authorization xmlns="http://openrepose.org/components/openstack-identity/auth-z/v1.0">
+<% else %>
+<rackspace-authorization xmlns="http://openrepose.org/repose/openstack-identity/auth-z/v1.0">
+<% end %>
+
+
     <authentication-server
         username="<%= @username %>"
         password="<%= @password %>"

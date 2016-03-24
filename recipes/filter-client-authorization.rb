@@ -29,7 +29,8 @@ template "#{node['repose']['config_directory']}/openstack-authorization.cfg.xml"
     service_type: node['repose']['client_authorization']['service_type'],
     ignore_tenant_roles: node['repose']['client_authorization']['ignore_tenant_roles'],
     roles: node['repose']['client_authorization']['roles'],
-    delegating_quality: node['repose']['client_authorization']['delegating_quality']
+    delegating_quality: node['repose']['client_authorization']['delegating_quality'],
+    version: node['repose']['version']
   )
   notifies :restart, 'service[repose-valve]'
 end
