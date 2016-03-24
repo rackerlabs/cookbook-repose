@@ -49,6 +49,7 @@ Services work the same way as filters. Just s/filter/service/g.
 Available services are:
   * connection-pool (configuration only)
   * dist-datastore
+  * response-messaging
 
 ## Nodes
 
@@ -456,6 +457,33 @@ Example hash of inserting headers into responses:
   'overwrite' => false,
   'value' => 'Bonjour Client'
 }
+```
+
+## response-messaging attributes
+
+* `node['repose']['response-messaging']['status_codes'] - Array of status codes to activate on and generate responses.
+Example of configuration:
+```
+[{ 'id'         => 'test_bad_input',
+   'code_regex' => '4..',
+   'overwrite'  => 'ALWAYS',
+   'messages'   => [
+       { 'media_type'   => 'application/xml',
+         'content_type' => 'text/plain',
+         'content'      => '<![CDATA[<test/>]]>'},
+       { 'media_type'   => '*/*',
+         'content_type' => 'application/json',
+         'content'      => '{"test":"bad"}'}]},
+       { 'id'         => 'test_error',
+         'code_regex' => '5..',
+         'overwrite'  => 'ALWAYS',
+         'messages'   => [
+             { 'media_type'   => 'application/xml',
+               'content_type' => 'text/plain',
+               'content'      => '<![CDATA[<error/>]]>'},
+             { 'media_type'   => '*/*',
+               'content_type' => 'application/json',
+               'content'      => '{"test":"error"}'}]}]
 ```
 
 

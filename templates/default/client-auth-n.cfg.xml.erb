@@ -7,7 +7,7 @@
 <client-auth xmlns="http://docs.openrepose.org/repose/client-auth/v1.0">
 <% end %>
     <% if @auth_provider == 'RACKSPACE' %>
-<% if @version.split('.')[0].to_i >6 %>
+<% if !@version.nil? && @version.split('.')[0].to_i >6 %>
         <delegating quality="<%= @delegating_quality %>" /> 
 <% end %>
     <rackspace-auth 
