@@ -4,6 +4,14 @@ driver_config:
   require_chef_omnibus: true
 
 platforms:
+- name: debian-7.9
+  driver_config:
+    box: opscode-debian-7.9
+    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_debian-7.9_chef-provisionerless.box
+- name: debian-8.3
+  driver_config:
+    box: opscode-debian-8.3
+    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_debian-8.3_chef-provisionerless.box
 - name: ubuntu-14.04
   driver_config:
     box: opscode-ubuntu-14.04
@@ -12,10 +20,15 @@ platforms:
   driver_config:
     box: opscode-ubuntu-12.04
     box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-12.04_chef-provisionerless.box
-- name: centos-6.5
+- name: centos-6.7
   driver_config:
-    box: opscode-centos-6.5
-    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box
+    box: opscode-centos-6.7
+    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.7_chef-provisionerless.box
+- name: centos-7.2
+  driver_config:
+    box: opscode-centos-7.2
+    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.2_chef-provisionerless.box
+
 
 suites:
 - name: default
