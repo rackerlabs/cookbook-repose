@@ -24,7 +24,7 @@ template "#{node['repose']['config_directory']}/keystone-v2.cfg.xml" do
     groups_in_header: node['repose']['keystone_v2']['groups_in_header'],
     roles_in_header: node['repose']['keystone_v2']['roles_in_header'],
     catalog_in_header: node['repose']['keystone_v2']['catalog_in_header'],
-    delegating_quality: node['repose']['keystone_v2']['delegating_quality'], 
+    delegating_quality: node['repose']['keystone_v2']['delegating_quality'],
     white_list: node['repose']['keystone_v2']['white_list'],
     cache: node['repose']['keystone_v2']['cache'],
     tenant_handling: node['repose']['keystone_v2']['tenant_handling'],

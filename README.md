@@ -1,5 +1,7 @@
 # repose cookbook
 
+[![Build Status](https://travis-ci.org/rackerlabs/cookbook-repose.svg?branch=master)](https://travis-ci.org/rackerlabs/cookbook-repose)
+
 This cookbook manages Repose.
 
 "REPOSE is an open-source RESTful HTTP proxy service that scales to the cloud. REPOSE provides the solution to common API processing tasks such as rate limiting, client authentication, versioning, and logging so that web service developers can focus on the unique features of their services." ~ http://openrepose.org/, 09/03/2013
