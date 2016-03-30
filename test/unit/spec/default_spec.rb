@@ -5,7 +5,7 @@ describe 'repose::default' do
   before { stub_resources }
 
   let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
-  
+
   it 'starts repose-valve service' do
     expect(chef_run).to start_service('repose-valve')
   end
