@@ -8,7 +8,7 @@
 include_recipe 'repose::install'
 
 service 'repose-valve' do
-  supports :restart => true, :status => true
+  supports restart: true, status: true
   action [:enable, :start]
 end
 
@@ -19,7 +19,7 @@ unless node['repose']['cluster_id'].nil?
   node.normal['repose']['cluster_ids'] = [node['repose']['cluster_id']]
 end
 
-directory "#{node['repose']['config_directory']}" do
+directory node['repose']['config_directory'] do
   owner node['repose']['owner']
   group node['repose']['group']
   mode '0755'
@@ -33,8 +33,8 @@ service_cluster_map = {
 filters = node['repose']['filters']
 filter_cluster_map = {
   'client-authorization'    => node['repose']['client_authorization']['cluster_id'],
-  'api-validator'           => node['repose']['api_validator'        ]['cluster_id'],
-  'client-auth'             => node['repose']['client_auth'          ]['cluster_id'],
+  'api-validator'           => node['repose']['api_validator']['cluster_id'],
+  'client-auth'             => node['repose']['client_auth']['cluster_id'],
   'content-type-stripper'   => node['repose']['content_type_stripper']['cluster_id'],
   'derp'                    => node['repose']['derp']['cluster_id'],
   'header-identity'         => node['repose']['header_identity']['cluster_id'],
