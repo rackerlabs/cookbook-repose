@@ -49,7 +49,7 @@ Other filters are available in Repose and may be added to this cookbook in a lat
 Services work the same way as filters. Just s/filter/service/g.
 
 Available services are:
-  * connection-pool (configuration only)
+  * http-connection-pool (configuration only)
   * dist-datastore
   * response-messaging
 
@@ -344,7 +344,7 @@ The default blacklist is:
 
 * `node['repose']['content_type_stripper']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
 
-## connection-pool attributes
+## http-connection-pool attributes
 
 * `node['repose']['connection_pool']['chunked_encoding']` - Use the default unless your programming language does not support chunked encoding. Some Repose filters modify request bodies. Due to this possibility Repose will, by default, send requests with entities as chunked. Setting chunked-encoding to false will cause Repose to attempt to evaluate the actual content length of the request by reading the ServletInputStream. Default is true.
 * `node['repose']['connection_pool']['max_total']` - Maximum number of connections that Repose opens across all endpoints. (If set too high, you might run out of memory.) Default is 400.

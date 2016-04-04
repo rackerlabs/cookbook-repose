@@ -1,9 +1,16 @@
 #
 # Cookbook Name:: repose
-# Recipe:: service-connection-pool
+# Recipe:: service-http-connection-pool
 #
 # Copyright (C) 2014 Rackspace Hosting
 #
+
+include_recipe 'repose::install'
+
+unless node['repose']['services'].include? 'connection-pool'
+  services = node['repose']['services'] + ['connection-pool']
+  node.normal['repose']['services'] = services
+end
 
 template "#{node['repose']['config_directory']}/http-connection-pool.cfg.xml" do
   owner node['repose']['owner']
