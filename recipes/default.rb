@@ -25,7 +25,7 @@ directory node['repose']['config_directory'] do
   mode '0755'
 end
 
-services = node['repose']['services'].reject { |x| x == 'connection-pool' || x == 'response-messaging' }
+services = node['repose']['services'].reject { |x| x == 'http-connection-pool' || x == 'response-messaging' }
 service_cluster_map = {
   'dist-datastore' => node['repose']['dist_datastore']['cluster_id']
 }
