@@ -1,5 +1,5 @@
 
-v3.2.1
+v3.3.1
 ------
 * Finish adding basic unit tests for existing filter and service recipes
 * Rename service-connection-pool to service-http-connection-pool to match current naming schemes
