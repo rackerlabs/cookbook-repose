@@ -49,7 +49,7 @@ suites:
     "recipe[repose::filter-uri-stripper]",
     "recipe[repose::filter-add-header]",
     "recipe[repose::filter-keystone-v2]",
-    "recipe[repose::service-connection-pool]",
+    "recipe[repose::service-http-connection-pool]",
     "recipe[repose::service-dist-datastore]",
     "recipe[repose::default]",
     "recipe[minitest-handler]"

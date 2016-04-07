@@ -1,0 +1,6 @@
+
+v3.2.1
+------
+* Finish adding basic unit tests for existing filter and service recipes
+* Rename service-connection-pool to service-http-connection-pool to match current naming schemes
+* Added CHANGELOG and TODO files 
