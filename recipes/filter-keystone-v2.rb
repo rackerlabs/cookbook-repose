@@ -5,8 +5,6 @@
 # Copyright (C) 2013 Rackspace Hosting
 #
 
-include_recipe 'repose::install'
-
 unless node['repose']['filters'].include? 'keystone-v2'
   filters = node['repose']['filters'] + ['keystone-v2']
   node.normal['repose']['filters'] = filters

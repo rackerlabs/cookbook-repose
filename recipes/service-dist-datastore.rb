@@ -5,8 +5,6 @@
 # Copyright (C) 2013 Rackspace Hosting
 #
 
-include_recipe 'repose::install'
-
 unless node['repose']['services'].include? 'dist-datastore'
   services = node['repose']['services'] + ['dist-datastore']
   node.normal['repose']['services'] = services

@@ -5,8 +5,6 @@
 # Copyright (C) 2015 Rackspace Hosting
 #
 
-include_recipe 'repose::install'
-
 unless node['repose']['filters'].include? 'client-authorization'
   filters = node['repose']['filters'] + ['client-authorization']
   node.normal['repose']['filters'] = filters

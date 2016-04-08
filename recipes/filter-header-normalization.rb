@@ -5,8 +5,6 @@
 # Copyright (C) 2013 Rackspace Hosting
 #
 
-include_recipe 'repose::install'
-
 unless node['repose']['filters'].include? 'header-normalization'
   filters = node['repose']['filters'] + ['header-normalization']
   node.normal['repose']['filters'] = filters

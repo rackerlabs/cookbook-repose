@@ -5,8 +5,6 @@
 # Copyright (C) 2013 Rackspace Hosting
 #
 
-include_recipe 'repose::install'
-
 unless node['repose']['filters'].include? 'slf4j-http-logging'
   filters = node['repose']['filters'] + ['slf4j-http-logging']
   node.normal['repose']['filters'] = filters

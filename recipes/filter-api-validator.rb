@@ -5,8 +5,6 @@
 # Copyright (C) 2015 Rackspace Hosting
 #
 
-include_recipe 'repose::install'
-
 unless node['repose']['filters'].include? 'api-validator'
   filters = node['repose']['filters'] + ['api-validator']
   node.normal['repose']['filters'] = filters
