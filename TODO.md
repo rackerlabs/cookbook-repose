@@ -5,7 +5,6 @@
 #### Testing
 * Add basic integration tests using serverspec
 * Confirm test kitchen works and passes for CentOS 6.5, Unbuntu 12.04, 14.04
-* Remove older minitest setup
 * Finish TravisCI setup and confirm working
 
 #### Upcoming

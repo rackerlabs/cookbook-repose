@@ -1,6 +1,13 @@
 
+v3.3.2
+------
+* minor code cleanup (removing unneeded include_recipe statements in filter and service recipes)
+* set deploy_auto_clean to true
+* remove minitest artifacts
+
 v3.3.1
 ------
 * Finish adding basic unit tests for existing filter and service recipes
 * Rename service-connection-pool to service-http-connection-pool to match current naming schemes
 * Added CHANGELOG and TODO files 
+* set hosts, nodes to sort in system-config and dist-datastores
