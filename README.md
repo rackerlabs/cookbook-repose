@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/rackerlabs/cookbook-repose.svg?branch=master)](https://travis-ci.org/rackerlabs/cookbook-repose)
 
-This cookbook manages Repose.
+This cookbook installs, configures and manages Repose.
 
 "REPOSE is an open-source RESTful HTTP proxy service that scales to the cloud. REPOSE provides the solution to common API processing tasks such as rate limiting, client authentication, versioning, and logging so that web service developers can focus on the unique features of their services." ~ http://openrepose.org/, 09/03/2013
 
@@ -23,13 +23,13 @@ There are 2 ways to setup filters:
   2. Add the filter names to the `node['repose']['filters']` array
 
 Available filters are:
-  * client-auth
-  * ip-identity
-  * rate-limiting
-  * slf4j-http-logging
-  * header-translation
-  * DeRP
-  * header-normalization
+  * [client-auth] (https://repose.atlassian.net/wiki/display/REPOSE/Client+Authentication+filter) (deprecated in Repose 8.0.0 - replace with Keystone v2 Filter)
+  * [ip-identity] (https://repose.atlassian.net/wiki/display/REPOSE/IP+Identity+filter) (deprecated in Repose 8.0.0 - replace with IP User Filter)
+  * [rate-limiting] (https://repose.atlassian.net/wiki/display/REPOSE/Rate+Limiting+filter)
+  * [slf4j-http-logging] (https://repose.atlassian.net/wiki/display/REPOSE/SLF4J+HTTP+Logging+filter)
+  * [header-translation] (https://repose.atlassian.net/wiki/display/REPOSE/Header+Translation+filter)
+  * [DeRP] (https://repose.atlassian.net/wiki/display/REPOSE/Delegation+Response+Processor+%28DeRP%29+Filter)
+  * [header-normalization] (https://repose.atlassian.net/wiki/display/REPOSE/Header+Normalization+filter)
   * [content-type-stripper](https://repose.atlassian.net/wiki/display/REPOSE/Content+Type+Stripper+filter) (system-model only)
   * [translation](https://repose.atlassian.net/wiki/display/REPOSE/Translation+filter)
   * [rackspace-auth-user](https://repose.atlassian.net/wiki/display/REPOSE/Rackspace+Auth+User+filter)
@@ -49,9 +49,9 @@ Other filters are available in Repose and may be added to this cookbook in a lat
 Services work the same way as filters. Just s/filter/service/g.
 
 Available services are:
-  * connection-pool (configuration only)
+  * [http-connection-pool] (https://repose.atlassian.net/wiki/display/REPOSE/HTTP+Connection+Pool+service) (configuration only)
   * dist-datastore
-  * response-messaging
+  * [response-messaging] (https://repose.atlassian.net/wiki/display/REPOSE/Response+Messaging+service)
 
 ## Nodes
 
@@ -344,19 +344,19 @@ The default blacklist is:
 
 * `node['repose']['content_type_stripper']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
 
-## connection-pool attributes
+## http-connection-pool attributes
 
-* `node['repose']['connection_pool']['chunked_encoding']` - Use the default unless your programming language does not support chunked encoding. Some Repose filters modify request bodies. Due to this possibility Repose will, by default, send requests with entities as chunked. Setting chunked-encoding to false will cause Repose to attempt to evaluate the actual content length of the request by reading the ServletInputStream. Default is true.
-* `node['repose']['connection_pool']['max_total']` - Maximum number of connections that Repose opens across all endpoints. (If set too high, you might run out of memory.) Default is 400.
-* `node['repose']['connection_pool']['max_per_route']` - Maximum number of connections that Repose opens per endpoint. Default is 200.
-* `node['repose']['connection_pool']['socket_timeout']` - Number of milliseconds a request is in flight before it times out. Default is 30000.
-* `node['repose']['connection_pool']['connection_timeout']` - Number of milliseconds a connection waits to send a request. Default is 30000.
-* `node['repose']['connection_pool']['socket_buffer_size']` - Default is 8192.
-* `node['repose']['connection_pool']['connection_max_line_length']` - Default is 8192.
-* `node['repose']['connection_pool']['connection_max_header_count']` - Maximum number of headers that can be sent in the request. Default is 100.
-* `node['repose']['connection_pool']['connection_max_status_line_garbage']` - Maximum number of lines allotted for garbage. Default is 100.
-* `node['repose']['connection_pool']['tcp_nodelay']` - Default is true.
-* `node['repose']['connection_pool']['keepalive_timeout']` - If a Keep-Alive header is not present in the response, the value of keepalive.timeout is evaluated. If this value is 0, the connection will be kept alive indefinitely. If the value is greater than 0, the connection will be kept alive for the number of milliseconds specified. Set to 1 to connect:close. Default is 0.
+* `node['repose']['http_connection_pool']['chunked_encoding']` - Use the default unless your programming language does not support chunked encoding. Some Repose filters modify request bodies. Due to this possibility Repose will, by default, send requests with entities as chunked. Setting chunked-encoding to false will cause Repose to attempt to evaluate the actual content length of the request by reading the ServletInputStream. Default is true.
+* `node['repose']['http_connection_pool']['max_total']` - Maximum number of connections that Repose opens across all endpoints. (If set too high, you might run out of memory.) Default is 400.
+* `node['repose']['http_connection_pool']['max_per_route']` - Maximum number of connections that Repose opens per endpoint. Default is 200.
+* `node['repose']['http_connection_pool']['socket_timeout']` - Number of milliseconds a request is in flight before it times out. Default is 30000.
+* `node['repose']['http_connection_pool']['connection_timeout']` - Number of milliseconds a connection waits to send a request. Default is 30000.
+* `node['repose']['http_connection_pool']['socket_buffer_size']` - Default is 8192.
+* `node['repose']['http_connection_pool']['connection_max_line_length']` - Default is 8192.
+* `node['repose']['http_connection_pool']['connection_max_header_count']` - Maximum number of headers that can be sent in the request. Default is 100.
+* `node['repose']['http_connection_pool']['connection_max_status_line_garbage']` - Maximum number of lines allotted for garbage. Default is 100.
+* `node['repose']['http_connection_pool']['tcp_nodelay']` - Default is true.
+* `node['repose']['http_connection_pool']['keepalive_timeout']` - If a Keep-Alive header is not present in the response, the value of keepalive.timeout is evaluated. If this value is 0, the connection will be kept alive indefinitely. If the value is greater than 0, the connection will be kept alive for the number of milliseconds specified. Set to 1 to connect:close. Default is 0.
 
 ## translation attributes
 
