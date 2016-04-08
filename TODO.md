@@ -12,3 +12,4 @@
 * Clearly identify support for Repose 7.x.x and Repose 8.x.x
 * Add support for upstart on Ubuntu 12/14
 * Add CONTRIBUTING.md information
+* Add cookbook to supermarket.chef.io
