@@ -5,8 +5,6 @@
 # Copyright (C) 2014 Rackspace Hosting
 #
 
-include_recipe 'repose::install'
-
 unless node['repose']['filters'].include? 'uri-stripper'
   filters = node['repose']['filters'] + ['uri-stripper']
   node.normal['repose']['filters'] = filters

@@ -528,7 +528,7 @@ This cookbook includes support for Vagrant. Start the VM by following these step
 
 # Tests
 
-This cookbook includes support for test-kitchen and minitest. Run the test suite with
+This cookbook includes support for test-kitchen and chefspec unit tests. Run the test suite with
 
 ```
 kitchen test

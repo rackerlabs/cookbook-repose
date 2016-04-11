@@ -5,8 +5,6 @@
 # Copyright (C) 2015 Rackspace Hosting
 #
 
-include_recipe 'repose::install'
-
 unless node['repose']['filters'].include? 'url-extractor-to-header'
   filters = node['repose']['filters'] + ['url-extractor-to-header']
   node.normal['repose']['filters'] = filters

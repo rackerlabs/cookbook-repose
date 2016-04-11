@@ -5,8 +5,6 @@
 # Copyright (C) 2014 Rackspace Hosting
 #
 
-include_recipe 'repose::install'
-
 unless node['repose']['services'].include? 'http-connection-pool'
   services = node['repose']['services'] + ['http-connection-pool']
   node.normal['repose']['services'] = services
