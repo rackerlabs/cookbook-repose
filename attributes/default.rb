@@ -25,10 +25,15 @@ default['repose']['node_id'] = 'repose_node1'
 default['repose']['port'] = 8080
 default['repose']['ssl_port'] = 8443
 default['repose']['shutdown_port'] = 8188
+# container.cfg.xml settings
+default['repose']['content_body_read_limit'] = nil
 default['repose']['connection_timeout'] = 30000
 default['repose']['read_timeout'] = 30000
+default['repose']['client_request_logging'] = nil
+default['repose']['proxy_thread_pool'] = nil
 default['repose']['deploy_auto_clean'] = true
 default['repose']['filter_check_interval'] = 60000
+#
 default['repose']['config_directory'] = '/etc/repose'
 default['repose']['log_path'] = '/var/log/repose'
 default['repose']['pid_file'] = '/var/run/repose-valve.pid'
