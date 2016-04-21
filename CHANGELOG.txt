@@ -1,4 +1,8 @@
 
+v3.3.3 (not tagged yet)
+------
+* add optional content-body-read-limit, client-request-logging and proxy-thread-pool options to the container.cfg.xml template, set values to nil
+
 v3.3.2
 ------
 * minor code cleanup (removing unneeded include_recipe statements in filter and service recipes)
