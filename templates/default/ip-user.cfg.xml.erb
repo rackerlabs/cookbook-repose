@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- http://wiki.openrepose.org/display/REPOSE/IP+User+filter -->
 <ip-user xmlns="http://docs.openrepose.org/repose/ip-user/v1.0">
     <user-header name="<%= @user_header_name %>" quality="<%= @user_header_quality %>"/>
-    <group-header name="<%= @group_header_name" quality="<%= @group_header_quality %>"/>
-TODO - needs a loop for groups/cidr-ip here
-    for each item in group put group and any cidr-ip values
-    <group name=<%= @group_name %>>
-        <cidr-ip><%= @cidr-ip %></cidr-ip>
+    <group-header name="<%= @group_header_name %>" quality="<%= @group_header_quality %>"/>
+
+    <% @groups.each do |group| %>
+    <group name=<%= group['group_name'] %>>
+       <% group['cidrips'].each do |ip| %>
+       <cidr-ips><%= ip['ip'] %><cidr-ips>"
+       <% end %>
     </group>
+    <% end %>
+
 </ip-user>

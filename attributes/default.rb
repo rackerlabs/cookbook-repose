@@ -259,7 +259,11 @@ default['repose']['ip_user']['user_header_name'] = 'X-PP-User'
 default['repose']['ip_user']['user_header_quality'] = '0.4'
 default['repose']['ip_user']['group_header_name'] = 'X-PP-Groups'
 default['repose']['ip_user']['group_header_quality'] = '0.4'
-# TODO - this should be an array of hashes (multiple groups with possibly multiple cidr-ip values)
-# default['repose']['ip_user']['group_name'] = 'match-all'
-# default['repose']['ip_user']['cidr-ip'] = '0.0.0.0/0'
-
+default['repose']['ip_user']['groups'] = [
+  { 'group_name' => 'match-all',
+    'cidrips' => ['0.0.0.0/0']
+  },
+  { 'group_name' => 'rfc1918',
+    'cidrips' => ['192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8']
+  }
+]
