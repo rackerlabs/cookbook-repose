@@ -43,4 +43,4 @@ script:
   - /opt/chefdk/embedded/bin/foodcritic --version
   - /opt/chefdk/embedded/bin/foodcritic .
   - /opt/chefdk/embedded/bin/kitchen --version
-  - /opt/chefdk/embedded/bin/kitchen verify "$PLATFORM"
+  - /opt/chefdk/embedded/bin/kitchen verify
