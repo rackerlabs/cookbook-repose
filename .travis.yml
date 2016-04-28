@@ -11,7 +11,9 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq virtualbox --fix-missing
 
+# Don't `bundle install`
 install:
+  - echo "skip bundle install"
   - sudo wget -nv https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb
   - sudo dpkg -i vagrant_1.8.1_x86_64.deb
 
@@ -24,8 +26,6 @@ env:
     # Ignore warnings when running specs.
     - RUBYOPT="-W0"
   matrix:
-    - CHEF_VERSION=latest PLATFORM=debian-7
-    - CHEF_VERSION=latest PLATFORM=debian-8
     - CHEF_VERSION=latest PLATFORM=ubuntu-1204
     - CHEF_VERSION=latest PLATFORM=ubuntu-1404
     - CHEF_VERSION=latest PLATFORM=centos-6
