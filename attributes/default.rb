@@ -79,8 +79,6 @@ default['repose']['dist_datastore']['allow_all'] = false
 default['repose']['dist_datastore']['allowed_hosts'] = ['127.0.0.1']
 default['repose']['dist_datastore']['port'] = 8081
 
-default['repose']['response-messaging']['status_codes'] = []
-
 default['repose']['slf4j_http_logging']['cluster_id'] = ['all']
 default['repose']['slf4j_http_logging']['id'] = 'http'
 default['repose']['slf4j_http_logging']['format'] = 'Remote IP=%a Local IP=%A Response Size(bytes)=%b Remote Host=%h Request Method=%m Server Port=%p Query String=%q Time Request Received=%t Status=%s Remote User=%u Rate Limit Group: %{X-PP-Groups}i URL Path Requested=%U X-Forwarded-For=%{X-Forwarded-For}i X-REAL-IP=%{X-Real-IP}i'
