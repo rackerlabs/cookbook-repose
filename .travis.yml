@@ -6,9 +6,7 @@ addons:
       - chef-stable-precise
     packages:
       - chefdk
-
-# Don't `bundle install`
-install: echo "skip bundle install"
+      - vagrant
 
 branches:
   only:
