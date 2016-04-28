@@ -79,7 +79,7 @@ default['repose']['dist_datastore']['allow_all'] = false
 default['repose']['dist_datastore']['allowed_hosts'] = ['127.0.0.1']
 default['repose']['dist_datastore']['port'] = 8081
 
-default['repose']['response-messaging']['status_codes'] = []
+default['repose']['response_messaging']['status_codes'] = []
 
 default['repose']['slf4j_http_logging']['cluster_id'] = ['all']
 default['repose']['slf4j_http_logging']['id'] = 'http'
