@@ -35,24 +35,27 @@ suites:
   run_list: [
     "apt",
     "java",
-    "recipe[repose::filter-slf4j-http-logging]",
+    "recipe[repose::default]",
+    "recipe[repose::filter-add-header]",
+    "recipe[repose::filter-api-validator]",
+    "recipe[repose::filter-client-auth]",
+    "recipe[repose::filter-client-authorization]",
+    "recipe[repose::filter-content-type-stripper]",
+    "recipe[repose::filter-derp]",
+    "recipe[repose::filter-header-identity]",
     "recipe[repose::filter-header-normalization]",
     "recipe[repose::filter-header-translation]",
-    "recipe[repose::filter-header-identity]",
     "recipe[repose::filter-ip-identity]",
-    "recipe[repose::filter-uri-identity]",
+    "recipe[repose::filter-keystone-v2]",
     "recipe[repose::filter-rackspace-auth-user]",
     "recipe[repose::filter-rate-limiting]",
+    "recipe[repose::filter-slf4j-http-logging]",
     "recipe[repose::filter-translation]",
-    "recipe[repose::filter-content-type-stripper]",
-    "recipe[repose::filter-client-authorization]",
+    "recipe[repose::filter-uri-identity]",
     "recipe[repose::filter-uri-stripper]",
-    "recipe[repose::filter-add-header]",
-    "recipe[repose::filter-keystone-v2]",
-    "recipe[repose::service-http-connection-pool]",
     "recipe[repose::service-dist-datastore]",
-    "recipe[repose::default]",
-    "recipe[minitest-handler]"
+    "recipe[repose::service-http-connection-pool]",
+    "recipe[repose::service-response-messaging]"
   ]
   attributes:
     java:

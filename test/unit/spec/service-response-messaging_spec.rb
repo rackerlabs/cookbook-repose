@@ -17,7 +17,7 @@ describe 'repose::default' do
   let(:chef_run) do
     ChefSpec::SoloRunner.new do |node|
       node.set['repose']['services'] = ['response-messaging']
-      node.set['repose']['response-messaging']['status_codes'] = [{ 'id' => 'test_bad_input',
+      node.set['repose']['response_messaging']['status_codes'] = [{ 'id' => 'test_bad_input',
                                                                     'code_regex' => '4..',
                                                                     'messages'   => [
                                                                       { 'media_type' => 'application/xml',
@@ -68,7 +68,7 @@ describe 'repose::default' do
   let(:chef_run) do
     ChefSpec::SoloRunner.new do |node|
       node.set['repose']['services'] = ['response-messaging']
-      node.set['repose']['response-messaging']['status_codes'] = [{ 'id' => 'test_bad_input',
+      node.set['repose']['response_messaging']['status_codes'] = [{ 'id' => 'test_bad_input',
                                                                     'code_regex' => '4..',
                                                                     'overwrite'  => 'ALWAYS',
                                                                     'messages'   => [
