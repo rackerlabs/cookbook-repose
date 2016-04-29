@@ -50,7 +50,7 @@ Services work the same way as filters. Just s/filter/service/g.
 
 Available services are:
   * [http-connection-pool] (https://repose.atlassian.net/wiki/display/REPOSE/HTTP+Connection+Pool+service) (configuration only)
-  * dist-datastore
+  * [dist-datastore] (https://repose.atlassian.net/wiki/display/REPOSE/Datastores#Datastores-distributedDistributedDatastore)
   * [response-messaging] (https://repose.atlassian.net/wiki/display/REPOSE/Response+Messaging+service)
 
 ## Nodes
@@ -463,7 +463,7 @@ Example hash of inserting headers into responses:
 
 ## response-messaging attributes
 
-* `node['repose']['response-messaging']['status_codes'] - Array of status codes to activate on and generate responses.
+* `node['repose']['response_messaging']['status_codes'] - Array of status codes to activate on and generate responses.
 Example of configuration:
 ```
 [{ 'id'         => 'test_bad_input',

@@ -10,6 +10,6 @@ template "#{node['repose']['config_directory']}/response-messaging.cfg.xml" do
   group node['repose']['group']
   mode '0644'
   variables(
-    status_codes: node['repose']['response-messaging']['status_codes']
+    status_codes: node['repose']['response_messaging']['status_codes']
   )
 end
