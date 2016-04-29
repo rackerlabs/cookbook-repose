@@ -10,9 +10,25 @@
       role="default"
       default="true"
       wadl="<%= @wadl %>"
-      dot-output="<%= @dot_output %>"
-      enable-rax-roles="<%= @enable_rax_roles %>"
-      enable-api-coverage="<%= @enable_api_coverage %>"
+      <% if @dot_output != nil %>dot-output="<%= @dot_output %>"<% end %>
+      <% if @enable_rax_roles != nil %>enable-rax-roles="<%= @enable_rax_roles %>"<% end %>
+      <% if @enable_api_coverage != nil %>enable-api-coverage="<%= @enable_api_coverage %>"<% end %>
+      <% if @check_well_formed != nil %>check-well-formed="<%= @check_well_formed %>"<% end %>
+      <% if @check_grammars != nil %>check-grammars="<%= @check_grammars %>"<% end %>
+      <% if @check_elements != nil %>check-elements="<%= @check_elements %>"<% end %>
+      <% if @check_plain_params != nil %>check-plain-params="<%= @check_plain_params %>"<% end %>
+      <% if @do_xsd_grammar_transform != nil %>do-xsd-grammar-transform="<%= @do_xsd_grammar_transform %>"<% end %>
+      <% if @enable_pre_process_extension != nil %>enable-pre-process-extension="<%= @enable_pre_process_extension %>"<% end %>
+      <% if @remove_dups != nil %>remove-dups="<%= @remove_dups %>"<% end %>
+      <% if @xpath_version != nil %>xpath-version="<%= @xpath_version %>"<% end %>
+      <% if @xsl_engine != nil %>xsl-engine="<%= @xsl_engine %>"<% end %>
+      <% if @xsd_engine != nil %>xsd-engine="<%= @xsd_engine %>"<% end %>
+      <% if @mask_rax_roles_403 != nil %>mask-rax-roles-403="<%= @mask_rax_roles_403 %>"<% end %>
+      <% if @join_xpath_checks != nil %>join-xpath-checks="<%= @join_xpath_checks %>"<% end %>
+      <% if @enable_ignore_xsd_extension != nil %>enable-ignore-xsd-extension="<%= @enable_ignore_xsd_extension %>"<% end %>
+      <% if @validator_name != nil %>validator-name="<%= @validator_name %>"<% end %>
+      <% if @validate_checker != nil %>validate-checker="<%= @validate_checker %>"<% end %>
+      <% if @check_headers != nil %>check-headers="<%= @check_headers %>"<% end %>
     />
 </validators>
 
