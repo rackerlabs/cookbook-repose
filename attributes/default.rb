@@ -256,3 +256,16 @@ default['repose']['api_validator']['wadl'] = nil
 default['repose']['api_validator']['dot_output'] = '/tmp/default.out'
 default['repose']['api_validator']['enable_rax_roles'] = false
 default['repose']['api_validator']['enable_api_coverage'] = true
+
+default['repose']['ip_user']['user_header_name'] = 'X-PP-User'
+default['repose']['ip_user']['user_header_quality'] = '0.4'
+default['repose']['ip_user']['group_header_name'] = 'X-PP-Groups'
+default['repose']['ip_user']['group_header_quality'] = '0.4'
+default['repose']['ip_user']['groups'] = [
+  { 'group_name' => 'match-all',
+    'cidrips' => ['0.0.0.0/0']
+  },
+  { 'group_name' => 'rfc1918',
+    'cidrips' => ['192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8']
+  }
+]

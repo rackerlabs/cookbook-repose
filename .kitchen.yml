@@ -46,6 +46,7 @@ suites:
     "recipe[repose::filter-header-normalization]",
     "recipe[repose::filter-header-translation]",
     "recipe[repose::filter-ip-identity]",
+    "recipe[repose::filter-ip-user]",
     "recipe[repose::filter-keystone-v2]",
     "recipe[repose::filter-rackspace-auth-user]",
     "recipe[repose::filter-rate-limiting]",
