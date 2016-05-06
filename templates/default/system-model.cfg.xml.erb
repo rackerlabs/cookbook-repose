@@ -11,7 +11,7 @@
     <% end %>
     >
         <nodes>
-            <% @nodes.each.sort do |node| %>
+            <% @nodes.each do |node| %>
               <% if node['cluster_id'].nil? || node['cluster_id'] == cluster_id %>
             <node id="<%= node['id'] %>" hostname="<%= node['hostname'] %>" http-port="<%= node['port'] %>" />
               <% end %>

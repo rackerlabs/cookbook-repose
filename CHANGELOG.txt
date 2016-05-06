@@ -3,6 +3,7 @@ v3.3.3 (not tagged yet)
 ------
 * add optional content-body-read-limit, client-request-logging and proxy-thread-pool options to the container.cfg.xml template, set values to nil
 * added 10 additional options for the api-validator filter
+* fix minor bug with manually declared peers and system-model template
 
 v3.3.2
 ------
