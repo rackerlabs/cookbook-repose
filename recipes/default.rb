@@ -25,9 +25,12 @@ directory node['repose']['config_directory'] do
   mode '0755'
 end
 
+# http-connection-pool and response-messaging do not need to be included in the system-model.cfg.xml file
 services = node['repose']['services'].reject { |x| x == 'http-connection-pool' || x == 'response-messaging' }
 service_cluster_map = {
-  'dist-datastore' => node['repose']['dist_datastore']['cluster_id']
+  'dist-datastore' => node['repose']['dist_datastore']['cluster_id'],
+  'http-connection-pool' => node['repose']['http_connection_pool']['cluster_id'],
+  'response-messaging' => node['repose']['response_messaging']['cluster_id']
 }
 
 filters = node['repose']['filters']
@@ -100,10 +103,12 @@ template "#{node['repose']['config_directory']}/container.cfg.xml" do
   group node['repose']['group']
   mode '0644'
   variables(
+    content_body_read_limit: node['repose']['content_body_read_limit'],
     connection_timeout: node['repose']['connection_timeout'],
     read_timeout: node['repose']['read_timeout'],
     deploy_auto_clean: node['repose']['deploy_auto_clean'],
     filter_check_interval: node['repose']['filter_check_interval'],
+    client_request_logging: node['repose']['client_request_logging'],
     version: node['repose']['version']
   )
   notifies :restart, 'service[repose-valve]'
