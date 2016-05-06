@@ -23,24 +23,25 @@ There are 2 ways to setup filters:
   2. Add the filter names to the `node['repose']['filters']` array
 
 Available filters are:
+  * [add-header](https://repose.atlassian.net/wiki/display/REPOSE/Add+Header+Filter)
+  * [api-validator](https://repose.atlassian.net/wiki/display/REPOSE/API+Validation+filter)
   * [client-auth] (https://repose.atlassian.net/wiki/display/REPOSE/Client+Authentication+filter) (deprecated in Repose 8.0.0 - replace with Keystone v2 Filter)
+  * [client-authorization](https://repose.atlassian.net/wiki/display/REPOSE/Client+Authorization+filter)
+  * [content-type-stripper](https://repose.atlassian.net/wiki/display/REPOSE/Content+Type+Stripper+filter) (system-model only)
+  * [DeRP] (https://repose.atlassian.net/wiki/display/REPOSE/Delegation+Response+Processor+%28DeRP%29+Filter)
+  * [header-identity](https://repose.atlassian.net/wiki/display/REPOSE/Header+Identity+filter)
+  * [header-normalization] (https://repose.atlassian.net/wiki/display/REPOSE/Header+Normalization+filter)
+  * [header-translation] (https://repose.atlassian.net/wiki/display/REPOSE/Header+Translation+filter)
   * [ip-identity] (https://repose.atlassian.net/wiki/display/REPOSE/IP+Identity+filter) (deprecated in Repose 8.0.0 - replace with IP User Filter)
+  * [ip-user] (https://repose.atlassian.net/wiki/display/REPOSE/IP+User+filter)
+  * [keystone-v2](https://repose.atlassian.net/wiki/display/REPOSE/Keystone+v2+Filter)
+  * [rackspace-auth-user](https://repose.atlassian.net/wiki/display/REPOSE/Rackspace+Auth+User+filter)
   * [rate-limiting] (https://repose.atlassian.net/wiki/display/REPOSE/Rate+Limiting+filter)
   * [slf4j-http-logging] (https://repose.atlassian.net/wiki/display/REPOSE/SLF4J+HTTP+Logging+filter)
-  * [header-translation] (https://repose.atlassian.net/wiki/display/REPOSE/Header+Translation+filter)
-  * [DeRP] (https://repose.atlassian.net/wiki/display/REPOSE/Delegation+Response+Processor+%28DeRP%29+Filter)
-  * [header-normalization] (https://repose.atlassian.net/wiki/display/REPOSE/Header+Normalization+filter)
-  * [content-type-stripper](https://repose.atlassian.net/wiki/display/REPOSE/Content+Type+Stripper+filter) (system-model only)
   * [translation](https://repose.atlassian.net/wiki/display/REPOSE/Translation+filter)
-  * [rackspace-auth-user](https://repose.atlassian.net/wiki/display/REPOSE/Rackspace+Auth+User+filter)
-  * [header-identity](https://repose.atlassian.net/wiki/display/REPOSE/Header+Identity+filter)
   * [uri-identity](https://repose.atlassian.net/wiki/display/REPOSE/URI+Identity+filter)
-  * [api-validator](https://repose.atlassian.net/wiki/display/REPOSE/API+Validation+filter)
-  * [client-authorization](https://repose.atlassian.net/wiki/display/REPOSE/Client+Authorization+filter)
   * [uri-stripper](https://repose.atlassian.net/wiki/display/REPOSE/URI+Stripper+filter)
-  * [add-header](https://repose.atlassian.net/wiki/display/REPOSE/Add+Header+Filter)
   * [url-extractor-to-header](https://repose.atlassian.net/wiki/display/REPOSE/URL+Extractor+to+Header)
-  * [keystone-v2](https://repose.atlassian.net/wiki/display/REPOSE/Keystone+v2+Filter)
 
 Other filters are available in Repose and may be added to this cookbook in a later revision.
 
@@ -49,8 +50,8 @@ Other filters are available in Repose and may be added to this cookbook in a lat
 Services work the same way as filters. Just s/filter/service/g.
 
 Available services are:
-  * [http-connection-pool] (https://repose.atlassian.net/wiki/display/REPOSE/HTTP+Connection+Pool+service) (configuration only)
   * [dist-datastore] (https://repose.atlassian.net/wiki/display/REPOSE/Datastores#Datastores-distributedDistributedDatastore)
+  * [http-connection-pool] (https://repose.atlassian.net/wiki/display/REPOSE/HTTP+Connection+Pool+service) (configuration only)
   * [response-messaging] (https://repose.atlassian.net/wiki/display/REPOSE/Response+Messaging+service)
 
 ## Nodes
