@@ -23,6 +23,7 @@ directory node['repose']['config_directory'] do
   owner node['repose']['owner']
   group node['repose']['group']
   mode '0755'
+  recursive true
 end
 
 # http-connection-pool and response-messaging do not need to be included in the system-model.cfg.xml file
