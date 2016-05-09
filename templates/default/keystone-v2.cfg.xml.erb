@@ -38,17 +38,9 @@
     <% end %>
 
     <% if @tenant_handling %>
-    <tenant-handling 
-        <% if @tenant_handling['send_all_tenant_ids'] %>
-         send-all-tenant-ids="<%= @tenant_handling['send_all_tenant_ids'] %>"
-        <% end %>
-        >
+    <tenant-handling<% if @tenant_handling['send_all_tenant_ids'] %> send-all-tenant-ids="<%= @tenant_handling['send_all_tenant_ids'] %>"<% end %>>
         <% if @tenant_handling['validate_tenant'] %>
-            <validate-tenant 
-            <% if @tenant_handling['validate_tenant']['strip_token_tenant_prefixes'] %>			
-                strip-token-tenant-prefixes="<%= @@tenant_handling['validate_tenant']['strip_token_tenant_prefixes'] %>"
-            <% end %>
-            >
+            <validate-tenant<% if @tenant_handling['validate_tenant']['strip_token_tenant_prefixes'] -%> strip-token-tenant-prefixes="<%= @tenant_handling['validate_tenant']['strip_token_tenant_prefixes'] %>"<% end -%>>
 	    <uri-extraction-regex><%= @tenant_handling['validate_tenant']['url_extraction_regex'] %></uri-extraction-regex>
 	</validate-tenant>
 	<% end %>

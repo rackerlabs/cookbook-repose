@@ -79,6 +79,7 @@ default['repose']['dist_datastore']['allow_all'] = false
 default['repose']['dist_datastore']['allowed_hosts'] = ['127.0.0.1']
 default['repose']['dist_datastore']['port'] = 8081
 
+default['repose']['response_messaging']['cluster_id'] = ['all']
 default['repose']['response_messaging']['status_codes'] = []
 
 default['repose']['slf4j_http_logging']['cluster_id'] = ['all']
@@ -207,6 +208,7 @@ default['repose']['rate_limiting']['limit_groups'] = [
   }
 ]
 
+default['repose']['http_connection_pool']['cluster_id'] = ['all']
 default['repose']['http_connection_pool']['chunked_encoding'] = true
 default['repose']['http_connection_pool']['max_total'] = 400
 default['repose']['http_connection_pool']['max_per_route'] = 200
@@ -275,6 +277,7 @@ default['repose']['api_validator']['validator_name'] = nil
 default['repose']['api_validator']['validate_checker'] = nil
 default['repose']['api_validator']['check_headers'] = nil
 
+default['repose']['ip_user']['cluster_id'] = ['all']
 default['repose']['ip_user']['user_header_name'] = 'X-PP-User'
 default['repose']['ip_user']['user_header_quality'] = '0.4'
 default['repose']['ip_user']['group_header_name'] = 'X-PP-Groups'
