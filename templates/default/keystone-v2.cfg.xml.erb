@@ -5,10 +5,18 @@
         username="<%= @username %>"
         password="<%= @password %>"
         uri="<%= @uri %>"
+        <% if @pool -%>
         connection-pool-id="<%= @pool %>"
+        <% end -%>
+        <% if @roles_in_header -%>
         set-roles-in-header="<%= @roles_in_header %>"
+        <% end -%>
+        <% if @groups_in_header -%>
         set-groups-in-header="<%= @groups_in_header %>"
+        <% end -%>
+        <% if @catalog_in_header -%>
         set-catalog-in-header="<%= @catalog_in_header %>"
+        <% end -%>
         />    
     <% if @delegating_quality %>
     <delegating quality="<%= @delegating_quality %>" /> 
