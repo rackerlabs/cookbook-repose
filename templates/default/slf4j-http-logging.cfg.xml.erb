@@ -9,8 +9,9 @@
              it can then be used in log4j backend to determine which appender to go to -->
         <!-- The format includes what will be logged. The arguments with % are a subset of the apache mod_log_config
              found at http://httpd.apache.org/docs/2.2/mod/mod_log_config.html#formats -->
-        <slf4j-http-log
-                id="<%= @id %>"
-                format="<%= @format %>"
-                />
+        <slf4j-http-log id="<%= @id %>">
+            <format>
+            <%= @format %>
+            </format>
+        </slf4j-http-log>
 </slf4j-http-logging>
