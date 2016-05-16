@@ -5,7 +5,7 @@
     <group-header name="<%= @group_header_name %>" quality="<%= @group_header_quality %>"/>
 
     <% @groups.each do |group| %>
-    <group name=<%= group['group_name'] %>>
+    <group name="<%= group['group_name'] %>">
        <% group['cidrips'].each do |ip| %>
        <cidr-ip><%= ip %></cidr-ip>"
        <% end %>
