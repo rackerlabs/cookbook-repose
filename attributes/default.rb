@@ -184,6 +184,10 @@ default['repose']['client_authorization']['roles'] = []
 default['repose']['client_authorization']['delegating_quality'] = nil
 
 default['repose']['rate_limiting']['cluster_id'] = ['all']
+default['repose']['rate_limiting']['datastore'] = nil
+default['repose']['rate_limiting']['datastore_warn_limit'] = nil
+default['repose']['rate_limiting']['overlimit_429_responsecode'] = nil
+default['repose']['rate_limiting']['use_capture_groups'] = nil
 default['repose']['rate_limiting']['uri_regex'] = '/limits'
 default['repose']['rate_limiting']['global_limits'] = []
 default['repose']['rate_limiting']['include_absolute_limits'] = false
@@ -253,6 +257,7 @@ default['repose']['add_header']['requests'] = []
 default['repose']['add_header']['responses'] = []
 
 default['repose']['api_validator']['cluster_id'] = ['all']
+default['repose']['api_validator']['multi_role_match'] = nil
 default['repose']['api_validator']['enable_rax_roles'] = true
 default['repose']['api_validator']['wadl'] = nil
 default['repose']['api_validator']['dot_output'] = '/tmp/default.out'

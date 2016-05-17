@@ -16,6 +16,7 @@ template "#{node['repose']['config_directory']}/validator.cfg.xml" do
   mode '0644'
   variables(
     version: node['repose']['version'],
+    multi_role_match: node['repose']['api_validator']['multi_role_match'],
     wadl: node['repose']['api_validator']['wadl'],
     dot_output: node['repose']['api_validator']['dot_output'],
     enable_rax_roles: node['repose']['api_validator']['enable_rax_roles'],

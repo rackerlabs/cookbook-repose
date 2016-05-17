@@ -3,7 +3,7 @@
 <% if !@version.nil? && @version.split('.')[0].to_i < 7 %>
 <rate-limiting xmlns="http://docs.rackspacecloud.com/repose/rate-limiting/v1.0">
 <% else %>
-<rate-limiting xmlns="http://docs.openrepose.org/repose/rate-limiting/v1.0">
+<rate-limiting <% if @datastore %>datastore="<% @datastore %>" <% end ><% if @datastore_warn_limit %>datastore-warn-limit="<% @datastore_warn_limit %>" <% end %><% if @overlimit_429_responsecode %>overlimit-429-responseCode="<% @overlimit_429_responsecode %>" <% end %><% if @use_capture_groups %>use-capture-groups="<% @use_capture_groups %>" <% end %><xmlns="http://docs.openrepose.org/repose/rate-limiting/v1.0">
 <% end %>
 
 <!-- http://wiki.openrepose.org/display/REPOSE/Rate+Limiting+Filter -->
