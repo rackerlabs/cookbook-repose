@@ -2,9 +2,9 @@
 
 <!-- https://repose.atlassian.net/wiki/display/REPOSE/API+Validation+filter -->
 <% if !@version.nil? && @version.split('.')[0].to_i < 7 %>
-<validators <% if @multi_role_match %>multi-role-match=<% @multi_role_match %><% end %> xmlns='http://openrepose.org/repose/validator/v1.0'>
+<validators multi-role-match="true" xmlns='http://openrepose.org/repose/validator/v1.0'>
 <% else %>
-<validators multi-role-match="true" xmlns='http://docs.openrepose.org/repose/validator/v1.0'>
+<validators <% if @multi_role_match %>multi-role-match="<% @multi_role_match %>" <% end %> xmlns='http://docs.openrepose.org/repose/validator/v1.0'>
 <% end %>
    <validator
       role="default"
