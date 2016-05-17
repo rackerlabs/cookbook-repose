@@ -184,6 +184,10 @@ default['repose']['client_authorization']['roles'] = []
 default['repose']['client_authorization']['delegating_quality'] = nil
 
 default['repose']['rate_limiting']['cluster_id'] = ['all']
+default['repose']['rate_limiting']['datastore'] = nil
+default['repose']['rate_limiting']['datastore_warn_limit'] = nil
+default['repose']['rate_limiting']['overlimit_429_responsecode'] = nil
+default['repose']['rate_limiting']['use_capture_groups'] = nil
 default['repose']['rate_limiting']['uri_regex'] = '/limits'
 default['repose']['rate_limiting']['global_limits'] = []
 default['repose']['rate_limiting']['include_absolute_limits'] = false
