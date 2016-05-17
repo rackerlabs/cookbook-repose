@@ -253,6 +253,7 @@ default['repose']['add_header']['requests'] = []
 default['repose']['add_header']['responses'] = []
 
 default['repose']['api_validator']['cluster_id'] = ['all']
+default['repose']['api_validator']['multi_role_match'] = nil
 default['repose']['api_validator']['enable_rax_roles'] = true
 default['repose']['api_validator']['wadl'] = nil
 default['repose']['api_validator']['dot_output'] = '/tmp/default.out'
