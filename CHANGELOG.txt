@@ -1,5 +1,11 @@
 
-v3.3.3 (not tagged yet)
+v3.3.4
+------
+* update log4j2.xml template to use numbers in log rotation instead of date
+* pin default version to 7.3.6.0 to avoid JRE 8 issues (until tested later)
+* filter template updates - api-validator, rate-limiting, keystone-v2, slf4j-http-logging
+
+v3.3.3
 ------
 * add optional content-body-read-limit, client-request-logging and proxy-thread-pool options to the container.cfg.xml template, set values to nil
 * added 10 additional options for the api-validator filter

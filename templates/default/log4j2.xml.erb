@@ -5,12 +5,12 @@
             <PatternLayout pattern="%d %-4r [%t] %-5p %c - %m%n"/>
         </Console>
         <RollingFile name="RollingFile" fileName="/var/log/repose/current.log"
-                     filePattern="/var/log/repose/current-%d{yyyy-MM-dd_HHmmss}.log">
+                     filePattern="/var/log/repose/current-%i.log">
             <PatternLayout pattern="%d %-4r [%t] %-5p %c - %m%n"/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="200 MB"/>
+                <SizeBasedTriggeringPolicy size="1024 MB"/>
             </Policies>
-            <DefaultRolloverStrategy max="2"/>
+            <DefaultRolloverStrategy max="5"/>
         </RollingFile>
         <% @appenders.each do |appender| %>
             <%= appender %>
