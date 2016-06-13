@@ -18,7 +18,7 @@ when 'debian'
 end
 
 default['repose']['version'] = '7.3.6.0'
-default['repose']['loglevel'] = 'DEBUG'
+default['repose']['loglevel'] = 'WARN'
 default['repose']['cluster_ids'] = ['repose']
 default['repose']['rewrite_host_header'] = true
 default['repose']['node_id'] = 'repose_node1'
