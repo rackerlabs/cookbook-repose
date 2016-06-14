@@ -8,9 +8,9 @@
                      filePattern="/var/log/repose/current-%i.log">
             <PatternLayout pattern="%d %-4r [%t] %-5p %c - %m%n"/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="1024 MB"/>
+                <SizeBasedTriggeringPolicy size="512 MB"/>
             </Policies>
-            <DefaultRolloverStrategy max="5"/>
+            <DefaultRolloverStrategy max="4"/>
         </RollingFile>
         <% @appenders.each do |appender| %>
             <%= appender %>
