@@ -1,3 +1,8 @@
+v3.3.5
+------
+* fix bug where overLimit-429-responsecode attribute had incorrect casing (rate-limiting.cfg.xml template)
+* change default logging to WARN instead of DEBUG (log4j2.xml.erb)
+* change default log rotation to 512MB and 4 files (log4j2.xml.erb)
 
 v3.3.4
 ------
