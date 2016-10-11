@@ -10,7 +10,7 @@
     <allowed-hosts allow-all="true" />
     <% else %>
     <allowed-hosts allow-all="false">
-        <% @allowed_hosts.each.sort do |host| %>
+        <% @allowed_hosts.sort.each do |host| %>
         <allow host="<%= host %>" />
         <% end %>
     </allowed-hosts>
