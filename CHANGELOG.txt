@@ -1,3 +1,10 @@
+v3.3.7
+------
+* fix allowed_hosts sorting bug which broke dist-datastore
+
+v3.3.6
+------
+
 v3.3.5
 ------
 * fix bug where overLimit-429-responsecode attribute had incorrect casing (rate-limiting.cfg.xml template)
