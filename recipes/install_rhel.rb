@@ -21,7 +21,7 @@ end
    repose-extensions-filter-bundle).each do |p|
   package p do
     options node['repose']['install_opts']
-    version node['repose']['version']
+    version "#{node['repose']['version']}-1"
   end
 end
 
