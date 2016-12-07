@@ -3,6 +3,9 @@ inherit_from: .rubocop_todo.yml
 Metrics/AbcSize:
   Max: 23
 
+Metrics/BlockLength:
+  Enabled: false
+
 Metrics/LineLength:
   Enabled: false
 
