@@ -1,55 +1,26 @@
+language: ruby
+rvm:
+  - 2.2.4
+
 sudo: required
-
-addons:
-  apt:
-    sources:
-      - chef-stable-precise
-    packages:
-      - chefdk
-
-# Don't `bundle install`
-install: echo "skip bundle install"
-
-branches:
-  only:
-    - master
-
-services:
-  - docker
+services: docker
 
 env:
-  global:
-    # Ignore warnings when running specs.
-    - RUBYOPT="-W0"
   matrix:
-    - CHEF_VERSION=12.4.1 PLATFORM=debian-7
-    - CHEF_VERSION=12.4.1 PLATFORM=debian-8
-    - CHEF_VERSION=12.4.1 PLATFORM=ubuntu-1204
-    - CHEF_VERSION=12.4.1 PLATFORM=ubuntu-1404
-    - CHEF_VERSION=12.4.1 PLATFORM=centos-6
-    - CHEF_VERSION=12.4.1 PLATFORM=centos-7
-    - CHEF_VERSION=latest PLATFORM=debian-7
-    - CHEF_VERSION=latest PLATFORM=debian-8
-    - CHEF_VERSION=latest PLATFORM=ubuntu-1204
-    - CHEF_VERSION=latest PLATFORM=ubuntu-1404
-    - CHEF_VERSION=latest PLATFORM=centos-6
-    - CHEF_VERSION=latest PLATFORM=centos-7
+  - TESTS="unit"
+  - TESTS="rubocop"
+  - TESTS="foodcritic"
+  - TESTS="integration:docker[default-debian-7.9]"
+  - TESTS="integration:docker[default-debian-8.3]"
+  - TESTS="integration:docker[default-ubuntu-14.04]"
+  - TESTS="integration:docker[default-ubuntu-12.04]"
+  - TESTS="integration:docker[default-centos-6.7]"
+  - TESTS="integration:docker[default-centos-7.2]"
 
-matrix:
-  fast_finish: true
+before_install: curl -L https://www.getchef.com/chef/install.sh | sudo bash -s -- -P chefdk -v 0.15.16
+install: chef exec bundle install --jobs=3 --retry=3 --without='vagrant'
 
-# Ensure we make ChefDK's Ruby the default
-before_script:
-  - eval "$(/opt/chefdk/bin/chef shell-init bash)"
-  # We have to install chef-sugar for ChefSpec
-  - /opt/chefdk/embedded/bin/chef gem install chef-sugar
-  # Ensure kitchen-docker is available for testing
-  - /opt/chefdk/embedded/bin/chef gem install kitchen-docker
-script:
-  - /opt/chefdk/embedded/bin/chef --version
-  - /opt/chefdk/embedded/bin/rubocop --version
-  - /opt/chefdk/embedded/bin/rubocop
-  - /opt/chefdk/embedded/bin/foodcritic --version
-  - /opt/chefdk/embedded/bin/foodcritic .
-  - /opt/chefdk/embedded/bin/kitchen --version
-  - KITCHEN_LOCAL_YAML=.kitchen.docker.yml /opt/chefdk/embedded/bin/kitchen verify "$PLATFORM"
+# https://github.com/zuazo/kitchen-in-travis-native/issues/1#issuecomment-142455888
+before_script: sudo iptables -L DOCKER || sudo iptables -N DOCKER
+
+script: travis_retry chef exec bundle exec rake ${TESTS}
