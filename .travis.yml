@@ -7,29 +7,27 @@ addons:
     packages:
       - chefdk
 
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq virtualbox virtualbox-dkms linux-headers-generic --fix-missing
+
 # Don't `bundle install`
-install: echo "skip bundle install"
+install:
+  - echo "skip bundle install"
+  - sudo dpkg-reconfigure virtualbox-dkms
+  - sudo wget -nv https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb
+  - sudo dpkg -i vagrant_1.8.1_x86_64.deb
+  - sudo VBoxManage --version
 
 branches:
   only:
     - master
-
-services:
-  - docker
 
 env:
   global:
     # Ignore warnings when running specs.
     - RUBYOPT="-W0"
   matrix:
-    - CHEF_VERSION=12.4.1 PLATFORM=debian-7
-    - CHEF_VERSION=12.4.1 PLATFORM=debian-8
-    - CHEF_VERSION=12.4.1 PLATFORM=ubuntu-1204
-    - CHEF_VERSION=12.4.1 PLATFORM=ubuntu-1404
-    - CHEF_VERSION=12.4.1 PLATFORM=centos-6
-    - CHEF_VERSION=12.4.1 PLATFORM=centos-7
-    - CHEF_VERSION=latest PLATFORM=debian-7
-    - CHEF_VERSION=latest PLATFORM=debian-8
     - CHEF_VERSION=latest PLATFORM=ubuntu-1204
     - CHEF_VERSION=latest PLATFORM=ubuntu-1404
     - CHEF_VERSION=latest PLATFORM=centos-6
@@ -44,7 +42,7 @@ before_script:
   # We have to install chef-sugar for ChefSpec
   - /opt/chefdk/embedded/bin/chef gem install chef-sugar
   # Ensure kitchen-docker is available for testing
-  - /opt/chefdk/embedded/bin/chef gem install kitchen-docker
+  - /opt/chefdk/embedded/bin/chef gem install kitchen-vagrant
 script:
   - /opt/chefdk/embedded/bin/chef --version
   - /opt/chefdk/embedded/bin/rubocop --version
@@ -52,4 +50,4 @@ script:
   - /opt/chefdk/embedded/bin/foodcritic --version
   - /opt/chefdk/embedded/bin/foodcritic .
   - /opt/chefdk/embedded/bin/kitchen --version
-  - KITCHEN_LOCAL_YAML=.kitchen.docker.yml /opt/chefdk/embedded/bin/kitchen verify "$PLATFORM"
+  - /opt/chefdk/embedded/bin/kitchen verify "$PLATFORM"
