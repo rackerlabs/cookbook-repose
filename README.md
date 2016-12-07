@@ -160,10 +160,10 @@ The Repose endpoints array defaults to:
 * `node['repose']['keystone_v2']['password_admin']` - Administrator password making auth-n requests for clients.
 * `node['repose']['keystone_v2']['uri']` - target URI (i.e., the URI of your Identity Service endpoint) for authentication requests.
 * `node['repose']['keystone_v2']['pool']` - Tells the connection pool service to map to the pool with specified id. If default is chosen, the default connection pool configurations in connection pool service is used.
-* `node['repose']['keystone_v2']['groups_in_header']` - Set the user's groups in the x-pp-groups header. If the user has no groups, the header will not be set.	
+* `node['repose']['keystone_v2']['groups_in_header']` - Set the user's groups in the x-pp-groups header. If the user has no groups, the header will not be set.
 * `node['repose']['keystone_v2']['roles_in_header']` - Set the user's roles in the x-roles header.
 * `node['repose']['keystone_v2']['catalog_in_header']` - Set the user's service catalog in the x-catalog header.
-* `node['repose']['keystone_v2']['delegating_quality']` - If present, the filter will not send a failing response when an invalid state is reached. Instead, it will add the data relating to the failure to a header and forward the request to be handled by a different filter or service.  If not present, the filter will send a failing response when an invalid state is reached.  The quality, a double between 0 and 1, assigned to the delegation header on delegation. This value will be used to order delegation based on priority when multiple delegations are present.	
+* `node['repose']['keystone_v2']['delegating_quality']` - If present, the filter will not send a failing response when an invalid state is reached. Instead, it will add the data relating to the failure to a header and forward the request to be handled by a different filter or service.  If not present, the filter will send a failing response when an invalid state is reached.  The quality, a double between 0 and 1, assigned to the delegation header on delegation. This value will be used to order delegation based on priority when multiple delegations are present.
 * `node['repose']['keystone_v2']['white_list']` - A list of URI patterns all users can access.
 ```
 white_list = ['$/v1','$/v1/application.wadl$']
@@ -181,7 +181,7 @@ cache = {
   ]
 }
 ```
-* `node['repose']['keystone_v2']['tenant_handling']` - A container element for all configuration associated with tenants.	
+* `node['repose']['keystone_v2']['tenant_handling']` - A container element for all configuration associated with tenants.
 ```
 tenant_handling = {
   'send_all_tenant_ids' => false,
@@ -250,8 +250,8 @@ The limit groups array defaults to:
     'limits' => [
       { 'id' => 'all',
         'uri' => '*',
-        'uri-regex' => '/.*',
-        'http-methods' => 'POST PUT GET DELETE',
+        'uri_regex' => '/.*',
+        'http_methods' => 'POST PUT GET DELETE',
         'unit' => 'MINUTE',
         'value' => 10
       }
@@ -280,7 +280,7 @@ Global limit groups are similarly organized:
 
 ## header-translation attributes
 
-* `node['repose']['header_translation']['headers']` - header list of original headers (the ones passed in the request) and the new headers (the ones that will have duplicate values of original headers).  new_name can be a list of headers white-space separated. You can also set an optional remove_attribute key if you'd like the original header to be removed.  to set the array. 
+* `node['repose']['header_translation']['headers']` - header list of original headers (the ones passed in the request) and the new headers (the ones that will have duplicate values of original headers).  new_name can be a list of headers white-space separated. You can also set an optional remove_attribute key if you'd like the original header to be removed.  to set the array.
 
 The default headers are:
 ```
@@ -314,8 +314,8 @@ The default headers are:
 
 ## header-normalization attributes
 
-* `node['repose']['header_normalization']['whitelist']` - a hash of whitelist blocks, each encapsulating an array of headers to be whitelisted by Repose for delivery to the origin service or next filter in the chain. A unique 'id' key identifies each whitelist entry, with optional 'uri_regex' and 'http_methods' keys to induce further constraints. 
-* `node['repose']['header_normalization']['blacklist']` - a hash of blacklist blocks, each encapsulating an array of headers to be blacklisted by Repose for non-delivery to the origin service or next filter in the chain. A unique 'id' key identifies each blacklist entry, with optional 'uri_regex' and 'http_methods' keys to induce further constraints. 
+* `node['repose']['header_normalization']['whitelist']` - a hash of whitelist blocks, each encapsulating an array of headers to be whitelisted by Repose for delivery to the origin service or next filter in the chain. A unique 'id' key identifies each whitelist entry, with optional 'uri_regex' and 'http_methods' keys to induce further constraints.
+* `node['repose']['header_normalization']['blacklist']` - a hash of blacklist blocks, each encapsulating an array of headers to be blacklisted by Repose for non-delivery to the origin service or next filter in the chain. A unique 'id' key identifies each blacklist entry, with optional 'uri_regex' and 'http_methods' keys to induce further constraints.
 
 The default whitelist is:
 ```
