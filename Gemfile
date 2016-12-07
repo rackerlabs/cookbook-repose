@@ -9,5 +9,14 @@ gem 'rubocop'
 
 group :integration do
   gem 'test-kitchen'
-  gem 'kitchen-vagrant'
 end
+
+group :vagrant do
+  gem 'kitchen-vagrant'
+  gem 'vagrant-wrapper'
+end
+
+group :integration_docker do
+  gem 'kitchen-docker'
+end
+

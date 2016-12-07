@@ -114,6 +114,8 @@ GEM
     iniparse (1.4.2)
     ipaddress (0.8.3)
     json (2.0.2)
+    kitchen-docker (2.6.0)
+      test-kitchen (>= 1.0.0)
     kitchen-vagrant (0.21.1)
       test-kitchen (~> 1.4)
     libyajl2 (1.2.0)
@@ -256,6 +258,7 @@ GEM
       polyglot (~> 0.3)
     unicode-display_width (1.1.1)
     uuidtools (2.1.5)
+    vagrant-wrapper (2.0.3)
     varia_model (0.6.0)
       buff-extensions (~> 2.0)
       hashie (>= 2.0.2, < 4.0.0)
@@ -269,11 +272,13 @@ DEPENDENCIES
   berkshelf
   chefspec
   foodcritic
+  kitchen-docker
   kitchen-vagrant
   rake
   rspec
   rubocop
   test-kitchen
+  vagrant-wrapper
 
 BUNDLED WITH
    1.12.5
