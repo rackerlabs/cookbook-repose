@@ -49,8 +49,7 @@ default['repose']['peers'] = [
   { 'cluster_id' => 'repose',
     'id' => 'repose_node1',
     'hostname' => 'localhost',
-    'port' => 8080
-  }
+    'port' => 8080 }
 ]
 
 default['repose']['filters'] = []
@@ -63,8 +62,7 @@ default['repose']['endpoints'] = [
     'hostname' => 'openrepose.org',
     'port' => 80,
     'root_path' => '/',
-    'default' => true
-  }
+    'default' => true }
 ]
 
 default['repose']['add_header']['cluster_id'] = ['all']
@@ -89,12 +87,10 @@ default['repose']['slf4j_http_logging']['format'] = 'Remote IP=%a Local IP=%A Re
 default['repose']['header_translation']['cluster_id'] = ['all']
 default['repose']['header_translation']['headers'] = [
   { 'original_name' => 'Content-Type',
-    'new_name' => 'rax-content-type'
-  },
+    'new_name' => 'rax-content-type' },
   { 'original_name' => 'Content-Length',
     'new_name' => 'rax-content-length not-rax-content-length something-else',
-    'remove_original' => true
-  }
+    'remove_original' => true }
 ]
 
 default['repose']['derp']['cluster_id'] = ['all']
@@ -105,28 +101,23 @@ default['repose']['header_normalization']['cluster_id'] = ['all']
 default['repose']['header_normalization']['whitelist'] = [
   { 'id' => 'credentials',
     'uri_regex' => '/servers/(.*)',
-    'headers'   => ['X-Auth-Key', 'X-Auth-User']
-  },
+    'headers'   => ['X-Auth-Key', 'X-Auth-User'] },
   { 'id' => 'modification',
     'uri_regex' => '/resource/(.*)',
     'http_methods' => 'PUT POST',
-    'headers'   => ['X-Modify']
-  }
+    'headers'   => ['X-Modify'] }
 ]
 default['repose']['header_normalization']['blacklist'] = [
   { 'id' => 'rate-limit-headers',
-    'headers'   => ['X-PP-User', 'X-PP-Groups']
-  }
+    'headers'   => ['X-PP-User', 'X-PP-Groups'] }
 ]
 
 default['repose']['header_identity']['cluster_id'] = ['all']
 default['repose']['header_identity']['headers'] = [
   { 'id' => 'X-Auth-Token',
-    'quality' => 0.95
-  },
+    'quality' => 0.95 },
   { 'id' => 'X-Forwarded-For',
-    'quality' => 0.5
-  }
+    'quality' => 0.5 }
 ]
 
 default['repose']['ip_identity']['cluster_id'] = ['all']
@@ -201,15 +192,12 @@ default['repose']['rate_limiting']['limit_groups'] = [
         'uri_regex' => '/.*',
         'http_methods' => 'POST PUT GET DELETE',
         'unit' => 'MINUTE',
-        'value' => 10
-      }
-    ]
-  },
+        'value' => 10 }
+    ] },
   { 'id' => 'unlimited',
     'groups' => 'unlimited',
     'default' => false,
-    'limits' => []
-  }
+    'limits' => [] }
 ]
 
 default['repose']['http_connection_pool']['cluster_id'] = ['all']
@@ -286,9 +274,7 @@ default['repose']['ip_user']['group_header_name'] = 'X-PP-Groups'
 default['repose']['ip_user']['group_header_quality'] = '0.4'
 default['repose']['ip_user']['groups'] = [
   { 'group_name' => 'match-all',
-    'cidrips' => ['0.0.0.0/0']
-  },
+    'cidrips' => ['0.0.0.0/0'] },
   { 'group_name' => 'rfc1918',
-    'cidrips' => ['192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8']
-  }
+    'cidrips' => ['192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8'] }
 ]

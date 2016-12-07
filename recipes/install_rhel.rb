@@ -18,8 +18,7 @@ end
 
 %w(repose-valve
    repose-filter-bundle
-   repose-extensions-filter-bundle
-).each do |p|
+   repose-extensions-filter-bundle).each do |p|
   package p do
     options node['repose']['install_opts']
     version node['repose']['version']
@@ -27,7 +26,7 @@ end
 end
 
 file '/etc/init.d/repose-valve' do
-  mode 0755
+  mode 0o755
 end
 
 template '/etc/sysconfig/repose' do

@@ -20,8 +20,7 @@ class Chef
               'hostname'    => node['fqdn'],
               'ipaddress'   => node['ipaddress'],
               'port'        => i + node['repose']['port'].to_i,
-              'ssl_port'    => i + node['repose']['ssl_port'].to_i
-            }
+              'ssl_port'    => i + node['repose']['ssl_port'].to_i }
           end
         end
       end

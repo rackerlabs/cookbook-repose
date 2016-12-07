@@ -29,8 +29,8 @@ describe 'repose::default' do
  <message>OverLimit Retry...</message>
  <details>Error Details...</details>
 </overLimit>
-]]>' }]
-}]
+]]>' }
+                                                                    ] }]
     end.converge(described_recipe)
   end
 
@@ -77,7 +77,8 @@ describe 'repose::default' do
                                                                         'content'      => '<![CDATA[<test/>]]>' },
                                                                       { 'media_type'   => '*/*',
                                                                         'content_type' => 'application/json',
-                                                                        'content'      => '{"test":"bad"}' }] },
+                                                                        'content'      => '{"test":"bad"}' }
+                                                                    ] },
                                                                   { 'id'         => 'test_error',
                                                                     'code_regex' => '5..',
                                                                     'overwrite'  => 'ALWAYS',
@@ -87,7 +88,8 @@ describe 'repose::default' do
                                                                         'content'      => '<![CDATA[<error/>]]>' },
                                                                       { 'media_type'   => '*/*',
                                                                         'content_type' => 'application/json',
-                                                                        'content'      => '{"test":"error"}' }] }]
+                                                                        'content'      => '{"test":"error"}' }
+                                                                    ] }]
     end.converge(described_recipe)
   end
 

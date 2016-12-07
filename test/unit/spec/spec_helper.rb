@@ -7,7 +7,6 @@ require 'chefspec'
 require 'chefspec/berkshelf'
 require 'chef/application'
 
-def stub_resources
-end
+def stub_resources; end
 
 at_exit { ChefSpec::Coverage.report! }

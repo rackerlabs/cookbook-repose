@@ -19,4 +19,3 @@ end
 group :integration_docker do
   gem 'kitchen-docker'
 end
-
