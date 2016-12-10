@@ -1,8 +1,21 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf', '~> 2.0.11'
+gem 'berkshelf'
+gem 'chefspec'
+gem 'foodcritic'
+gem 'rake'
+gem 'rspec'
+gem 'rubocop'
 
 group :integration do
   gem 'test-kitchen'
+end
+
+group :vagrant do
   gem 'kitchen-vagrant'
+  gem 'vagrant-wrapper'
+end
+
+group :integration_docker do
+  gem 'kitchen-docker'
 end
