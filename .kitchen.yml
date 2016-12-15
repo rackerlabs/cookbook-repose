@@ -1,8 +1,7 @@
 driver:
   name: vagrant
-
-driver_config:
-  require_chef_omnibus: true
+  driver_config:
+    require_chef_omnibus: true
 
 platforms:
 - name: debian-7.9
