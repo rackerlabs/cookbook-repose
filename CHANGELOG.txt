@@ -1,3 +1,7 @@
+v3.3.8
+------
+* update default mode on files which have credentials
+
 v3.3.7
 ------
 * fix allowed_hosts sorting bug which broke dist-datastore
