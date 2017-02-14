@@ -13,7 +13,7 @@ end
 template "#{node['repose']['config_directory']}/keystone-v2.cfg.xml" do
   owner node['repose']['owner']
   group node['repose']['group']
-  mode '0644'
+  mode '0640'
   variables(
     username: node['repose']['keystone_v2']['username_admin'],
     password: node['repose']['keystone_v2']['password_admin'],
