@@ -13,7 +13,7 @@ end
 template "#{node['repose']['config_directory']}/client-auth-n.cfg.xml" do
   owner node['repose']['owner']
   group node['repose']['group']
-  mode '0644'
+  mode '0640'
   variables(
     auth_provider: node['repose']['client_auth']['auth_provider'],
     username: node['repose']['client_auth']['username_admin'],

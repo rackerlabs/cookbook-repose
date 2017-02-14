@@ -13,7 +13,7 @@ end
 template "#{node['repose']['config_directory']}/openstack-authorization.cfg.xml" do
   owner node['repose']['owner']
   group node['repose']['group']
-  mode '0644'
+  mode '0640'
   variables(
     username: node['repose']['client_authorization']['username_admin'],
     password: node['repose']['client_authorization']['password_admin'],
