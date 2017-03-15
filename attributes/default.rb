@@ -90,19 +90,8 @@ default['repose']['merge_header']['cluster_id'] = ['all']
 # default for cors is to allow all methods, all origins
 default['repose']['cors']['cluster_id'] = ['all']
 default['repose']['cors']['allowed_origins'] = [
-  { 'is_regex' => true, 
-    'value'    => '.*'
-  }
-]
-default['repose']['cors']['allowed_methods'] = [
-  'GET', 'POST'
-]
-default['repose']['cors']['resources'] = [
-  { 'path'            => '/.*',
-    'allowed_methods' => [
-      'HEAD', 'DELETE'
-     ]
-  }
+  { 'is_regex' => true,
+    'value'    => '.*' }
 ]
 
 default['repose']['header_translation']['cluster_id'] = ['all']
