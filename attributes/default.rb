@@ -84,6 +84,27 @@ default['repose']['slf4j_http_logging']['cluster_id'] = ['all']
 default['repose']['slf4j_http_logging']['id'] = 'http'
 default['repose']['slf4j_http_logging']['format'] = 'Remote IP=%a Local IP=%A Response Size(bytes)=%b Remote Host=%h Request Method=%m Server Port=%p Query String=%q Time Request Received=%t Status=%s Remote User=%u Rate Limit Group: %{X-PP-Groups}i URL Path Requested=%U X-Forwarded-For=%{X-Forwarded-For}i X-REAL-IP=%{X-Real-IP}i'
 
+# default for merge_header is empty (no-op)
+default['repose']['merge_header']['cluster_id'] = ['all']
+
+# default for cors is to allow all methods, all origins
+default['repose']['cors']['cluster_id'] = ['all']
+default['repose']['cors']['allowed_origins'] = [
+  { 'is_regex' => true, 
+    'value'    => '.*'
+  }
+]
+default['repose']['cors']['allowed_methods'] = [
+  'GET', 'POST'
+]
+default['repose']['cors']['resources'] = [
+  { 'path'            => '/.*',
+    'allowed_methods' => [
+      'HEAD', 'DELETE'
+     ]
+  }
+]
+
 default['repose']['header_translation']['cluster_id'] = ['all']
 default['repose']['header_translation']['headers'] = [
   { 'original_name' => 'Content-Type',

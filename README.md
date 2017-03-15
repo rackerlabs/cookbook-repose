@@ -25,19 +25,21 @@ There are 2 ways to setup filters:
 Available filters are:
   * [add-header](https://repose.atlassian.net/wiki/display/REPOSE/Add+Header+Filter)
   * [api-validator](https://repose.atlassian.net/wiki/display/REPOSE/API+Validation+filter)
-  * [client-auth] (https://repose.atlassian.net/wiki/display/REPOSE/Client+Authentication+filter) (deprecated in Repose 8.0.0 - replace with Keystone v2 Filter)
+  * [client-auth](https://repose.atlassian.net/wiki/display/REPOSE/Client+Authentication+filter) (deprecated in Repose 8.0.0 - replace with Keystone v2 Filter)
   * [client-authorization](https://repose.atlassian.net/wiki/display/REPOSE/Client+Authorization+filter)
   * [content-type-stripper](https://repose.atlassian.net/wiki/display/REPOSE/Content+Type+Stripper+filter) (system-model only)
-  * [DeRP] (https://repose.atlassian.net/wiki/display/REPOSE/Delegation+Response+Processor+%28DeRP%29+Filter)
+  * [CORS](https://repose.atlassian.net/wiki/display/REPOSE/CORS+filter)
+  * [DeRP](https://repose.atlassian.net/wiki/display/REPOSE/Delegation+Response+Processor+%28DeRP%29+Filter)
   * [header-identity](https://repose.atlassian.net/wiki/display/REPOSE/Header+Identity+filter)
-  * [header-normalization] (https://repose.atlassian.net/wiki/display/REPOSE/Header+Normalization+filter)
-  * [header-translation] (https://repose.atlassian.net/wiki/display/REPOSE/Header+Translation+filter)
-  * [ip-identity] (https://repose.atlassian.net/wiki/display/REPOSE/IP+Identity+filter) (deprecated in Repose 8.0.0 - replace with IP User Filter)
-  * [ip-user] (https://repose.atlassian.net/wiki/display/REPOSE/IP+User+filter)
+  * [header-normalization](https://repose.atlassian.net/wiki/display/REPOSE/Header+Normalization+filter)
+  * [header-translation](https://repose.atlassian.net/wiki/display/REPOSE/Header+Translation+filter)
+  * [ip-identity](https://repose.atlassian.net/wiki/display/REPOSE/IP+Identity+filter) (deprecated in Repose 8.0.0 - replace with IP User Filter)
+  * [ip-user](https://repose.atlassian.net/wiki/display/REPOSE/IP+User+filter)
   * [keystone-v2](https://repose.atlassian.net/wiki/display/REPOSE/Keystone+v2+Filter)
+  * [merge-header](https://repose.atlassian.net/wiki/display/REPOSE/Merge+Header+filter)
   * [rackspace-auth-user](https://repose.atlassian.net/wiki/display/REPOSE/Rackspace+Auth+User+filter)
-  * [rate-limiting] (https://repose.atlassian.net/wiki/display/REPOSE/Rate+Limiting+filter)
-  * [slf4j-http-logging] (https://repose.atlassian.net/wiki/display/REPOSE/SLF4J+HTTP+Logging+filter)
+  * [rate-limiting](https://repose.atlassian.net/wiki/display/REPOSE/Rate+Limiting+filter)
+  * [slf4j-http-logging](https://repose.atlassian.net/wiki/display/REPOSE/SLF4J+HTTP+Logging+filter)
   * [translation](https://repose.atlassian.net/wiki/display/REPOSE/Translation+filter)
   * [uri-identity](https://repose.atlassian.net/wiki/display/REPOSE/URI+Identity+filter)
   * [uri-stripper](https://repose.atlassian.net/wiki/display/REPOSE/URI+Stripper+filter)
@@ -341,9 +343,69 @@ The default blacklist is:
 ]
 ```
 
+## merge-header attributes
+
+* `node['repose']['merge_header']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
+* `node['repose']['merge_header']['response_headers']` - An array of response headers to merge into one
+* `node['repose']['merge_header']['request_headers']` - An array of response headers to merge into one
+
+The default response_headers and request_headers are:
+```
+[]
+```
+which means no headers to merge and this filter becomes a no-op. An example to override it:
+```
+node['repose']['merge_header']['response_headers'] = [
+    'HEADER1', 'HEADER2'
+]
+node['repose']['merge_header']['request_headers'] = [
+    'HEADER1', 'HEADER2'
+]
+```
+
 ## content-type-stripper attributes
 
 * `node['repose']['content_type_stripper']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
+
+## CORS attributes
+
+* `node['repose']['cors']['cluster_id']` - An array of cluster IDs that use this filter or `['all']` for all cluster IDs.
+* `node['repose']['cors']['allowed_origins']` - An array of origin objects
+* `node['repose']['cors']['allowed_methods']` - An array of methods that are allowed to access origin service
+* `node['repose']['cors']['resources']` - An array of resource specific CORS that are allowed to be accessed. Each resource consists of path and an array of allowed_methods 
+
+The default allowed_origins is:
+```
+[
+  { 'is_regex' => true,
+    'value'    => '.*'
+  }
+]
+```
+which means all origins are allowed
+
+The default allowed_methods is:
+```
+[]
+```
+which means all methods are allowed
+
+The default resources is:
+```
+[]
+```
+which means all resources are allowed to be accessed. An example configuration that overrides the default resources:
+```
+node['repose']['cors']['resources'] = [
+  { 'path'            => '/resource1/.*',
+    'allowed_methods' => [
+      'GET'
+     ]
+  }
+]
+```
+which means only GET methods are allowed for CORS requests to "/resource1/.*"
+
 
 ## http-connection-pool attributes
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<merge-header xmlns='http://docs.openrepose.org/repose/merge-header/v1.0'>
+
+    <% if @response_headers != nil && !@response_headers.empty? %>
+    <response>
+        <% @response_headers.each do |header| %>
+        <header><%= header %></header>
+        <% end %>
+    </response>
+    <% end %>
+
+    <% if @request_headers != nil && !@request_headers.empty? %>
+    <request>
+        <% @request_headers.each do |header| %>
+        <header><%= header %></header>
+        <% end %>
+    </request>
+    <% end %>
+</merge-header>
