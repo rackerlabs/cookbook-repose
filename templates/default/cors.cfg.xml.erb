@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cross-origin-resource-sharing xmlns="http://docs.openrepose.org/repose/cross-origin-resource-sharing/v1.0">
+    <allowed-origins>
+        <% @allowed_origins.each do |allowed_origin| %>
+        <origin regex="<%= allowed_origin['is_regex'] %>"><%= allowed_origin['value'] %></origin>
+        <% end %>
+    </allowed-origins>
+
+    <% if @allowed_methods != nil && !@allowed_methods.empty? %>
+    <allowed-methods>
+        <% @allowed_methods.each do |allowed_method| %>
+        <method><%= allowed_method %></method>
+        <% end %>
+    </allowed-methods>
+    <% end %>
+
+    <% if @resources != nil && !@resources.empty? %>
+    <resources>
+        <% @resources.each do |resource| %>
+        <resource path="<%= resource['path'] %>">
+           <%if resource['allowed_methods'] != nil && ! resource['allowed_methods'].empty? %>
+                <allowed-methods>
+                    <% resource['allowed_methods'].each do |rs_allowed_method| %>
+                    <method><%= rs_allowed_method %></method>
+                    <% end %>
+                </allowed-methods>
+           <% end %>
+        </resource>
+        <% end %>
+    </resources>
+    <% end %>
+</cross-origin-resource-sharing>
