@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 case node['platform_family']
 when 'rhel'
   default['repose']['owner'] = 'repose'
