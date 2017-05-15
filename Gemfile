@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
 
 gem 'berkshelf'
@@ -6,6 +7,7 @@ gem 'foodcritic'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop'
+gem 'stove'
 
 group :integration do
   gem 'test-kitchen'

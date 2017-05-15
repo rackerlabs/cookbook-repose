@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #
 # Cookbook Name:: repose
 # Recipe:: filter-slf4j-http-logging
