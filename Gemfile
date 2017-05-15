@@ -6,6 +6,7 @@ gem 'foodcritic'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop'
+gem 'stove'
 
 group :integration do
   gem 'test-kitchen'
