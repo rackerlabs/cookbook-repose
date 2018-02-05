@@ -18,7 +18,7 @@ when 'debian'
   default['repose']['install_opts'] = '-o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" --force-yes'
 end
 
-default['repose']['version'] = '7.3.6.0'
+default['repose']['version'] = '8.7.3.0'
 default['repose']['loglevel'] = 'WARN'
 default['repose']['cluster_ids'] = ['repose']
 default['repose']['rewrite_host_header'] = true
