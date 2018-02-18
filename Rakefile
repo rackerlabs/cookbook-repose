@@ -16,7 +16,7 @@ end
 
 desc 'Foodcritic linter'
 task :foodcritic do
-  sh 'foodcritic -f any -t ~FC007 .'
+  sh 'foodcritic -f any -t ~FC078 .'
 end
 
 desc 'Run chefspec unit tests'
