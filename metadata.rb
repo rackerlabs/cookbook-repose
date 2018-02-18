@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 name 'repose'
 maintainer 'Rackspace Hosting'
 maintainer_email 'cookbook-repose@rackspace.com'

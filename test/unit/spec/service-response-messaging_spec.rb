@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'chefspec'
 require_relative 'spec_helper'
 
@@ -26,7 +27,7 @@ describe 'repose::default' do
 <overLimit
    xmlns="http://docs.openstack.org/compute/api/v1.1"
    code="413"
-   retryAfter="%{Retry-After DATE ISO_8601}o">
+   retryAfter="%<Retry-After DATE ISO_8601>o">
  <message>OverLimit Retry...</message>
  <details>Error Details...</details>
 </overLimit>

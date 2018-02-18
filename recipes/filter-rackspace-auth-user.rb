@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #
 # Cookbook Name:: repose
 # Recipe:: filter-rackspace-auth-user

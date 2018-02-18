@@ -1,5 +1,5 @@
-# encoding: UTF-8
 # frozen_string_literal: true
+
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -49,4 +49,4 @@ namespace :integration do
   end
 end
 
-task default: %w(rubocop foodcritic unit)
+task default: %w[rubocop foodcritic unit]
