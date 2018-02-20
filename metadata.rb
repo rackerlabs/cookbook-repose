@@ -10,5 +10,5 @@ issues_url 'https://github.com/rackerlabs/cookbook-repose/issues' if respond_to?
 source_url 'https://github.com/rackerlabs/cookbook-repose' if respond_to?(:source_url)
 
 depends 'apt'
-depends 'yum', '~> 3.0'
+depends 'yum'
 depends 'yum-epel'
