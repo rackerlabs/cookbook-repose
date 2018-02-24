@@ -69,10 +69,14 @@ GEM
       specinfra (~> 2.10)
       syslog-logger (~> 1.6)
       uuidtools (~> 2.1.5)
-    chef-config (12.19.36)
     chef-api (0.7.0)
+      addressable
+      fuzzyurl
       logify (~> 0.1)
       mime-types
+      mixlib-config (~> 2.0)
+      mixlib-shellout (~> 2.0)
+    chef-config (12.19.36)
       addressable
       fuzzyurl
       mixlib-config (~> 2.0)
@@ -292,4 +296,4 @@ DEPENDENCIES
   vagrant-wrapper
 
 BUNDLED WITH
-   1.14.6
+   1.16.1
