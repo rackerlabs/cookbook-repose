@@ -38,7 +38,7 @@ describe 'repose::default' do
 
   it 'create response-messaging.cfg.xml with only required fields and single status & message' do
     expect(chef_run).to render_file('/etc/repose/response-messaging.cfg.xml').with_content(%r{<\?xml version="1.0" encoding="UTF-8"\?>\s+
-       <response-messaging\s+xmlns="http://docs.openrepose.org/repose/response-messaging/v1.0">\s+
+       <response-messaging xmlns="http://docs.openrepose.org/repose/response-messaging/v1.0">\s+
            <status-code id="test_bad_input" code-regex="4.."\s+
            >\s+
                <message media-type="application/xml"\s+
