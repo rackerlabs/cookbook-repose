@@ -1,5 +1,5 @@
-# encoding: UTF-8
 # frozen_string_literal: true
+
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -16,7 +16,7 @@ end
 
 desc 'Foodcritic linter'
 task :foodcritic do
-  sh 'foodcritic -f any -t ~FC007 .'
+  sh 'foodcritic -f any -t ~FC078 .'
 end
 
 desc 'Run chefspec unit tests'
@@ -49,4 +49,4 @@ namespace :integration do
   end
 end
 
-task default: %w(rubocop foodcritic unit)
+task default: %w[rubocop foodcritic unit]

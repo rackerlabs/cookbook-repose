@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Chef
   module RackHelpers
     module Repose

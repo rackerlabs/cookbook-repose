@@ -1,7 +1,8 @@
 # frozen_string_literal: true
+
 source 'https://supermarket.chef.io'
 
 metadata
-cookbook 'apt', '~> 2.9.2'
+cookbook 'apt'
 cookbook 'java'
-cookbook 'yum-epel', '~> 0.6.6'
+cookbook 'yum-epel'
