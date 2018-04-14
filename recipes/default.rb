@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #
 # Cookbook Name:: repose
 # Recipe:: default
@@ -10,7 +11,7 @@ include_recipe 'repose::install'
 
 service 'repose-valve' do
   supports restart: true, status: true
-  action [:enable, :start]
+  action %i[enable start]
 end
 
 include_recipe 'repose::load_peers' if node['repose']['peer_search_enabled']

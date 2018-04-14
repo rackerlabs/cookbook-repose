@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'chefspec'
 require_relative 'spec_helper'
 
@@ -26,7 +27,7 @@ describe 'repose::default' do
 <overLimit
    xmlns="http://docs.openstack.org/compute/api/v1.1"
    code="413"
-   retryAfter="%{Retry-After DATE ISO_8601}o">
+   retryAfter="%<Retry-After DATE ISO_8601>o">
  <message>OverLimit Retry...</message>
  <details>Error Details...</details>
 </overLimit>
@@ -36,17 +37,11 @@ describe 'repose::default' do
   end
 
   it 'create response-messaging.cfg.xml with only required fields and single status & message' do
-    expect(chef_run).to render_file('/etc/repose/response-messaging.cfg.xml').with_content(%r{<\?xml\s+
-           version="1.0"\s+
-           encoding="UTF-8"\?>\s+
-       <response-messaging\s+
-           xmlns="http://docs.openrepose.org/repose/response-messaging/v1.0">\s+
-           <status-code\s+
-               id="test_bad_input"\s+
-               code-regex="4.."\s+
+    expect(chef_run).to render_file('/etc/repose/response-messaging.cfg.xml').with_content(%r{<\?xml version="1.0" encoding="UTF-8"\?>\s+
+       <response-messaging xmlns="http://docs.openrepose.org/repose/response-messaging/v1.0">\s+
+           <status-code id="test_bad_input" code-regex="4.."\s+
            >\s+
-               <message\s+
-                   media-type="application/xml"\s+
+               <message media-type="application/xml"\s+
                >\s+
                <!\[CDATA\[\s+
        <overLimit\s+

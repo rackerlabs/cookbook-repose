@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #
 # Cookbook Name:: repose
 # Recipe:: filter-add-header
@@ -20,6 +21,5 @@ template "#{node['repose']['config_directory']}/add-header.cfg.xml" do
     requests: node['repose']['add_header']['requests'],
     responses: node['repose']['add_header']['responses'],
     version: node['repose']['version']
-
   )
 end

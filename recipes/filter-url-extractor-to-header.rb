@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #
 # Cookbook Name:: repose
 # Recipe:: filter-url-extractor-to-header
@@ -18,6 +19,5 @@ template "#{node['repose']['config_directory']}/url-extractor-to-header.cfg.xml"
   notifies :restart, 'service[repose-valve]'
   variables(
     extractor_headers: node['repose']['url_extractor_to_header']['extractor_headers']
-
   )
 end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'chefspec'
 require_relative 'spec_helper'
 
@@ -13,9 +14,9 @@ describe 'repose::install_debian' do
     expect(chef_run).to add_apt_repository('openrepose')
   end
 
-  packages = %w(repose-valve repose-filter-bundle repose-extensions-filter-bundle)
+  packages = %w[repose-valve repose-filter-bundle repose-extensions-filter-bundle]
   packages.each do |p|
-    it 'installs package #{p}' do
+    it "installs package #{p}" do
       expect(chef_run).to install_package(p)
     end
   end
