@@ -5,7 +5,7 @@ require_relative 'spec_helper'
 
 describe 'repose::install_rhel' do
   before { stub_resources }
-  let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'redhat', version: '7.0').converge('repose::default', 'repose::install', described_recipe) }
+  let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'redhat', version: '7.4').converge('repose::default', 'repose::install', described_recipe) }
   let(:template) { chef_run.template('/etc/sysconfig/repose') }
 
   it 'includes the recipe yum-epel' do

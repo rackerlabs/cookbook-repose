@@ -1,0 +1,27 @@
+<% if !@version.nil? && @version.split('.')[0].to_i < 7 %>
+<open-tracing xmlns="http://docs.rackspacecloud.com/repose/open-tracing/v1.0"
+ service-name="<%= @service_name %>">
+<% else %>
+<open-tracing xmlns="http://docs.openrepose.org/repose/open-tracing/v1.0"
+ service-name="<%= @service_name %>">
+<% end %>
+    <jaeger>
+    <% if @connection_type == 'http' %>
+        <connection-http endpoint="<%= @endpoint %>"
+            <% if @username != nil %> username="<%= @username %>"<% end %> 
+            <% if @password != nil %> password="<%= @password %>"<% end %>
+            <% if @token != nil %> token="<%= @token %>"<% end %>
+        />
+    <% elsif @connection_type == 'udp' %>
+        <connection-udp port="<%= @port %>" host="<%= @host %>" />
+    <% end %>
+    
+    <% if @sampling_type == 'probabilistic' %>
+        <sampling-probabilistic <% if @probability != nil %>probability="<%= @probability %>"<% end %> />
+    <% elsif @sampling_type == 'rate-limiting' %>
+        <sampling-rate-limiting <% if @max_traces_per_second != nil %>max-traces-per-second="<%= @max_traces_per_second %>"<% end %> />
+    <% elsif @sampling_type == 'constant' %>
+        <sampling-constant <% if @toggle != nil %>toggle="<%= @toggle %>"<% end %>/>
+    <% end %>
+    </jaeger>
+</open-tracing>

@@ -28,12 +28,13 @@ directory node['repose']['config_directory'] do
   recursive true
 end
 
-# http-connection-pool and response-messaging do not need to be included in the system-model.cfg.xml file
-services = node['repose']['services'].reject { |x| x == 'http-connection-pool' || x == 'response-messaging' }
+# http-connection-pool, response-messaging, and open-tracing do not need to be included in the system-model.cfg.xml file
+services = node['repose']['services'].reject { |x| x == 'http-connection-pool' || x == 'response-messaging' || x == 'open-tracing' }
 service_cluster_map = {
   'dist-datastore' => node['repose']['dist_datastore']['cluster_id'],
   'http-connection-pool' => node['repose']['http_connection_pool']['cluster_id'],
-  'response-messaging' => node['repose']['response_messaging']['cluster_id']
+  'response-messaging' => node['repose']['response_messaging']['cluster_id'],
+  'open-tracing' => node['repose']['open_tracing']['cluster_id']
 }
 
 filters = node['repose']['filters']
@@ -98,7 +99,8 @@ template "#{node['repose']['config_directory']}/log4j2.xml" do
     openrepose_loglevel: node['repose']['openrepose_loglevel'],
     intrafilter_loglevel: node['repose']['intrafilter_loglevel'],
     loggers: node['repose']['loggers'],
-    appenders: node['repose']['appenders']
+    appenders: node['repose']['appenders'],
+    tracing_log_level: node['repose']['open_tracing']['constant']['toggle'] == 'off' && node['repose']['open_tracing']['sampling_type'] == 'constant' ? 'off' : 'warn'
   )
   notifies :restart, 'service[repose-valve]'
 end

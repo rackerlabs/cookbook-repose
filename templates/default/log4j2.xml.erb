@@ -28,6 +28,7 @@
         <Logger name="org.springframework" level="warn"/>
         <Logger name="org.openrepose" level="<%= @openrepose_loglevel %>"/>
         <Logger name="intrafilter-logging" level="<%= @intrafilter_loglevel %>"/>
+        <Logger name="com.uber.jaeger" level="<%= @tracing_log_level %>"/>
         <% @loggers.each do |logger| %>
             <%= logger %>
         <% end if @loggers %>
