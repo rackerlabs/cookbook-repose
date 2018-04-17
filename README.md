@@ -556,8 +556,8 @@ Example of configuration:
 
 * `node['repose']['open_tracing']['connection_type']` - String that is set to either `udp` or `http`.  Sets the type of connection to tracer endpoint.  Default is `http`.
 * `node['repose']['open_tracing']['http']['endpoint']` - URL address to the tracing collector.  Default is `http://localhost:12682/api/traces`
-* `node['repose']['open_tracing']['http']['username']` - Optional user name for authentication to collector. Must be used in tandem with `username`.
-* `node['repose']['open_tracing']['http']['password']` - Optional password for authentication to collector. Must be used in tandem with `password`.
+* `node['repose']['open_tracing']['http']['username']` - Optional user name for authentication to collector. Must be used in tandem with `password`.
+* `node['repose']['open_tracing']['http']['password']` - Optional password for authentication to collector. Must be used in tandem with `username`.
 * `node['repose']['open_tracing']['http']['token']` - Optional BEARER token for authentication to collector.
 * `node['repose']['open_tracing']['udp']['host']` - Hostname or IP address of the tracer agent.  Default is `localhost`.
 * `node['repose']['open_tracing']['udp']['port']` - Port of the tracer agent.  Default is `5775`.
