@@ -55,6 +55,7 @@ Available services are:
   * [dist-datastore] (https://repose.atlassian.net/wiki/display/REPOSE/Datastores#Datastores-distributedDistributedDatastore)
   * [http-connection-pool] (https://repose.atlassian.net/wiki/display/REPOSE/HTTP+Connection+Pool+service) (configuration only)
   * [response-messaging] (https://repose.atlassian.net/wiki/display/REPOSE/Response+Messaging+service)
+  * [open-tracing] (http://www.openrepose.org/versions/latest/services/open-tracing.html)
 
 ## Nodes
 
@@ -551,6 +552,19 @@ Example of configuration:
                'content'      => '{"test":"error"}'}]}]
 ```
 
+## open-tracing attributes
+
+* `node['repose']['open_tracing']['connection_type']` - String that is set to either `udp` or `http`.  Sets the type of connection to tracer endpoint.  Default is `http`.
+* `node['repose']['open_tracing']['http']['endpoint']` - URL address to the tracing collector.  Default is `http://localhost:12682/api/traces`
+* `node['repose']['open_tracing']['http']['username']` - Optional user name for authentication to collector. Must be used in tandem with `password`.
+* `node['repose']['open_tracing']['http']['password']` - Optional password for authentication to collector. Must be used in tandem with `username`.
+* `node['repose']['open_tracing']['http']['token']` - Optional BEARER token for authentication to collector.
+* `node['repose']['open_tracing']['udp']['host']` - Hostname or IP address of the tracer agent.  Default is `localhost`.
+* `node['repose']['open_tracing']['udp']['port']` - Port of the tracer agent.  Default is `5775`.
+* `node['repose']['open_tracing']['sampling_type']` - String that is set to either `constant`, `probabilistic`, or `rate-limiting`.  Sets the sampling algorithm.  Default is `constant`.
+* `node['repose']['open_tracing']['constant']['toggle']` - Setting on whether or not to collect data. Either `on` or `off`.  Default is `off`.
+* `node['repose']['open_tracing']['probabilistic']['probability']` - Optional double on how many requests to sample (e.g. `0.001` means 1 out of every 1000 requests gets sampled).
+* `node['repose']['open_tracing']['rate_limiting']['max_traces_per_second']` - Optional double on how many traces per second to sample.
 
 # Recipes
 

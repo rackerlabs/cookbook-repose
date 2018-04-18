@@ -19,7 +19,7 @@ when 'debian'
   default['repose']['install_opts'] = '-o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" --force-yes'
 end
 
-default['repose']['version'] = '7.3.6.0'
+default['repose']['version'] = '8.8.3.0'
 default['repose']['loglevel'] = 'WARN'
 default['repose']['cluster_ids'] = ['repose']
 default['repose']['rewrite_host_header'] = true
@@ -35,7 +35,7 @@ default['repose']['client_request_logging'] = nil
 default['repose']['proxy_thread_pool'] = nil
 default['repose']['deploy_auto_clean'] = true
 default['repose']['filter_check_interval'] = 60000
-#
+
 default['repose']['config_directory'] = '/etc/repose'
 default['repose']['log_path'] = '/var/log/repose'
 default['repose']['pid_file'] = '/var/run/repose-valve.pid'
@@ -290,3 +290,17 @@ default['repose']['ip_user']['groups'] = [
   { 'group_name' => 'rfc1918',
     'cidrips' => ['192.168.0.0/16', '172.16.0.0/12', '10.0.0.0/8'] }
 ]
+
+default['repose']['open_tracing']['cluster_id'] = ['all']
+default['repose']['open_tracing']['service_name'] = 'test-repose'
+default['repose']['open_tracing']['connection_type'] = 'http'
+default['repose']['open_tracing']['http']['endpoint'] = 'http://localhost:12682/api/traces'
+default['repose']['open_tracing']['udp']['host'] = 'localhost'
+default['repose']['open_tracing']['udp']['port'] = 5775
+default['repose']['open_tracing']['sampling_type'] = 'constant'
+default['repose']['open_tracing']['constant']['toggle'] = 'off'
+default['repose']['open_tracing']['probabilistic']['probability'] = nil
+default['repose']['open_tracing']['rate_limiting']['max_traces_per_second'] = nil
+default['repose']['open_tracing']['http']['username'] = nil
+default['repose']['open_tracing']['http']['password'] = nil
+default['repose']['open_tracing']['http']['token'] = nil

@@ -6,6 +6,7 @@ driver:
 platforms:
 - name: debian-7.9
 - name: debian-8.3
+- name: ubuntu-16.04
 - name: ubuntu-14.04
 - name: ubuntu-12.04
 - name: centos-6.7
@@ -39,8 +40,9 @@ suites:
     "recipe[repose::filter-uri-stripper]",
     "recipe[repose::service-dist-datastore]",
     "recipe[repose::service-http-connection-pool]",
-    "recipe[repose::service-response-messaging]"
+    "recipe[repose::service-response-messaging]",
+    "recipe[repose::service-open-tracing]"
   ]
   attributes:
     java:
-      jdk_version: 7
+      jdk_version: 8
