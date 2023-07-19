@@ -21,8 +21,8 @@ end
 
 default['repose']['packages'] = [
     'repose-valve',
-    ' repose-filter-bundle',
-    ' repose-extensions-filter-bundle'
+    'repose-filter-bundle',
+    'repose-extensions-filter-bundle'
 ]
 
 default['repose']['version'] = '8.8.3.0'
