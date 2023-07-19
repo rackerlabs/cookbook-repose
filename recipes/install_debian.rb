@@ -17,7 +17,9 @@ apt_repository 'openrepose' do
   only_if { node['repose']['repo']['managed'] }
 end
 
-pkgs = node['repose']['packages'].map{ |p| [p, node['repose']['version']].join('=')}
+pkgs = node['repose']['packages'].map do |p|
+  [p, node['repose']['version']].join('=')
+end
 
 bash 'install repose packages' do
   code "apt #{node['repose']['install_opts']} install #{pkgs.join(' ')}"
