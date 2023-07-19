@@ -19,6 +19,12 @@ when 'debian'
   default['repose']['install_opts'] = '-o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" --force-yes'
 end
 
+default['repose']['packages'] = [
+    'repose-valve',
+    'repose-filter-bundle',
+    'repose-extensions-filter-bundle'
+]
+
 default['repose']['version'] = '8.8.3.0'
 default['repose']['loglevel'] = 'WARN'
 default['repose']['cluster_ids'] = ['repose']

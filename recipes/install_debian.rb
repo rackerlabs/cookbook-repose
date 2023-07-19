@@ -17,11 +17,10 @@ apt_repository 'openrepose' do
   only_if { node['repose']['repo']['managed'] }
 end
 
-%w[repose-valve
-   repose-filter-bundle
-   repose-extensions-filter-bundle].each do |p|
-  package p do
-    options node['repose']['install_opts']
-    version node['repose']['version']
-  end
+pkgs = node['repose']['packages'].map do |p|
+  [p, node['repose']['version']].join('=')
+end
+
+bash 'install repose packages' do
+  code "apt #{node['repose']['install_opts']} install #{pkgs.join(' ')}"
 end
