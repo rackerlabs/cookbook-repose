@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!-- To configure Repose see: http://wiki.openrepose.org/display/REPOSE/Configuration -->
 <% if !@version.nil? && @version.split('.')[0].to_i < 7 %>
 <repose-container xmlns='http://docs.rackspacecloud.com/repose/container/v2.0'>
 <% else %>
 <repose-container xmlns='http://docs.openrepose.org/repose/container/v2.0'>
 <% end %>
-    <deployment-config <% if @content_body_read_limit != nil %>content-body-read-limit="<%= @content_body_read_limit %>"<% end %> connection-timeout="<%= @connection_timeout %>" read-timeout="<%= @read_timeout %>" <% if @client_request_logging != nil %>client-request-logging="<%= @client_request_logging %>"<% end %> <% if @proxy_thread_pool != nil %>proxy-thread-pool="<%= @proxy_thread_pool %>"<% end %>>
-        <deployment-directory auto-clean="<%= @deploy_auto_clean %>">/var/repose</deployment-directory>
-        <artifact-directory check-interval="<%= @filter_check_interval %>">/usr/share/repose/filters</artifact-directory>
-<% if @version.nil? || @version.split('.')[0].to_i > 6 %>
-        <logging-configuration href="file:///etc/repose/log4j2.xml" />
-<% else %>
-        <logging-configuration href="log4j.properties" />
-<% end %>  
-    </deployment-config>
+<%
+  deploymentAttributes = ""
+
+  if @content_body_read_limit != nil
+    deploymentAttributes.concat(" content-body-read-limit=\"").concat(@content_body_read_limit.to_s).concat("\"")
+  end
+  # After version 7.3.8, client_request_logging, connection_timeout, read-timeout & proxy-thread-pool attributes are deprecated.
+  # So here we had added check to add these attributes only for version smaller than 7.3.8.
+  if (!@version.nil? && @version < '7.3.8')
+    if @client_request_logging != nil
+      deploymentAttributes.concat(" client-request-logging=\"").concat(@client_request_logging.to_s).concat("\"")
+    end
+    if @proxy_thread_pool != nil
+      deploymentAttributes.concat(" proxy-thread-pool=\"").concat(@proxy_thread_pool).concat("\"")
+    end
+    deploymentAttributes.concat(" connection-timeout=\"").concat(@connection_timeout.to_s).concat("\"").concat(" read-timeout=\"").concat(@read_timeout.to_s).concat("\"")
+  end
+%>
+  <deployment-config <%= deploymentAttributes %>>
+    <deployment-directory auto-clean="<%= @deploy_auto_clean %>">/var/repose</deployment-directory>
+    <artifact-directory check-interval="<%= @filter_check_interval %>">/usr/share/repose/filters</artifact-directory>
+    <% if @version.nil? || @version.split('.')[0].to_i > 6 %>
+      <logging-configuration href="file:///etc/repose/log4j2.xml" />
+    <% else %>
+      <logging-configuration href="log4j.properties" />
+    <% end %>
+  </deployment-config>
 </repose-container>
