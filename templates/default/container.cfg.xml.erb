@@ -3,10 +3,11 @@
 <!-- To configure Repose see: http://wiki.openrepose.org/display/REPOSE/Configuration -->
 <% if !@version.nil? && @version.split('.')[0].to_i < 7 %>
 <repose-container xmlns='http://docs.rackspacecloud.com/repose/container/v2.0'>
+    <deployment-config <% if @content_body_read_limit != nil %>content-body-read-limit="<%= @content_body_read_limit %>"<% end %> connection-timeout="<%= @connection_timeout %>" read-timeout="<%= @read_timeout %>" <% if @client_request_logging != nil %>client-request-logging="<%= @client_request_logging %>"<% end %> <% if @proxy_thread_pool != nil %>proxy-thread-pool="<%= @proxy_thread_pool %>"<% end %>>
 <% else %>
 <repose-container xmlns='http://docs.openrepose.org/repose/container/v2.0'>
+    <deployment-config <% if @content_body_read_limit != nil %>content-body-read-limit="<%= @content_body_read_limit %>"<% end %>>
 <% end %>
-    <deployment-config <% if @content_body_read_limit != nil %>content-body-read-limit="<%= @content_body_read_limit %>"<% end %> connection-timeout="<%= @connection_timeout %>" read-timeout="<%= @read_timeout %>" <% if @client_request_logging != nil %>client-request-logging="<%= @client_request_logging %>"<% end %> <% if @proxy_thread_pool != nil %>proxy-thread-pool="<%= @proxy_thread_pool %>"<% end %>>
         <deployment-directory auto-clean="<%= @deploy_auto_clean %>">/var/repose</deployment-directory>
         <artifact-directory check-interval="<%= @filter_check_interval %>">/usr/share/repose/filters</artifact-directory>
 <% if @version.nil? || @version.split('.')[0].to_i > 6 %>
