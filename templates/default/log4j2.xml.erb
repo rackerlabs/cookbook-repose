@@ -28,7 +28,7 @@
         <Logger name="org.springframework" level="warn"/>
         <Logger name="org.openrepose" level="<%= @openrepose_loglevel %>"/>
         <Logger name="intrafilter-logging" level="<%= @intrafilter_loglevel %>"/>
-        # This logger logs the trace id of each request, which isn't too useful and fills up logs.
+        <!-- This logger logs the trace id of each request, which isn't too useful and fills up logs. -->
         <Logger name="org.openrepose.powerfilter.PowerFilter.trace-id-logging" level="off"/>
         <Logger name="com.uber.jaeger" level="<%= @tracing_log_level %>"/>
         <% @loggers.each do |logger| %>
