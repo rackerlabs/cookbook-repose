@@ -16,7 +16,7 @@ when 'debian'
   default['repose']['repo']['baseurl'] = 'http://repo.openrepose.org/debian'
   default['repose']['repo']['gpgkey'] = 'http://repo.openrepose.org/debian/pubkey.gpg'
   default['repose']['repo']['managed'] = true
-  default['repose']['install_opts'] = '-o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" --force-yes'
+  default['repose']['install_opts'] = '-o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" --allow-downgrades --allow-change-held-packages --yes'
 end
 
 default['repose']['packages'] = [
